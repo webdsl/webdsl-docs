@@ -1,0 +1,21 @@
+# Misc
+.DS_Store
+*.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.python-version
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+/site/
+/.docs_site/

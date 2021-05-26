@@ -1,0 +1,85 @@
+site_name: WebDSL
+site_description: Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model.
+
+repo_url: https://github.com/webdsl/webdsl
+site_dir: .docs_site/
+
+nav:
+  - Home:
+    - index.md
+    - Releases: releases.md
+    - About: about.md
+    - Support: support.md
+  - Tutorials:
+    - tutorials/index.md
+    - Tutorial 1: tutorials/tutorial1.md
+  - How-Tos:
+    - howtos/index.md
+    - howtos/install-eclipse-bundle.md
+    - howtos/install-eclipse-plugin-manually.md
+    - howtos/install-cli.md
+  - Reference:
+    - reference/index.md
+  - Background:
+    - background/index.md
+
+theme:
+  name: material
+  language: en
+  logo: assets/logo.svg
+  favicon: assets/favicon.png
+  icon:
+    logo: fontawesome/solid/sticky-note
+    repo: fontawesome/brands/github
+  palette:
+    #scheme: slate
+    primary: blue
+    accent: orange
+  font:
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
+    - navigation.indexes
+    
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - codehilite:
+      guess_lang: false
+  - def_list
+  - toc:
+      permalink: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.saneheaders
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search
+  - git-revision-date:
+      enabled_if_env: CI
+  - macros
+
+extra:
+  os:
+    windows: ":fontawesome-brands-windows: Windows"
+    linux: ":fontawesome-brands-linux: Linux"
+    macos: ":fontawesome-brands-apple: macOS"
