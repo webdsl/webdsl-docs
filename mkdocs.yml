@@ -3,7 +3,6 @@ site_description: Documentation of the WebDSL domain-specific language for model
 
 repo_url: https://github.com/webdsl/webdsl
 edit_uri: https://github.com/webdsl/webdsl-docs/edit/main/docs
-site_dir: .docs_site/
 
 nav:
   - Home:

@@ -18,4 +18,3 @@ env.bak/
 venv.bak/
 pythonenv*
 /site/
-/.docs_site/
