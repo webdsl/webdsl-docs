@@ -12,7 +12,6 @@ nav:
     - Support: support.md
   - Tutorials:
     - tutorials/index.md
-    - Tutorial 1: tutorials/tutorial1.md
   - How-Tos:
     - howtos/index.md
     - howtos/install-eclipse-bundle.md

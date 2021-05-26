@@ -1,5 +1,10 @@
 # WebDSL Documentation
-This is the repository for the new WebDSL documentation. This documentation uses [MkDocs Material][1].
+
+[![Build](https://github.com/webdsl/webdsl-docs/actions/workflows/main.yml/badge.svg)](https://github.com/webdsl/webdsl-docs/actions)
+[![Docs](https://img.shields.io/badge/docs-latest-brightgreen)](https://webdsl.org/)
+[![GitHub](https://img.shields.io/github/license/webdsl/webdsl-docs)](https://github.com/webdsl/webdsl-docs/blob/main/LICENSE)
+
+This is the repository for the new [WebDSL](https://webdsl.org/) documentation. This documentation uses [MkDocs Material][1].
 
 To build the pages and see edits live using Docker:
 
