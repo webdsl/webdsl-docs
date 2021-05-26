@@ -1,6 +1,6 @@
 # WebDSL Documentation
 
-[![Build](https://github.com/webdsl/webdsl-docs/actions/workflows/main.yml/badge.svg)](https://github.com/webdsl/webdsl-docs/actions)
+[![Build](https://github.com/webdsl/webdsl-docs/actions/workflows/docs.yml/badge.svg)](https://github.com/webdsl/webdsl-docs/actions)
 [![Docs](https://img.shields.io/badge/docs-latest-brightgreen)](https://webdsl.org/)
 [![GitHub](https://img.shields.io/github/license/webdsl/webdsl-docs)](https://github.com/webdsl/webdsl-docs/blob/main/LICENSE)
 
