@@ -28,6 +28,7 @@ WebDSL is being developed by Eelco Visser and Ph.D./M.Sc. students in the contex
 ### Active developers
 
 - Max de Krieger
+- Alexander Chichigin
 - [Danny Groenewegen](http://www.linkedin.com/in/dannygroenewegen)
 - [Elmer van Chastelet](http://www.linkedin.com/pub/elmer-van-chastelet/2a/a90/7a7)
 - Daniel A. A. Pelsmaeker
