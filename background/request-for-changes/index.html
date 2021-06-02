@@ -633,6 +633,47 @@
     Enhancement Proposals
   </a>
   
+    <nav class="md-nav" aria-label="Enhancement Proposals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improve-built-in-functionality" class="md-nav__link">
+    Improve Built-in Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-language-constructs" class="md-nav__link">
+    New Language Constructs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lucene-search" class="md-nav__link">
+    Lucene Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-environment" class="md-nav__link">
+    Development Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -713,6 +754,47 @@
     Enhancement Proposals
   </a>
   
+    <nav class="md-nav" aria-label="Enhancement Proposals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#syntax" class="md-nav__link">
+    Syntax
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#improve-built-in-functionality" class="md-nav__link">
+    Improve Built-in Functionality
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-language-constructs" class="md-nav__link">
+    New Language Constructs
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lucene-search" class="md-nav__link">
+    Lucene Search
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#development-environment" class="md-nav__link">
+    Development Environment
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -758,24 +840,37 @@
 <li>Introduce the notion of transactions in WebDSL in order to better integrate with external services.</li>
 </ul>
 <h4 id="enhancement-proposals">Enhancement Proposals<a class="headerlink" href="#enhancement-proposals" title="Permanent link">&para;</a></h4>
+<h5 id="syntax">Syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h5>
 <ul>
-<li>Syntactic sugar for easily usable page routing customization.</li>
-<li>Introduce locally overridable UI attributes.</li>
-<li>Improve interoperability of built-in types such as Date/DateTime/Time, Integer/Float/Long and File/Image.</li>
-<li>Introduce break/continue for loops and support early returns in services.</li>
-<li>Reduce the effort necessary to delete existing entities that have relations.</li>
-<li>Introduce missing built-in inputs: <code>inputajax</code> for <code>Secret</code> and <code>WikiText</code> types.</li>
-<li>Reduce syntax inconsistencies:<ul>
+<li>Add Syntactic sugar for easily usable page routing customization.</li>
+<li>Reduce Inconsistencies in the existing syntax:<ul>
 <li>Both <code>.length</code> and <code>.length()</code> are used for different types.</li>
 <li>Optional semicolons in template code vs. required semicolons in action code.</li>
 <li>Optional brackets for most definitions (templates and actions) but required brackets when calling an action.</li>
-<li>Notion of sections is unnecessary</li>
+<li>Notion of sections is unnecessary.</li>
 </ul>
 </li>
+</ul>
+<h5 id="improve-built-in-functionality">Improve Built-in Functionality<a class="headerlink" href="#improve-built-in-functionality" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Improve interoperability of built-in types such as Date/DateTime/Time, Integer/Float/Long and File/Image.</li>
+<li>Introduce missing built-in inputs: <code>inputajax</code> for <code>Secret</code> and <code>WikiText</code> types.</li>
+<li>Reduce the effort necessary to delete existing entities that have relations.</li>
+</ul>
+<h5 id="new-language-constructs">New Language Constructs<a class="headerlink" href="#new-language-constructs" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Introduce break/continue for loops and support early returns in services.</li>
+<li>Introduce conditionals in template attributes.</li>
+<li>Introduce locally overridable UI attributes.</li>
+<li>Introduce the notion of middleware that can for example validate or modify incoming requests.</li>
+</ul>
+<h5 id="lucene-search">Lucene Search<a class="headerlink" href="#lucene-search" title="Permanent link">&para;</a></h5>
+<ul>
 <li>Support searching for true substrings (*query*).</li>
 <li>Support the ability to chain search conditions on multiple fields.</li>
-<li>Introduce conditionals in template attributes.</li>
-<li>Introduce the notion of middleware that can for example validate or modify incoming requests.</li>
+</ul>
+<h5 id="development-environment">Development Environment<a class="headerlink" href="#development-environment" title="Permanent link">&para;</a></h5>
+<ul>
 <li>Introduce a containerized environment to build and run WebDSL apps.</li>
 <li>Reduce the effort necessary to set up a project due to configuration settings in <code>application.ini</code>. Certain database modes would not work on certain operating systems, the default one has to work on all platforms.</li>
 </ul>
