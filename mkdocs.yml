@@ -21,6 +21,7 @@ nav:
     - reference/index.md
   - Background:
     - background/index.md
+    - background/upcoming-changes.md
 
 theme:
   name: material
