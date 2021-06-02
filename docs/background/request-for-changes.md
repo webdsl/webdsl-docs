@@ -24,20 +24,34 @@ The following RFCs were discussed in a WebDSL improvement meeting.
 
 #### Enhancement Proposals
 
-- Syntactic sugar for easily usable page routing customization.
-- Introduce locally overridable UI attributes.
-- Improve interoperability of built-in types such as Date/DateTime/Time, Integer/Float/Long and File/Image.
-- Introduce break/continue for loops and support early returns in services.
-- Reduce the effort necessary to delete existing entities that have relations.
-- Introduce missing built-in inputs: `inputajax` for `Secret` and `WikiText` types.
-- Reduce syntax inconsistencies:
+##### Syntax
+
+- Add Syntactic sugar for easily usable page routing customization.
+- Reduce Inconsistencies in the existing syntax:
     - Both `.length` and `.length()` are used for different types.
     - Optional semicolons in template code vs. required semicolons in action code.
     - Optional brackets for most definitions (templates and actions) but required brackets when calling an action.
-    - Notion of sections is unnecessary
+    - Notion of sections is unnecessary.
+
+##### Improve Built-in Functionality
+
+- Improve interoperability of built-in types such as Date/DateTime/Time, Integer/Float/Long and File/Image.
+- Introduce missing built-in inputs: `inputajax` for `Secret` and `WikiText` types.
+- Reduce the effort necessary to delete existing entities that have relations.
+
+##### New Language Constructs
+
+- Introduce break/continue for loops and support early returns in services.
+- Introduce conditionals in template attributes.
+- Introduce locally overridable UI attributes.
+- Introduce the notion of middleware that can for example validate or modify incoming requests.
+
+##### Lucene Search
+
 - Support searching for true substrings (\*query\*).
 - Support the ability to chain search conditions on multiple fields.
-- Introduce conditionals in template attributes.
-- Introduce the notion of middleware that can for example validate or modify incoming requests.
+
+##### Development Environment
+
 - Introduce a containerized environment to build and run WebDSL apps.
 - Reduce the effort necessary to set up a project due to configuration settings in `application.ini`. Certain database modes would not work on certain operating systems, the default one has to work on all platforms.
