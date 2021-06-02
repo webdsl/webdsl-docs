@@ -1,10 +1,10 @@
-# Upcoming Changes
+# Request for Changes
 
-Here you can find the upcoming changes to WebDSL.
+Here you can find the request for changes of WebDSL.
 
-## 2021-06-01
+## May 2021
 
-The following upcoming changes were discussed in a WebDSL improvement meeting.
+The following RFCs were discussed in a WebDSL improvement meeting.
 
 #### Documentation
 
@@ -22,7 +22,7 @@ The following upcoming changes were discussed in a WebDSL improvement meeting.
 - Introduce more client-side features or constructs in order to maintain WebDSL's consistency when writing interactive web apps.
 - Introduce the notion of transactions in WebDSL in order to better integrate with external services.
 
-#### Student Suggestions
+#### Enhancement Proposals
 
 - Syntactic sugar for easily usable page routing customization.
 - Introduce locally overridable UI attributes.
