@@ -1,10 +1,10 @@
-# Request for Changes
+# Meeting Notes
 
-Here you can find the request for changes of WebDSL.
+Meeting notes of past WebDSL meetings are documented here.
 
-## May 2021
+## WebDSL Improvement Meeting May 2021
 
-The following RFCs were discussed in a WebDSL improvement meeting.
+The following points were discussed in a WebDSL improvement meeting.
 
 #### Documentation
 
