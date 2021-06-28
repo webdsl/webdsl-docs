@@ -1,72 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/about/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/releases/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/support/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/background/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/background/meeting-notes/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/howtos/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/howtos/install-cli/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/howtos/install-eclipse-bundle/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/howtos/install-eclipse-plugin-manually/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/howtos/install/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/reference/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/tutorials/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>None</loc>
+         <loc>https://webdsl.github.io/webdsl-docs/tutorials/hello-world/</loc>
          <lastmod>2021-06-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
