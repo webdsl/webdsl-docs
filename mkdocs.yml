@@ -28,6 +28,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
   logo: assets/logo.svg
   favicon: assets/favicon.png
@@ -35,9 +36,22 @@ theme:
     logo: fontawesome/solid/sticky-note
     repo: fontawesome/brands/github
   palette:
-    #scheme: slate
-    primary: blue
-    accent: orange
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      accent: orange
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      accent: orange
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
   font:
     code: JetBrains Mono
   features:
