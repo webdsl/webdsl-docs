@@ -1,5 +1,6 @@
 site_name: WebDSL
 site_description: Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model.
+site_url: https://webdsl.github.io/webdsl-docs/
 
 repo_url: https://github.com/webdsl/webdsl
 edit_uri: https://github.com/webdsl/webdsl-docs/edit/main/docs

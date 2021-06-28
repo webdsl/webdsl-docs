@@ -9,7 +9,7 @@ We provide an [Eclipse][1] bundle in which you can create and edit WebDSL applic
 
     [:fontawesome-solid-download: WebDSL in Eclipse bundle](https://buildfarm.metaborg.org/view/WebDSL/job/webdsl-eclipsegen/lastSuccessfulBuild/artifact/dist/eclipse/){ .md-button .md-button--primary }
 
-    [Installation instructions](howtos/install-eclipse-bundle.md).
+    [Installation instructions](/howtos/install-eclipse-bundle).
 
 === "Alternative: Eclipse Plugin"
     Perform a manual installation of the WebDSL plugin in [Eclipse 3.5][1] or newer through the update site:
@@ -18,7 +18,7 @@ We provide an [Eclipse][1] bundle in which you can create and edit WebDSL applic
     https://webdsl.org/update
     ```
 
-    [Installation instructions](howtos/install-eclipse-plugin-manually.md).
+    [Installation instructions](/howtos/install-eclipse-plugin-manually).
 
 ## Command-Line Interface
 The WebDSL CLI transforms your WebDSL code to web applications.
@@ -28,7 +28,7 @@ The WebDSL CLI transforms your WebDSL code to web applications.
 
     [:fontawesome-solid-download: WebDSL CLI](https://buildfarm.metaborg.org/job/webdsl-compiler/lastSuccessfulBuild/artifact/webdsl.zip){ .md-button .md-button--primary }
 
-    [Installation instructions](howtos/install-cli.md).
+    [Installation instructions](/howtos/install-cli).
 
 === "Alternative: Build WebDSL Yourself"
     Clone the WebDSL GitHub repository and follow the instructions listed there.
