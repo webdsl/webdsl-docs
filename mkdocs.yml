@@ -12,6 +12,7 @@ nav:
     - Support: support.md
   - Tutorials:
     - tutorials/index.md
+    - tutorials/hello-world.md
   - How-Tos:
     - howtos/index.md
     - howtos/install.md
