@@ -56,7 +56,7 @@ application cookbook
   }
 ```
 
-Visiting `http://localhost:8080/cookbook/` will still show the home page as we have seen before. The new recipe page is available on `http://localhost:8080/cookbook/recipe`.
+In this updated version, visiting `http://localhost:8080/cookbook/` will still show the home page as we have seen before. The new recipe page is available on `http://localhost:8080/cookbook/recipe`.
 
 ## Adding Navigation
 
@@ -89,6 +89,7 @@ application cookbook
 ```
 
 A `navigate` call consists of:
+
 - A page call (i.e. `recipe()` in our case)
 - The elements that the link should be on, between brackets (i.e. a single String `"Lasagne"` in our case)
 
@@ -127,9 +128,9 @@ application cookbook
 ```
 
 ???+ info "String interpolation"
-    In the code snippet above, String interpolation (with a tilde `~`) is used to insert the parameter `name` in the header: `Recipe: ~name`.
+    In the code snippet above, String interpolation (with a tilde `~`) is used to insert the parameter `name` in the header: `"Recipe: ~name"`.
 
-The updated version of our application passes the recipe name as page pararmeter. This change is reflected in the URL: instead of `http://localhost:8080/cookbook/recipe`, the `name` parameter is shown as `http://localhost:8080/cookbook/recipe/<name>`.
+The updated version of our application passes the recipe name as page pararmeter. This change is reflected in the URL. Instead of `http://localhost:8080/cookbook/recipe`, the `name` parameter is now a part of the new URL: `http://localhost:8080/cookbook/recipe/<name>`.
 
 ## Summary
 
