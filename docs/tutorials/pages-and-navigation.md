@@ -32,7 +32,7 @@ application cookbook
 ???+ info "Built-in templates"
     In the code snippet above, `header`, `list` and `listitem` are templates defined in the `built-in.app`. `header { "Recipes" }` is syntactic sugar for `<h1> "Recipes" </h1>`.
 
-Once built and ran, the result visible at `http://localhost:8080/cookbook/ is a homepage with the static elements we defined.
+Once built and ran, the result (visible at `http://localhost:8080/cookbook/`) is a homepage with the static elements we defined.
 
 ## Adding a Recipe Page
 
