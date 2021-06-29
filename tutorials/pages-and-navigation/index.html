@@ -891,7 +891,7 @@
   }
 </code></pre></div>
 </td></tr></table>
-<p>Visiting <code>http://localhost:8080/cookbook/</code> will still show the home page as we have seen before. The new recipe page is available on <code>http://localhost:8080/cookbook/recipe</code>.</p>
+<p>In this updated version, visiting <code>http://localhost:8080/cookbook/</code> will still show the home page as we have seen before. The new recipe page is available on <code>http://localhost:8080/cookbook/recipe</code>.</p>
 <h2 id="adding-navigation">Adding Navigation<a class="headerlink" href="#adding-navigation" title="Permanent link">&para;</a></h2>
 <p>In our previous build, we have two separate pages but no link from one to the other. To add links to other pages, we can use the <code>navigate</code> construct that WebDSL provides:</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -941,9 +941,11 @@
   }
 </code></pre></div>
 </td></tr></table>
-<p>A <code>navigate</code> call consists of:
-- A page call (i.e. <code>recipe()</code> in our case)
-- The elements that the link should be on, between brackets (i.e. a single String <code>"Lasagne"</code> in our case)</p>
+<p>A <code>navigate</code> call consists of:</p>
+<ul>
+<li>A page call (i.e. <code>recipe()</code> in our case)</li>
+<li>The elements that the link should be on, between brackets (i.e. a single String <code>"Lasagne"</code> in our case)</li>
+</ul>
 <p>The updated version of our application shows the list items as links to the recipe page, which now also includes a link back to the homepage.</p>
 <h2 id="add-page-parameters">Add Page Parameters<a class="headerlink" href="#add-page-parameters" title="Permanent link">&para;</a></h2>
 <p>The last thing to do, in order to complete our cookbook, is to show which recipe you are currently viewing. In the previous build, we could link from our homepage to the recipe page, but the recipe page was always the same.</p>
@@ -995,9 +997,9 @@
   }
 </code></pre></div>
 </td></tr></table>
-<details class="info" open="open"><summary>String interpolation</summary><p>In the code snippet above, String interpolation (with a tilde <code>~</code>) is used to insert the parameter <code>name</code> in the header: <code>Recipe: ~name</code>.</p>
+<details class="info" open="open"><summary>String interpolation</summary><p>In the code snippet above, String interpolation (with a tilde <code>~</code>) is used to insert the parameter <code>name</code> in the header: <code>"Recipe: ~name"</code>.</p>
 </details>
-<p>The updated version of our application passes the recipe name as page pararmeter. This change is reflected in the URL: instead of <code>http://localhost:8080/cookbook/recipe</code>, the <code>name</code> parameter is shown as <code>http://localhost:8080/cookbook/recipe/&lt;name&gt;</code>.</p>
+<p>The updated version of our application passes the recipe name as page pararmeter. This change is reflected in the URL. Instead of <code>http://localhost:8080/cookbook/recipe</code>, the <code>name</code> parameter is now a part of the new URL: <code>http://localhost:8080/cookbook/recipe/&lt;name&gt;</code>.</p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>In this tutorial, we created an online cookbook using multiple page definitions, page parameters and navigation between pages.</p>
                 
