@@ -26,7 +26,7 @@ Enter project name: `HelloWorld` and press _Finish_.
 
 The generated project contains lots of files but we only need the main application file for this tutorial. Open `HelloWorld.app` in the root directory of the new project. It should look as follows:
 
-```
+``` linenums="1"
 application HelloWorld
 
   page root(){ "Hello world" }
@@ -36,7 +36,7 @@ application HelloWorld
 
 To see the resulting web application in the browser, we have to compile and deploy the WebDSL code.
 
-Navigate to the project directory in the terminal (e.g. `~/eclipse-workspace/HelloWorld/`). To compile and deploy the application in one command, execute `webdsl run`:
+Navigate to the project directory in the terminal (e.g. `~/eclipse-workspace/HelloWorld/`). To compile and run the application in one command, execute `webdsl run`:
 
 ```bash
 $ webdsl run
@@ -62,6 +62,8 @@ $ webdsl run
 ![Hello World in Browser](../../assets/images/tutorials/hello-world/hello-world-in-browser.jpg){ align=right width=400}
 
 Browsing to `http://localhost:8080/HelloWorld/` opens the root page of your application and should output _Hello world_ as we specified in `HelloWorld.app`.
+
+To stop the application server, simply press ++ctrl+c++ in the terminal where the app is running.
 
 <div style="clear: both;" />
 
