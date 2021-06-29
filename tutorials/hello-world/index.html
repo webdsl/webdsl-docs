@@ -518,6 +518,18 @@
   
 
           
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages-and-navigation/" class="md-nav__link">
+        Pages and navigation
+      </a>
+    </li>
+  
+
+          
         </ul>
       </nav>
     </li>
@@ -799,13 +811,16 @@
 
 <h2 id="output-hello-world-on-the-root-page">Output Hello World on the Root Page<a class="headerlink" href="#output-hello-world-on-the-root-page" title="Permanent link">&para;</a></h2>
 <p>The generated project contains lots of files but we only need the main application file for this tutorial. Open <code>HelloWorld.app</code> in the root directory of the new project. It should look as follows:</p>
-<div class="highlight"><pre><span></span><code>application HelloWorld
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>application HelloWorld
 
   page root(){ &quot;Hello world&quot; }
 </code></pre></div>
+</td></tr></table>
 <h2 id="build-and-deploy-the-application">Build and Deploy the Application<a class="headerlink" href="#build-and-deploy-the-application" title="Permanent link">&para;</a></h2>
 <p>To see the resulting web application in the browser, we have to compile and deploy the WebDSL code.</p>
-<p>Navigate to the project directory in the terminal (e.g. <code>~/eclipse-workspace/HelloWorld/</code>). To compile and deploy the application in one command, execute <code>webdsl run</code>:</p>
+<p>Navigate to the project directory in the terminal (e.g. <code>~/eclipse-workspace/HelloWorld/</code>). To compile and run the application in one command, execute <code>webdsl run</code>:</p>
 <div class="highlight"><pre><span></span><code>$ webdsl run
 <span class="c1"># This should start a local web server and generate the following output:</span>
 <span class="c1"># ...</span>
@@ -827,6 +842,7 @@
 
 <p><img align="right" alt="Hello World in Browser" src="../../assets/images/tutorials/hello-world/hello-world-in-browser.jpg" width="400" /></p>
 <p>Browsing to <code>http://localhost:8080/HelloWorld/</code> opens the root page of your application and should output <em>Hello world</em> as we specified in <code>HelloWorld.app</code>.</p>
+<p>To stop the application server, simply press <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in the terminal where the app is running.</p>
 <div style="clear: both;" />
 
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
@@ -868,13 +884,13 @@
         </a>
       
       
-        <a href="../../howtos/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../pages-and-navigation/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              How-To's
+              Pages and navigation
             </div>
           </div>
           <div class="md-footer__button md-icon">
