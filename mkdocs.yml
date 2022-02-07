@@ -21,6 +21,9 @@ nav:
     - howtos/install-cli.md
   - Reference:
     - reference/index.md
+    - reference/using-the-editor.md
+    - reference/command-line-use.md
+    - reference/webdsl-apps.md
   - Background:
     - background/index.md
     - background/about.md
