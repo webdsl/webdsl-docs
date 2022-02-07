@@ -24,6 +24,7 @@ nav:
   - Background:
     - background/index.md
     - background/about.md
+    - background/publications.md
     - background/meeting-notes.md
   - Support:
     - support/index.md
