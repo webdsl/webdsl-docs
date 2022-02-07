@@ -8,7 +8,7 @@ To create a Hello World application in WebDSL, we have to:
 
 ## Create a New Project
 
-![Package Explorer](../../assets/images/tutorials/hello-world/package-explorer.jpg){ align=right width=400}
+![Package Explorer](images/hello-world/package-explorer.jpg){ align=right width=400}
 
 Open the WebDSL editor and right-click the _Package Explorer_.
 
@@ -16,7 +16,7 @@ Select _New WebDSL Project_ to make the project configuration show up.</span>
 
 <div style="clear: both;" />
 
-![Project Configuration](../../assets/images/tutorials/hello-world/webdsl-project-name.jpg){ align=right width=400}
+![Project Configuration](images/hello-world/webdsl-project-name.jpg){ align=right width=400}
 
 Enter project name: `HelloWorld` and press _Finish_.
 
@@ -59,7 +59,7 @@ $ webdsl run
 
 <div style="clear: both;" />
 
-![Hello World in Browser](../../assets/images/tutorials/hello-world/hello-world-in-browser.jpg){ align=right width=400}
+![Hello World in Browser](images/hello-world/hello-world-in-browser.jpg){ align=right width=400}
 
 Browsing to `http://localhost:8080/HelloWorld/` opens the root page of your application and should output _Hello world_ as we specified in `HelloWorld.app`.
 
