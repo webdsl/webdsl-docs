@@ -1,4 +1,5 @@
 # About WebDSL
+
 WebDSL is a domain-specific language for developing dynamic web applications with a rich data model.
 
 ## Features
@@ -22,16 +23,16 @@ WebDSL is a domain-specific language for developing dynamic web applications wit
 - IDE support for developing WebDSL applications is provided by the [Eclipse plugin](index.md).
 
 ## Developers
+
 WebDSL is being developed by Eelco Visser and Ph.D./M.Sc. students in the context of the Model-Driven Software Evolution project at Delft University of Technology.
 
 
 ### Active developers
 
-- [Max de Krieger](http://www.linkedin.com/in/maxdekrieger)
-- Alexander Chichigin
 - [Danny Groenewegen](http://www.linkedin.com/in/dannygroenewegen)
 - [Elmer van Chastelet](http://www.linkedin.com/pub/elmer-van-chastelet/2a/a90/7a7)
 - Daniel A. A. Pelsmaeker
+- [Max de Krieger](http://www.linkedin.com/in/maxdekrieger)
 - [Eelco Visser](http://www.eelcovisser.net/)
 
 

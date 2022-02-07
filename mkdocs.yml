@@ -8,9 +8,6 @@ edit_uri: https://github.com/webdsl/webdsl-docs/edit/main/docs
 nav:
   - Home:
     - index.md
-    - Releases: releases.md
-    - About: about.md
-    - Support: support.md
   - Tutorials:
     - tutorials/index.md
     - tutorials/hello-world.md
@@ -26,7 +23,12 @@ nav:
     - reference/index.md
   - Background:
     - background/index.md
+    - background/about.md
     - background/meeting-notes.md
+  - Support:
+    - support/index.md
+  - Releases:
+    - releases/index.md
 
 theme:
   name: material
