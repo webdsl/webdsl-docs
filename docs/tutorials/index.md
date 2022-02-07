@@ -8,3 +8,4 @@ Installing WebDSL is necessary to follow the tutorials. Use the [installation gu
 
 - [Hello World](hello-world/)
 - [Pages and Navigation](pages-and-navigation/)
+- [Templates](templates/)

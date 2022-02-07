@@ -15,6 +15,7 @@ nav:
     - tutorials/index.md
     - tutorials/hello-world.md
     - tutorials/pages-and-navigation.md
+    - tutorials/templates.md
   - How-Tos:
     - howtos/index.md
     - howtos/install.md
