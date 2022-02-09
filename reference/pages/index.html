@@ -1,0 +1,2203 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model.">
+      
+      
+      
+      
+        <link rel="canonical" href="https://webdsl.github.io/webdsl-docs/reference/pages/">
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Pages - WebDSL</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7CJetBrains+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"";--md-code-font-family:"JetBrains Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+
+<!-- Determine title -->
+
+<!-- prettier-ignore -->
+
+
+
+
+
+
+<!-- Open graph meta tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="WebDSL - Pages" />
+<meta property="og:description" content="Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model." />
+<meta property="og:url" content="https://webdsl.github.io/webdsl-docs/reference/pages/" />
+<meta property="og:image" content="../../assets/screenshot.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="568" />
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pages" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WebDSL" class="md-header__button md-logo" aria-label="WebDSL" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WebDSL
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pages
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/webdsl/webdsl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../tutorials/" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../howtos/" class="md-tabs__link">
+        How-Tos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../background/" class="md-tabs__link">
+        Background
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../support/" class="md-tabs__link">
+        Support
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../releases/" class="md-tabs__link">
+        Releases
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WebDSL" class="md-nav__button md-logo" aria-label="WebDSL" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    WebDSL
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/webdsl/webdsl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../..">Home</a>
+          <label for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../tutorials/">Tutorials</a>
+          <label for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/hello-world/" class="md-nav__link">
+        Hello World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/pages-and-navigation/" class="md-nav__link">
+        Pages and navigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/templates/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../howtos/">How-Tos</a>
+          <label for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-Tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install/" class="md-nav__link">
+        Install WebDSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install-eclipse-bundle/" class="md-nav__link">
+        Install the Eclipse with WebDSL Plugin Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install-eclipse-plugin-manually/" class="md-nav__link">
+        Install the WebDSL Eclipse Plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install-cli/" class="md-nav__link">
+        Install and Use the WebDSL CLI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../">Reference</a>
+          <label for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-the-editor/" class="md-nav__link">
+        Using the Editor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command-line-use/" class="md-nav__link">
+        Command Line Use
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webdsl-apps/" class="md-nav__link">
+        WebDSL Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app-configuration/" class="md-nav__link">
+        App Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-server/" class="md-nav__link">
+        Production Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lightweight-vps/" class="md-nav__link">
+        Lightweight VPS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-processing/" class="md-nav__link">
+        Request Processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entities/" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-entities/" class="md-nav__link">
+        Session Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../types/" class="md-nav__link">
+        Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Pages
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Pages
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#page-parameters" class="md-nav__link">
+    Page Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-forms" class="md-nav__link">
+    Input Forms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    Templates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigate" class="md-nav__link">
+    Navigate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    Title
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section" class="md-nav__link">
+    Section
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    Lists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block" class="md-nav__link">
+    Block
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates_1" class="md-nav__link">
+    Templates
+  </a>
+  
+    <nav class="md-nav" aria-label="Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overloading" class="md-nav__link">
+    Overloading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-scoped-templates-redefinitions" class="md-nav__link">
+    Dynamically scoped templates redefinitions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loop" class="md-nav__link">
+    For-loop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xml-embedding" class="md-nav__link">
+    XML Embedding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-css" class="md-nav__link">
+    Include CSS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-javascipt" class="md-nav__link">
+    Include Javascipt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-not-found-error" class="md-nav__link">
+    Page Not Found Error
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raw-output" class="md-nav__link">
+    Raw output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#html-element-attributes-on-template-call" class="md-nav__link">
+    HTML Element Attributes on Template Call
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#override-modifier" class="md-nav__link">
+    Override Modifier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-logging-for-page-rendering" class="md-nav__link">
+    SQL Logging for Page Rendering
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-code/" class="md-nav__link">
+        Action Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../native-java-interface/" class="md-nav__link">
+        Native Java Interface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access-control/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ajax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        Styling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search/" class="md-nav__link">
+        Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced-search/" class="md-nav__link">
+        Advanced Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recommend/" class="md-nav__link">
+        Recommend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../send-email/" class="md-nav__link">
+        Send Email
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recurring-tasks/" class="md-nav__link">
+        Recurring Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../https-encryption/" class="md-nav__link">
+        HTTPS Encryption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronization-framework/" class="md-nav__link">
+        Synchronization Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        Development
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../background/">Background</a>
+          <label for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Background" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Background
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/about/" class="md-nav__link">
+        About WebDSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/meeting-notes/" class="md-nav__link">
+        Meeting Notes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../support/">Support</a>
+          <label for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Support" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Support
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../releases/">Releases</a>
+          <label for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Releases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Releases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#page-parameters" class="md-nav__link">
+    Page Parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-forms" class="md-nav__link">
+    Input Forms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates" class="md-nav__link">
+    Templates
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output" class="md-nav__link">
+    Output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#navigate" class="md-nav__link">
+    Navigate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#title" class="md-nav__link">
+    Title
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section" class="md-nav__link">
+    Section
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#image" class="md-nav__link">
+    Image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lists" class="md-nav__link">
+    Lists
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    Tables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#block" class="md-nav__link">
+    Block
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#templates_1" class="md-nav__link">
+    Templates
+  </a>
+  
+    <nav class="md-nav" aria-label="Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overloading" class="md-nav__link">
+    Overloading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dynamically-scoped-templates-redefinitions" class="md-nav__link">
+    Dynamically scoped templates redefinitions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#for-loop" class="md-nav__link">
+    For-loop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xml-embedding" class="md-nav__link">
+    XML Embedding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-css" class="md-nav__link">
+    Include CSS
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#include-javascipt" class="md-nav__link">
+    Include Javascipt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#page-not-found-error" class="md-nav__link">
+    Page Not Found Error
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#raw-output" class="md-nav__link">
+    Raw output
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#html-element-attributes-on-template-call" class="md-nav__link">
+    HTML Element Attributes on Template Call
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#override-modifier" class="md-nav__link">
+    Override Modifier
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sql-logging-for-page-rendering" class="md-nav__link">
+    SQL Logging for Page Rendering
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/webdsl/webdsl-docs/edit/main/docs/reference/pages.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="pages">Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h1>
+<p>Pages in WebDSL can be defined using the following construct:  </p>
+<div class="codehilite"><pre><span></span><code> define page [pagename]( [page-arguments]* ){ [page-elements]* }
+</code></pre></div>
+
+<p>There are basic output elements for structure and layout of the page, such as <code>title</code> and <code>header</code>. </p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page root() {
+  title { &quot;Page title&quot; }
+  section {
+    header{ &quot;Hello world.&quot; }  
+    &quot;Greetings to you.&quot;
+  }
+}
+</code></pre></div>
+
+<h2 id="page-parameters">Page Parameters<a class="headerlink" href="#page-parameters" title="Permanent link">&para;</a></h2>
+<p>Pages can have parameters, and <code>output</code> is used for inserting data values. </p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page user(u : User) {
+  &quot;The name of this user is &quot; output(u.name)
+}
+</code></pre></div>
+
+<h2 id="input-forms">Input Forms<a class="headerlink" href="#input-forms" title="Permanent link">&para;</a></h2>
+<p>The <code>form</code> element in combination with <code>submit</code> is used for submitting data. <code>input</code> elements perform automatic data binding upon submit. For more information about forms, go to the [[page(form)|Form page]].</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page editUser(u:User){
+  form{
+    input(u.name)
+    submit action{} { &quot;save&quot; } 
+  }
+}
+</code></pre></div>
+
+<h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
+<p>Pages can be made reusable by declaring them as template, and calling them from other pages or templates.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define common(){
+  header{ &quot;my page&quot; }
+}
+define page root(){
+  common()
+}
+</code></pre></div>
+
+<h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
+<p>The <code>output(&lt;expression&gt;)</code> template call is used to display a value in a page. It can also be used with Entity type expressions, and collections.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page user(u:User){
+  output(u)
+}
+</code></pre></div>
+
+<p>The <code>output</code> template can be customized for each entity type.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define output(u:User){
+  &quot;user with name: &quot; output(u.name)
+}
+</code></pre></div>
+
+<h2 id="navigate">Navigate<a class="headerlink" href="#navigate" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>navigate &lt;page call&gt; { &lt;page element*&gt; }
+</code></pre></div>
+
+<p>Link to a page. For example: </p>
+<div class="codehilite"><pre><span></span><code>page news() { &quot;News&quot; }
+</code></pre></div>
+
+<h2 id="title">Title<a class="headerlink" href="#title" title="Permanent link">&para;</a></h2>
+<p>Declares the title of the current page.</p>
+<div class="codehilite"><pre><span></span><code>title { element* }
+</code></pre></div>
+
+<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
+<p>Declares the description of a page (not visible, added as description meta tag in the head section of a page). This data is <a href="http://support.google.com/webmasters/bin/answer.py?hl=en&amp;answer=35624#1">often viewed</a> in search result snippets. Introduced in WebDSL 1.3.0.</p>
+<div class="codehilite"><pre><span></span><code>description { element* }
+</code></pre></div>
+
+<h2 id="section">Section<a class="headerlink" href="#section" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>section { element* }
+</code></pre></div>
+
+<p>Indicate sections in a document; may be nested. May include a </p>
+<div class="codehilite"><pre><span></span><code>header { element* }
+</code></pre></div>
+
+<p>element that indicates the section title.</p>
+<h2 id="image">Image<a class="headerlink" href="#image" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>image ( &lt;string with relative or absolute path to image&gt; )
+</code></pre></div>
+
+<p>Displays an image. Images placed in an "images" folder in the root directory of your application will be automatically copied during deployment.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page root(){
+  image(&quot;https://webdsl.org/webdslorg/images/WebDSL-small.png&quot;) 
+  image(&quot;/images/WebDSL-small.png&quot;) 
+}
+</code></pre></div>
+
+<h2 id="lists">Lists<a class="headerlink" href="#lists" title="Permanent link">&para;</a></h2>
+<p>Lists can be created with the <code>list</code> and <code>listitem</code> elements.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>list {
+  listitem { &quot;Milk&quot; }
+  listitem { &quot;Potatoes&quot; }
+  listitem { &quot;Cheese (lots)&quot; }
+}
+</code></pre></div>
+
+<h2 id="tables">Tables<a class="headerlink" href="#tables" title="Permanent link">&para;</a></h2>
+<p>Tables can be created with the <code>table</code>, <code>row</code>, and <code>column</code> elements.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>table  {
+  row { column{ &quot;Username&quot; } column{ output(user.name) } }
+  row { column{ &quot;Password&quot; } column{ &quot;it&#39;s a secret&quot; } }
+}
+</code></pre></div>
+
+<h2 id="block">Block<a class="headerlink" href="#block" title="Permanent link">&para;</a></h2>
+<div class="codehilite"><pre><span></span><code>block{ &lt;page element*&gt; }
+block(String){ &lt;page element*&gt; }
+</code></pre></div>
+
+<p>Groups text; optionally defines a class for referencing in CSS. Results in a &lt;div&gt; element in HTML.</p>
+<h2 id="templates_1">Templates<a class="headerlink" href="#templates_1" title="Permanent link">&para;</a></h2>
+<p>Templates enable reuse of page elements. For example, a template for a footer could be:</p>
+<div class="codehilite"><pre><span></span><code>define footer() { All your page are belong to us. }
+</code></pre></div>
+
+<p>This template can be included in a page with a template call: </p>
+<div class="codehilite"><pre><span></span><code>define page example(){
+  footer
+}
+</code></pre></div>
+
+<p>Like pages, templates can be parameterized.</p>
+<div class="codehilite"><pre><span></span><code>define edit(g:Group){
+  form {
+    input(g.members)
+    action(&quot;save&quot;,action{})
+  } 
+}
+
+define page editGroup(g:Group){
+  edit(g)
+}
+</code></pre></div>
+
+<h3 id="overloading">Overloading<a class="headerlink" href="#overloading" title="Permanent link">&para;</a></h3>
+<p>While pages must have unique names, templates can be overloaded. The overloading is resolved compile-time, based on the static types of the arguments.</p>
+<div class="codehilite"><pre><span></span><code>define edit(g:Group){...}
+define edit(u:User){...}
+
+define page editGroup(g:Group){
+  edit(g)
+}
+</code></pre></div>
+
+<h3 id="dynamically-scoped-templates-redefinitions">Dynamically scoped templates redefinitions<a class="headerlink" href="#dynamically-scoped-templates-redefinitions" title="Permanent link">&para;</a></h3>
+<p>Template definitions can be redefined locally in a page or template, to change their meaning in that specific context. All uses are replaced in templates called from the redefining template.</p>
+<div class="codehilite"><pre><span></span><code>define main{
+  body()
+}
+define body(){
+  &quot;default body&quot;
+}
+define page root(){
+  main
+  define body(){
+    &quot;custom body&quot;
+  }
+}
+</code></pre></div>
+
+<h2 id="for-loop">For-loop<a class="headerlink" href="#for-loop" title="Permanent link">&para;</a></h2>
+<p>Iterating a collection of entities or primitives can be done using a for loop. There are three types of for loops for templates:</p>
+<p><strong>For</strong></p>
+<div class="codehilite"><pre><span></span><code>    for(id:t in e){ elem* }
+</code></pre></div>
+
+<p>This type of for loop iterates the collection produced by expression e, which must contain elements of type t. The elements in the collection are accessible through identifier id.  </p>
+<p>The collection can be filtered:</p>
+<div class="codehilite"><pre><span></span><code>    for(id:t in e filter){ elem* }
+</code></pre></div>
+
+<p><strong>ForAll</strong></p>
+<p>This for loop iterates all the entities in the database of type t. These can also be filtered. Note that it is more efficient to retrieve the objects using a filtering query and use the regular for loop above for iteration. </p>
+<div class="codehilite"><pre><span></span><code>    for(id:t){ elem* }
+    for(id:t filter){ elem* }
+</code></pre></div>
+
+<p><strong>For Count</strong></p>
+<p>This for loop iterates the numbers from e1 to e2-1.</p>
+<div class="codehilite"><pre><span></span><code>    for(id:Int from e1 to e2){ elem* }
+</code></pre></div>
+
+<p><strong>For Separator</strong></p>
+<p>All three template for loops can be followed by a separated-by declaration, which will separate the outputs from the for loop with the declared elem*.</p>
+<div class="codehilite"><pre><span></span><code>    separated-by{ elem* }
+</code></pre></div>
+
+<p><strong>For-loop Filter</strong></p>
+<p>The filter part of a for loop can consist of four parts:</p>
+<p><em>Where</em></p>
+<div class="codehilite"><pre><span></span><code>    where e1
+</code></pre></div>
+
+<p>e1 is a boolean expression which needs to evaluate to true for the element to be iterated.</p>
+<p><em>Order By</em></p>
+<div class="codehilite"><pre><span></span><code>    order by e2 asc/desc
+</code></pre></div>
+
+<p>e2 is an expression that needs to produce a primitive type such as String or Int, which will be used to order the elements ascending or descending.</p>
+<p><em>Limit</em></p>
+<div class="codehilite"><pre><span></span><code>    limit e3
+</code></pre></div>
+
+<p>e3 is an Int expression which will limit the number of elements that get iterated.</p>
+<p><em>Offset</em></p>
+<div class="codehilite"><pre><span></span><code>    offset e4
+</code></pre></div>
+
+<p>e4 is an Int expression which will offset the starting element of the iteration.</p>
+<p>Each of the four parts is optional, but they have to be specified in this order. The filtering is done in the application, so use queries instead of filters to optimize the WebDSL application.</p>
+<h2 id="xml-embedding">XML Embedding<a class="headerlink" href="#xml-embedding" title="Permanent link">&para;</a></h2>
+<p>XML fragments can be embedded directly in templates. This allows easy reuse of existing XHTML fragments and CSS. For example: </p>
+<div class="codehilite"><pre><span></span><code>define main() {
+  &lt;div id=&quot;pagewrapper&quot;&gt;
+    &lt;div id=&quot;header&quot;&gt;
+      header()
+    &lt;/div&gt;
+    &lt;div id=&quot;footer&quot;&gt;
+      &lt;p /&gt;&quot;powered by &quot; &lt;a href=&quot;https://webdsl.org&quot;&gt;&quot;WebDSL&quot;&lt;/a&gt;&lt;p /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;some:tag /&gt;
+}
+</code></pre></div>
+
+<p>While the name and attribute names are fixed, the attribute values can be any WebDSL expression that produces a string:</p>
+<div class="codehilite"><pre><span></span><code>define test(i : Int) {
+  &lt;div id=&quot;page&quot; + &quot;wrapper&quot; + i /&gt;
+}
+</code></pre></div>
+
+<h2 id="include-css">Include CSS<a class="headerlink" href="#include-css" title="Permanent link">&para;</a></h2>
+<p>The <code>includeCSS(String)</code> template call allows you to include a CSS file in the resulting page. CSS files can be included in your project by placing them in a stylesheets/ directory in the project root.</p>
+<p>Example 1:</p>
+<div class="codehilite"><pre><span></span><code>define page root() {
+  includeCSS(&quot;dropdownmenu.css&quot;)
+}
+</code></pre></div>
+
+<p>It is also possible to include a CSS file using an absolute URL. </p>
+<p>Example 2:</p>
+<div class="codehilite"><pre><span></span><code>define page root() {
+  includeCSS(&quot;https://webdsl.org/stylesheets/common_.css&quot;)
+}
+</code></pre></div>
+
+<p>The media attribute can be set by passing it as second argument in <code>includeCSS(String,String)</code></p>
+<p>Example 3:</p>
+<div class="codehilite"><pre><span></span><code>define page root(){
+  includeCSS(&quot;https://webdsl.org/stylesheets/common_.css&quot;,&quot;screen&quot;)
+}
+</code></pre></div>
+
+<h2 id="include-javascipt">Include Javascipt<a class="headerlink" href="#include-javascipt" title="Permanent link">&para;</a></h2>
+<p>The <code>includeJS(String)</code> template call allows you to include a javascript file in the resulting page. Javascript files can be included in your project by placing them in a javascript/ directory in the project root.</p>
+<p>Example 1:</p>
+<div class="codehilite"><pre><span></span><code>define page root() {
+  includeJS(&quot;sdmenu.js&quot;)
+}
+</code></pre></div>
+
+<p>It is also possible to include a Javascript file using an absolute URL. </p>
+<p>Example 2:</p>
+<div class="codehilite"><pre><span></span><code>define page root() {
+  includeJS(&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js&quot;)
+}
+</code></pre></div>
+
+<h2 id="page-not-found-error">Page Not Found Error<a class="headerlink" href="#page-not-found-error" title="Permanent link">&para;</a></h2>
+<p>When an invalid URL is being requested from a WebDSL application, the default response is to give a 404 error. To customize this error page, define a <code>pagenotfound</code> page in your application.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page pagenotfound() {
+  title{ &quot;myapp / page not found (404)&quot; }
+  main()
+  define body() {
+    par{ &quot;That page does not exist!&quot; }
+    par{ &quot;Maybe you can find what you are looking for using the search page.&quot; }
+  }
+}
+</code></pre></div>
+
+<h2 id="raw-output">Raw output<a class="headerlink" href="#raw-output" title="Permanent link">&para;</a></h2>
+<p>By default, any template content will be escaped, if you want to include a string directly in the page source use rawoutput.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>rawoutput{&quot;&amp;nbsp;&quot;}
+</code></pre></div>
+
+<h2 id="html-element-attributes-on-template-call">HTML Element Attributes on Template Call<a class="headerlink" href="#html-element-attributes-on-template-call" title="Permanent link">&para;</a></h2>
+<p>Setting HTML element attributes is supported for calls to built-in templates, the syntax is as follows:</p>
+<div class="codehilite"><pre><span></span><code>templatename(...)[attrname=e, ...]{ ... }
+</code></pre></div>
+
+<p><code>attrname</code> is an attribute name, and <code>e</code> is a webdsl expression such as <code>"foo"</code> or <code>"foo"+bar</code>.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>define page root(){ 
+  var somevalue := &quot;lo&quot;
+  image(&quot;/images/logosmall.png&quot;)[alt = somevalue+&quot;go&quot;, longdesc = &quot;blablabla&quot;]
+  navigate root()[title = &quot;root page&quot;]{ &quot;root&quot; }
+}
+</code></pre></div>
+
+<h2 id="override-modifier">Override Modifier<a class="headerlink" href="#override-modifier" title="Permanent link">&para;</a></h2>
+<p>Template and page definitions can be overridden using the <code>override</code> modifier, e.g. to override a built-in page such as <code>pagenotfound</code>:</p>
+<div class="codehilite"><pre><span></span><code>define override page pagenotfound(){
+  &quot;page does not exist!&quot;
+}
+</code></pre></div>
+
+<h2 id="sql-logging-for-page-rendering">SQL Logging for Page Rendering<a class="headerlink" href="#sql-logging-for-page-rendering" title="Permanent link">&para;</a></h2>
+<p>add <code>?logsql</code> after the URL of a page to get a log of all the SQL queries executed to render that page</p>
+<p>for applications with access control enabled, accessing this log is disabled by default, it can be enabled using an access control rule:</p>
+<div class="codehilite"><pre><span></span><code>rule logsql { check }
+</code></pre></div>
+
+<p>e.g.</p>
+<div class="codehilite"><pre><span></span><code>rule logsql { principal.isAdmin }
+</code></pre></div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../types/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Types" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Types
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../forms/" class="md-footer__link md-footer__link--next" aria-label="Next: Forms" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Forms
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>

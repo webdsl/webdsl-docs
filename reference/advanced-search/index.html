@@ -1,0 +1,2723 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model.">
+      
+      
+      
+      
+        <link rel="canonical" href="https://webdsl.github.io/webdsl-docs/reference/advanced-search/">
+      
+      <link rel="icon" href="../../assets/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
+    
+    
+      
+        <title>Advanced Search - WebDSL</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8b42a75e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=:300,400,400i,700%7CJetBrains+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"";--md-code-font-family:"JetBrains Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+
+<!-- Determine title -->
+
+<!-- prettier-ignore -->
+
+
+
+
+
+
+<!-- Open graph meta tags -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="WebDSL - Advanced Search" />
+<meta property="og:description" content="Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model." />
+<meta property="og:url" content="https://webdsl.github.io/webdsl-docs/reference/advanced-search/" />
+<meta property="og:image" content="../../assets/screenshot.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1080" />
+<meta property="og:image:height" content="568" />
+
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange">
+  
+    
+    <script>function __prefix(e){return new URL("../..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#advanced-search" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="WebDSL" class="md-header__button md-logo" aria-label="WebDSL" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            WebDSL
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Advanced Search
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/webdsl/webdsl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../tutorials/" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../howtos/" class="md-tabs__link">
+        How-Tos
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Reference
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../background/" class="md-tabs__link">
+        Background
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../support/" class="md-tabs__link">
+        Support
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../releases/" class="md-tabs__link">
+        Releases
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="WebDSL" class="md-nav__button md-logo" aria-label="WebDSL" data-md-component="logo">
+      
+  <img src="../../assets/logo.svg" alt="logo">
+
+    </a>
+    WebDSL
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/webdsl/webdsl/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../..">Home</a>
+          <label for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../tutorials/">Tutorials</a>
+          <label for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Tutorials" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/hello-world/" class="md-nav__link">
+        Hello World
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/pages-and-navigation/" class="md-nav__link">
+        Pages and navigation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/templates/" class="md-nav__link">
+        Templates
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../howtos/">How-Tos</a>
+          <label for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="How-Tos" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          How-Tos
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install/" class="md-nav__link">
+        Install WebDSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install-eclipse-bundle/" class="md-nav__link">
+        Install the Eclipse with WebDSL Plugin Bundle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install-eclipse-plugin-manually/" class="md-nav__link">
+        Install the WebDSL Eclipse Plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../howtos/install-cli/" class="md-nav__link">
+        Install and Use the WebDSL CLI
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../">Reference</a>
+          <label for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Reference" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Reference
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-the-editor/" class="md-nav__link">
+        Using the Editor
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../command-line-use/" class="md-nav__link">
+        Command Line Use
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../webdsl-apps/" class="md-nav__link">
+        WebDSL Apps
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../app-configuration/" class="md-nav__link">
+        App Configuration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../production-server/" class="md-nav__link">
+        Production Server
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lightweight-vps/" class="md-nav__link">
+        Lightweight VPS
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../request-processing/" class="md-nav__link">
+        Request Processing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../entities/" class="md-nav__link">
+        Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../session-entities/" class="md-nav__link">
+        Session Entities
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../types/" class="md-nav__link">
+        Types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pages/" class="md-nav__link">
+        Pages
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../forms/" class="md-nav__link">
+        Forms
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action-code/" class="md-nav__link">
+        Action Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../native-java-interface/" class="md-nav__link">
+        Native Java Interface
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../validation/" class="md-nav__link">
+        Validation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access-control/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../queries/" class="md-nav__link">
+        Queries
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../testing/" class="md-nav__link">
+        Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ajax/" class="md-nav__link">
+        Ajax
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../styling/" class="md-nav__link">
+        Styling
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../search/" class="md-nav__link">
+        Search
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Advanced Search
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Advanced Search
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-your-data-searchable" class="md-nav__link">
+    Making your data searchable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-search-mappings-recommended" class="md-nav__link">
+    Using search mappings (recommended)
+  </a>
+  
+    <nav class="md-nav" aria-label="Using search mappings (recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-name" class="md-nav__link">
+    as name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-analyzer" class="md-nav__link">
+    using analyzer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boosted-to-floatfloat" class="md-nav__link">
+    boosted to Float|^Float
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spellcheckautocompletespellcheckautocomplete" class="md-nav__link">
+    (spellcheck)|(autocomplete)|(spellcheck,autocomplete)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-subclass-entity" class="md-nav__link">
+    for subclass entity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-intwith-depth-int" class="md-nav__link">
+    depth Int|with depth Int
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-specification" class="md-nav__link">
+    + mapping specification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-annotations" class="md-nav__link">
+    Using annotations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-properties-can-be-made-searchable" class="md-nav__link">
+    Which properties can be made searchable ?
+  </a>
+  
+    <nav class="md-nav" aria-label="Which properties can be made searchable ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-and-composite-properties" class="md-nav__link">
+    Reference and composite properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric-properties-floatintdatedatetimetime" class="md-nav__link">
+    Numeric properties (Float,Int,Date,DateTime,Time)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derived-properties" class="md-nav__link">
+    Derived properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-analyze-your-dataqueries" class="md-nav__link">
+    How to analyze your data/queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching-the-data" class="md-nav__link">
+    Searching the data!
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching the data!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-data-using-generated-search-functions" class="md-nav__link">
+    Search data using generated search functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-data-using-webdsl-search-language-for-full-text-search" class="md-nav__link">
+    Search data using WebDSL search language for full text search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-search-results" class="md-nav__link">
+    Retrieving search results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-and-boolean-queries-matching-field-qexp" class="md-nav__link">
+    Simple and boolean queries: 'matching { [{field ,}:] {qExp ,} ,}'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#range-queries" class="md-nav__link">
+    Range queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options-option" class="md-nav__link">
+    Configuration options: '[ {option* ,} ]'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-with-filters-filterconstraint" class="md-nav__link">
+    Filtering: 'with filter(s) {filterconstraint* ,}'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-facets-with-facets-field1e1-field2e2" class="md-nav__link">
+    Enabling facets: 'with facet(s) field1(e1), field2(e2)'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-facets-field-facets-from-searcherexp" class="md-nav__link">
+    Retrieving facets: 'field facets from searcherExp'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-on-facet" class="md-nav__link">
+    Filtering on facet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespace-scoping-in-namespace-e1" class="md-nav__link">
+    Namespace scoping: 'in namespace e1'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-data-using-native-java-instead-of-search-language-some-expert-features" class="md-nav__link">
+    Search data using native java instead of search language (some expert features)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disallow-use-of-lucene-in-query-and-filter-values" class="md-nav__link">
+    (Dis)Allow use of Lucene in query and filter values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orand-terms-in-user-queries-by-default" class="md-nav__link">
+    OR/AND terms in user queries by default
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-results-by-field-value-get-filter-value" class="md-nav__link">
+    Filter results by field value, get filter value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-spellautocomplete-suggestions" class="md-nav__link">
+    Get spell/autocomplete suggestions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indecrease-the-impact-of-a-search-field-in-ranking-of-results-by-boosting-at-query-time" class="md-nav__link">
+    In/Decrease the impact of a search field in ranking of results by boosting at query-time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faceting-on-a-search-field" class="md-nav__link">
+    Faceting on a search field
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-search-fields-to-use-for-query-or-range" class="md-nav__link">
+    Specify search field(s) to use for query or range
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-offset-and-number-of-results-for-pagination" class="md-nav__link">
+    Specify offset and number of results (for pagination)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hit-highlighting" class="md-nav__link">
+    Hit highlighting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-similar-entities-based-on-text-fragment" class="md-nav__link">
+    Find similar entities based on text fragment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setget-the-current-text-query" class="md-nav__link">
+    Set/get the current text query
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort-results-by-field-ascending-or-descending" class="md-nav__link">
+    Sort results by field ascending or descending
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#range-query-start-and-end-can-be-type-of-string-int-float-and-datedatetimetime-start-and-end-are-included-by-default" class="md-nav__link">
+    Range query, start and end can be type of String, Int, Float and Date/DateTime/Time. start and end are included by default
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setget-namespace" class="md-nav__link">
+    Set/get namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-list-of-results" class="md-nav__link">
+    Get the list of results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-number-of-results" class="md-nav__link">
+    Get the number of results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-search-time" class="md-nav__link">
+    Get the search time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-namespaces" class="md-nav__link">
+    Search namespaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result-highlighting" class="md-nav__link">
+    Result highlighting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spell-checking" class="md-nav__link">
+    Spell checking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-completion" class="md-nav__link">
+    Auto completion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faceted-search" class="md-nav__link">
+    Faceted search
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recommend/" class="md-nav__link">
+        Recommend
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../send-email/" class="md-nav__link">
+        Send Email
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recurring-tasks/" class="md-nav__link">
+        Recurring Tasks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../https-encryption/" class="md-nav__link">
+        HTTPS Encryption
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../services/" class="md-nav__link">
+        Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronization-framework/" class="md-nav__link">
+        Synchronization Framework
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mysql/" class="md-nav__link">
+        MySQL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        Examples
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../development/" class="md-nav__link">
+        Development
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../background/">Background</a>
+          <label for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Background" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Background
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/about/" class="md-nav__link">
+        About WebDSL
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/publications/" class="md-nav__link">
+        Publications
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../background/meeting-notes/" class="md-nav__link">
+        Meeting Notes
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../support/">Support</a>
+          <label for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Support" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Support
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--container ">
+          <a href="../../releases/">Releases</a>
+          <label for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        </div>
+      
+      <nav class="md-nav" aria-label="Releases" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Releases
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-your-data-searchable" class="md-nav__link">
+    Making your data searchable
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-search-mappings-recommended" class="md-nav__link">
+    Using search mappings (recommended)
+  </a>
+  
+    <nav class="md-nav" aria-label="Using search mappings (recommended)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#as-name" class="md-nav__link">
+    as name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-analyzer" class="md-nav__link">
+    using analyzer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#boosted-to-floatfloat" class="md-nav__link">
+    boosted to Float|^Float
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spellcheckautocompletespellcheckautocomplete" class="md-nav__link">
+    (spellcheck)|(autocomplete)|(spellcheck,autocomplete)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#for-subclass-entity" class="md-nav__link">
+    for subclass entity
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-intwith-depth-int" class="md-nav__link">
+    depth Int|with depth Int
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapping-specification" class="md-nav__link">
+    + mapping specification
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-annotations" class="md-nav__link">
+    Using annotations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-properties-can-be-made-searchable" class="md-nav__link">
+    Which properties can be made searchable ?
+  </a>
+  
+    <nav class="md-nav" aria-label="Which properties can be made searchable ?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reference-and-composite-properties" class="md-nav__link">
+    Reference and composite properties
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeric-properties-floatintdatedatetimetime" class="md-nav__link">
+    Numeric properties (Float,Int,Date,DateTime,Time)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derived-properties" class="md-nav__link">
+    Derived properties
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-analyze-your-dataqueries" class="md-nav__link">
+    How to analyze your data/queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#searching-the-data" class="md-nav__link">
+    Searching the data!
+  </a>
+  
+    <nav class="md-nav" aria-label="Searching the data!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#search-data-using-generated-search-functions" class="md-nav__link">
+    Search data using generated search functions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-data-using-webdsl-search-language-for-full-text-search" class="md-nav__link">
+    Search data using WebDSL search language for full text search
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-search-results" class="md-nav__link">
+    Retrieving search results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-and-boolean-queries-matching-field-qexp" class="md-nav__link">
+    Simple and boolean queries: 'matching { [{field ,}:] {qExp ,} ,}'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#range-queries" class="md-nav__link">
+    Range queries
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pagination" class="md-nav__link">
+    Pagination
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuration-options-option" class="md-nav__link">
+    Configuration options: '[ {option* ,} ]'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-with-filters-filterconstraint" class="md-nav__link">
+    Filtering: 'with filter(s) {filterconstraint* ,}'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#enabling-facets-with-facets-field1e1-field2e2" class="md-nav__link">
+    Enabling facets: 'with facet(s) field1(e1), field2(e2)'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#retrieving-facets-field-facets-from-searcherexp" class="md-nav__link">
+    Retrieving facets: 'field facets from searcherExp'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filtering-on-facet" class="md-nav__link">
+    Filtering on facet
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#namespace-scoping-in-namespace-e1" class="md-nav__link">
+    Namespace scoping: 'in namespace e1'
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-data-using-native-java-instead-of-search-language-some-expert-features" class="md-nav__link">
+    Search data using native java instead of search language (some expert features)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#disallow-use-of-lucene-in-query-and-filter-values" class="md-nav__link">
+    (Dis)Allow use of Lucene in query and filter values
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#orand-terms-in-user-queries-by-default" class="md-nav__link">
+    OR/AND terms in user queries by default
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-results-by-field-value-get-filter-value" class="md-nav__link">
+    Filter results by field value, get filter value
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-spellautocomplete-suggestions" class="md-nav__link">
+    Get spell/autocomplete suggestions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#indecrease-the-impact-of-a-search-field-in-ranking-of-results-by-boosting-at-query-time" class="md-nav__link">
+    In/Decrease the impact of a search field in ranking of results by boosting at query-time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faceting-on-a-search-field" class="md-nav__link">
+    Faceting on a search field
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-search-fields-to-use-for-query-or-range" class="md-nav__link">
+    Specify search field(s) to use for query or range
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specify-offset-and-number-of-results-for-pagination" class="md-nav__link">
+    Specify offset and number of results (for pagination)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hit-highlighting" class="md-nav__link">
+    Hit highlighting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#find-similar-entities-based-on-text-fragment" class="md-nav__link">
+    Find similar entities based on text fragment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setget-the-current-text-query" class="md-nav__link">
+    Set/get the current text query
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sort-results-by-field-ascending-or-descending" class="md-nav__link">
+    Sort results by field ascending or descending
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#range-query-start-and-end-can-be-type-of-string-int-float-and-datedatetimetime-start-and-end-are-included-by-default" class="md-nav__link">
+    Range query, start and end can be type of String, Int, Float and Date/DateTime/Time. start and end are included by default
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setget-namespace" class="md-nav__link">
+    Set/get namespace
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-list-of-results" class="md-nav__link">
+    Get the list of results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-number-of-results" class="md-nav__link">
+    Get the number of results
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-the-search-time" class="md-nav__link">
+    Get the search time
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filters" class="md-nav__link">
+    Filters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#search-namespaces" class="md-nav__link">
+    Search namespaces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result-highlighting" class="md-nav__link">
+    Result highlighting
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spell-checking" class="md-nav__link">
+    Spell checking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#auto-completion" class="md-nav__link">
+    Auto completion
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#faceted-search" class="md-nav__link">
+    Faceted search
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/webdsl/webdsl-docs/edit/main/docs/reference/advanced-search.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="advanced-search">Advanced Search<a class="headerlink" href="#advanced-search" title="Permanent link">&para;</a></h1>
+<p><em>note: Some syntax changes and additional features are expected for WebDSL <a href="http://yellowgrass.org/tag/WebDSL/1.3.0">1.3.0</a>. The search language will become more structured. This manual will be updated/completed upon 1.3.0 release</em></p>
+<p>WebDSL offers full text search engine capabilities based on Apache <a href="http://lucene.apache.org">Lucene</a> and <a href="http://www.hibernate.org/subprojects/search">Hibernate Search</a>.
+Current implementation supports:</p>
+<ul>
+<li>Set up which entity properties are searchable</li>
+<li>Full text search on (a subset of) searchable entity properties</li>
+<li>Range queries (numeric and date properties)</li>
+<li>Boolean queries </li>
+<li>Faceted search (both discrete values and ranges) </li>
+<li>Index and query time boosting</li>
+<li>Customized preprocessing of searchable properties/queries using <a href="http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters">SORL analyzer</a> building blocks (tokenizers, character and token filters):</li>
+<li>Common analyzers are predefined</li>
+<li>Use custom stop words that are ignored at indexing/querying</li>
+<li>Get more relevant results by<ul>
+<li>Synonym analyzer (ipad i-pad i pad all match the same)</li>
+<li>Stem words to their root word (performing -&gt; perform)</li>
+<li>Phonetic search (words that sound similar are matched)</li>
+</ul>
+</li>
+<li><a href="http://lucene.apache.org/solr/api-3_6_1/org/apache/solr/analysis/package-summary.html">Many more</a></li>
+<li>Filter search results by property value or faceted search</li>
+<li>Sort search results</li>
+<li>Pagination of search results</li>
+<li>Result highlighting</li>
+<li>Spell checking</li>
+<li>Auto completion</li>
+<li>Create search name spaces based on property value</li>
+</ul>
+<h2 id="making-your-data-searchable">Making your data searchable<a class="headerlink" href="#making-your-data-searchable" title="Permanent link">&para;</a></h2>
+<p>Using search in WebDSL starts by marking which entities need to be searchable. If one property is marked searchable, the entity can be searched. For each entity property one or more search fields can be specified. There are 2 ways to specify these: using search mappings or using searchable annotations. For simple search functionality, searchable annotations will suffice, but for cleaner code we recommend using search mappings.</p>
+<h2 id="using-search-mappings-recommended">Using search mappings (recommended)<a class="headerlink" href="#using-search-mappings-recommended" title="Permanent link">&para;</a></h2>
+<p>A search mapping starts with the name of the property to be indexed, optionally followed by <em>mapping specifications</em>:</p>
+<h5 id="as-name">as <code>name</code><a class="headerlink" href="#as-name" title="Permanent link">&para;</a></h5>
+<p>Override the default search field <code>name</code>. Default: property name</p>
+<h5 id="using-analyzer">using <code>analyzer</code><a class="headerlink" href="#using-analyzer" title="Permanent link">&para;</a></h5>
+<p>Indexed using analyzer <code>analyzer</code> instead of the default analyzer.</p>
+<h5 id="boosted-to-floatfloat">boosted to <code>Float</code>|^<code>Float</code><a class="headerlink" href="#boosted-to-floatfloat" title="Permanent link">&para;</a></h5>
+<p>Search field is boosted to <code>Float</code> at index time (default 1.0).</p>
+<h5 id="spellcheckautocompletespellcheckautocomplete">(spellcheck)|(autocomplete)|(spellcheck,autocomplete)<a class="headerlink" href="#spellcheckautocompletespellcheckautocomplete" title="Permanent link">&para;</a></h5>
+<p>Indicate that this search field can be used for spell checking/autocompletion.</p>
+<h5 id="for-subclass-entity">for subclass <code>entity</code><a class="headerlink" href="#for-subclass-entity" title="Permanent link">&para;</a></h5>
+<p>In case marking an reference/composite property as searchable, you might want to make only a specific subclass of the property type searchable.</p>
+<h5 id="depth-intwith-depth-int">depth <code>Int</code>|with depth <code>Int</code><a class="headerlink" href="#depth-intwith-depth-int" title="Permanent link">&para;</a></h5>
+<p>In case marking an reference/composite property as searchable, you can specify the depth of the 'embedded' path, 1 is the default.</p>
+<h5 id="mapping-specification">+ <code>mapping specification</code><a class="headerlink" href="#mapping-specification" title="Permanent link">&para;</a></h5>
+<p>Prefix a <code>mapping specification</code> with the plus sign if you want this search field to be used by default at query time. <u>If no default search field is specified, all search fields are used by default</u>.</p>
+<p>Search mappings belong to an entity and can be placed inside an entity declaration, or somewhere else by adding the entity name. Names of the search fields are scoped to entities, so different entities may share the same names for search fields.</p>
+<div class="highlight"><pre><span></span><code>//Embedded search mapping
+entity Message {
+  subject :: String
+  text    :: Text
+  category:: String
+  sender  -&gt; User
+
+  search mapping {
+    +subject
+    +text using snowballporter as textSnowBall
+    text
+    category
+    +sender for subclass ForumUser
+  }
+}
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>//External search mapping
+entity ForumUser : User {
+  forumName :: String
+  forumPwd :: Secret
+  messages -&gt; Set&lt;Message&gt; (inverse=Message.sender)
+}
+...
+search mapping ForumUser {
+  forumName using none
+}
+</code></pre></div>
+<h2 id="using-annotations">Using annotations<a class="headerlink" href="#using-annotations" title="Permanent link">&para;</a></h2>
+<p>Search fields can also be specified using property annotations:
+<div class="highlight"><pre><span></span><code>//Using searchable annotations
+entity Message {
+  subject :: String (searchable)
+  text    :: Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)
+  category:: String (searchable)
+  sender  -&gt; ForumUser (searchable())
+}
+</code></pre></div></p>
+<p>The above code marks the entity <code>Message</code> searchable, and it has 3 search fields: <code>subject</code>, <code>text</code> using the default analyzer, and <code>textSnowball</code>, which uses the snowball porter analyzer. Searchable annotations have no restriction w.r.t. search mappings, and both can be used interchangeably (not recommended since it's less transparent). The following table shows the annotation equivalent of specifications in search mappings.</p>
+<table>
+    <tr>
+        <td><b>search mapping</b></td>
+        <td><-></td>
+        <td><b>searchable annotation</b></td>
+    </tr>
+    <tr>
+        <td><sub>subject</sub></td>
+        <td><-></td>
+        <td><sub>searchable<br/>searchable()</sub></td>
+    </tr>
+    <tr>
+        <td><sub>subject as sbj</sub></td>
+        <td><-></td>
+        <td><sub>searchable(name = sbj)</sub></td>
+    </tr>
+    <tr>
+        <td><sub>subject using defaultNoStop</sub></td>
+        <td><-></td>
+        <td><sub>searchable(analyzer = defaultNoStop)</sub></td>
+    </tr>
+    <tr>
+        <td><sub>subject^2.0</sub></td>
+        <td><-></td>
+        <td><sub>searchable()^2.0</sub></td>
+    </tr>
+    <tr>
+        <td><sub>subject boosted to 2.0</sub></td>
+        <td><-></td>
+        <td><sub>searchable(boost = 2.0)</sub></td>
+    <tr>
+        <td><sub>subject as sbjTriGram using trigram boosted to 0.5</sub></td>
+        <td><-></td>
+        <td><sub>searchable(analyzer = trigram, name = sbjTriGram)^0.5</sub></td>
+    </tr>
+    <tr>
+        <td><sub>subject as sbjUntokenized using none</sub></td>
+        <td><-></td>
+        <td><sub>searchable(analyzer = none, name = sbjUntokenized)</sub></td>
+    </tr>
+    <tr>
+        <td><sub>message as sbjAC using kwAnalyzer (autocomplete)</sub></td>
+        <td><-></td>
+        <td><sub>searchable(analyzer = kwAnalyzer, name = sbjAC, autocomplete)</sub></td>
+    </tr>
+    <tr>
+        <td><sub>user as forumuser for subclass ForumUser</sub></td>
+        <td><-></td>
+        <td><sub>searchable(name = forumuser, subclass = ForumUser)</sub></td>
+    <tr>
+    <tr>
+        <td><sub>user with depth 2</sub></td>
+        <td><-></td>
+        <td><sub>searchable(depth=2)</sub></td>
+    <tr>
+        <td><sub>+ text as txt</sub></td>
+        <td><-></td>
+        <td><sub>searchable(name = txt, default)</sub></td>
+    </tr>
+    </tr>
+</table>
+
+<h2 id="which-properties-can-be-made-searchable">Which properties can be made searchable ?<a class="headerlink" href="#which-properties-can-be-made-searchable" title="Permanent link">&para;</a></h2>
+<p>Properties of any type can be made searchable, although there are some notes to make.</p>
+<h3 id="reference-and-composite-properties">Reference and composite properties<a class="headerlink" href="#reference-and-composite-properties" title="Permanent link">&para;</a></h3>
+<p>These properties don't contain any text or value by themselves, but hold references to other entities. Therefore, the properties themselves cannot be indexed, but the searchable properties of the referred entity/entities will be indexed in the scope of the current entity. For example if you want to be able to search for <code>Message</code> entities by the name of the sender (in the above example), the property <code>forumName</code> of <code>ForumUser</code> needs to be indexed in the scope of <code>Message</code>. This can be done by marking the <code>sender</code> property as searchable. All search fields from <code>ForumUser</code> will then be available for <code>Message</code>, and searchfields are prefixed with '<code>propertyName.</code>' by default (or different name if specified using <code>as</code> in search mappings). The search field from the example becomes :  <code>sender.forumName</code>. </p>
+<p>Note: Searchable reference/composite properties need to be part of an inverse relation to keep the index of the owning entity updated with changes in its reference entity/entities.
+The mapping options available for reference properties are restricted to <code>name</code> and <code>subclass</code>.</p>
+<h3 id="numeric-properties-floatintdatedatetimetime">Numeric properties (Float,Int,Date,DateTime,Time)<a class="headerlink" href="#numeric-properties-floatintdatedatetimetime" title="Permanent link">&para;</a></h3>
+<p>In case no analyzer is specified for a numeric property search field, it will be indexed as numeric fields, which is a special type of field in Lucene. It enables efficient range queries and sorting on this field.</p>
+<h3 id="derived-properties">Derived properties<a class="headerlink" href="#derived-properties" title="Permanent link">&para;</a></h3>
+<p>Derived properties are currently only indexed when the entity owning this property is saved/changed.</p>
+<h2 id="how-to-analyze-your-dataqueries">How to analyze your data/queries<a class="headerlink" href="#how-to-analyze-your-dataqueries" title="Permanent link">&para;</a></h2>
+<p>By default, textual properties will use the default analyzer from Lucene, which is optimized for the English language. In the specification of a search field (in search mapping or searchable annotation), a different analyzer can be assigned to it like is done for the <code>textSnowBall</code> search field. A custom analyzers can be declared, each containing:</p>
+<ul>
+<li>zero or more character filters</li>
+<li>one tokenizer</li>
+<li>zero or more token filters</li>
+</ul>
+<p>The range of tokenizers and filters that are supported can be found <a href="http://lucene.apache.org/solr/api-3_6_1/org/apache/solr/analysis/package-summary.html">here</a> and <a href="http://wiki.apache.org/solr/AnalyzersTokenizersTokenFilters">here</a> (with more information about specific analyzers). You don't need to use the factory keyword at the end. Useful analyzers definitions are already included in a new WebDSL project under ./search/<a href="https://svn.strategoxt.org/repos/WebDSL/webdsls/trunk/src/org/webdsl/dsl/project/new_project/search/searchconfiguration.app">searchconfiguration.app</a>. The default analyzer can be overwritten by adding the <code>default</code> keyword before <code>analyzer</code>.
+More advanced analysis may require different behavior at search and query time. Using the <code>index { ... }</code> and <code>query { ... }</code> block, the analyzers may be specified different for indexing and query time (see the <a href="https://svn.strategoxt.org/repos/WebDSL/webdsls/trunk/src/org/webdsl/dsl/project/new_project/search/searchconfiguration.app">synonym analyzer</a>).</p>
+<h2 id="searching-the-data">Searching the data!<a class="headerlink" href="#searching-the-data" title="Permanent link">&para;</a></h2>
+<p>For each indexed entity, search functions and a searcher class are automatically generated. For simple searches, the generated functions will suffice. For more advanced searches, the magic is in the generated entity searcher(s).</p>
+<h3 id="search-data-using-generated-search-functions">Search data using generated search functions<a class="headerlink" href="#search-data-using-generated-search-functions" title="Permanent link">&para;</a></h3>
+<p>For the example entity <code>Message</code>, the following search functions are generated.
+<div class="highlight"><pre><span></span><code>function searchMessage(query : String) : List&lt;Message&gt;
+function searchMessage(query : String, limit : Int)
+                             : List&lt;Message&gt;
+function searchMessage(query : String, limit : Int,
+                       offset : Int) : List&lt;Message&gt;
+</code></pre></div>
+The limit and offset parameters can be used for paginated results. It only loads at most the <code>limit</code> number of results from the database (for efficiency/faster pageloading). These functions use the default search fields when searching, and the specified analyzers are applied for each search field.</p>
+<h3 id="search-data-using-webdsl-search-language-for-full-text-search">Search data using WebDSL search language for full text search<a class="headerlink" href="#search-data-using-webdsl-search-language-for-full-text-search" title="Permanent link">&para;</a></h3>
+<p>More features are available when using WebDSL's search language designed to perform search operations. The language let you interact with the generated Searcher object for the targeted entity. A reference to (or initialization of) a searcher is followed by one or more constructs in which search criteria can be declared.</p>
+<div class="highlight"><pre><span></span><code>//matches Messages with &quot;tablet&quot;, but without &quot;ipad&quot;
+var msgSearcher := search Message matching +&quot;tablet&quot;, -&quot;ipad&quot;;
+
+//enable faceting on an existing searcher
+msgSearcher := ~msgSearcher with facets sender.forumName(20), category(10)
+</code></pre></div>
+<p>List of search language constructs:</p>
+<h2 id="retrieving-search-results">Retrieving search results<a class="headerlink" href="#retrieving-search-results" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>var searcher := search Book matching author: &quot;dahl&quot;;
+var results := searcher.results(); //returns List&lt;Book&gt;;
+</code></pre></div>
+Calling .results() on a searcher returns the search results.
+Calling .count() on a searcher returns the total number of results.</p>
+<h2 id="simple-and-boolean-queries-matching-field-qexp">Simple and boolean queries: 'matching { [{field ,}:] {qExp ,} ,}'<a class="headerlink" href="#simple-and-boolean-queries-matching-field-qexp" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>searcher := search Entity matching title: &quot;user interface&quot;;
+searcher := search Entity matching title, description: userQuery; 
+searcher := search Entity matching &quot;user interface&quot;;
+searcher := search Entity matching title: +userQuery, -&quot;case study&quot;; 
+searcher := search Entity matching ranking:4 to 5, title:-&quot;language&quot;; 
+</code></pre></div>
+Declares a searcher that matches a simple or boolean query. Fields are optional: if the query expression is not preceded by a field constraint, the default search fields are used (i.e. all search fields if no default fields are defined, see ...). qExp can be any String compatible WebDSL expression or a range expression optionally prefixed with a boolean operator (+ for must, - for mustnot, nothing for should).</p>
+<h2 id="range-queries">Range queries<a class="headerlink" href="#range-queries" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>searcher := search Entity matching rating: {1 to 3}
+searcher := search Entity matching rating: [startDate to endDate]
+searcher := search Entity matching rating: -[* to sinceDate]
+</code></pre></div>
+Range expressions are in the form <em>[minExp to maxExp]</em> (including min and max value) or <em>{minExp to maxExp}</em> (exludes min and max, where both expressions can be any expression of a simple WebDSL builtin type. An open range is specified with an asterisk : <em>[* to "A"}</em> for example.</p>
+<h2 id="pagination">Pagination<a class="headerlink" href="#pagination" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>var searcher := search Book matching author: &quot;dahl&quot; start 20 limit 10
+</code></pre></div>
+With the <em>start</em> and <em>limit</em> keywords, you can control which results to be retrieved.</p>
+<h2 id="configuration-options-option">Configuration options: '[ {option* ,} ]'<a class="headerlink" href="#configuration-options-option" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>searcher := search Entity on title: q [no lucene, strict matching];
+</code></pre></div>
+Declare the searcher's options. Available options are:</p>
+<ul>
+<li><em>lucene</em>: allow <a href="http://lucene.apache.org/java/3_1_0/queryparsersyntax.html">lucene query syntax</a></li>
+<li><em>no lucene</em>: disallow lucene query syntax</li>
+<li><em>strict matching</em>: all terms must match by default</li>
+<li><em>loose matching</em>: at least one term should match by default</li>
+</ul>
+<h2 id="filtering-with-filters-filterconstraint">Filtering: 'with filter(s) {filterconstraint* ,}'<a class="headerlink" href="#filtering-with-filters-filterconstraint" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>searcher := search Entity matching title: &quot;graph&quot; 
+                          with filter hidden:false;
+</code></pre></div>
+Specify a filter constraint. A filter constraint is a field-value expression.
+Be aware that when using a filter, a bitset is constructed and cached to accelerate future queries using the same filter. Filters are not considered in result ranking. Thus, only use field-value filters if you expect the same filtering to occur frequently.</p>
+<h2 id="enabling-facets-with-facets-field1e1-field2e2">Enabling facets: 'with facet(s) field1(e1), field2(e2)'<a class="headerlink" href="#enabling-facets-with-facets-field1e1-field2e2" title="Permanent link">&para;</a></h2>
+<p>Example:
+<div class="highlight"><pre><span></span><code>searcher := search Entity matching title: &quot;graph&quot; with facet author(10);
+searcher := search Entity matching title: &quot;graph&quot; with facets author(10), rating([* to 1],[2 to 3},[3 to 4},[4 to *]);
+</code></pre></div>
+Specify enabled facets. These can be discrete or range facets</p>
+<h2 id="retrieving-facets-field-facets-from-searcherexp">Retrieving facets: 'field facets from searcherExp'<a class="headerlink" href="#retrieving-facets-field-facets-from-searcherexp" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>facets := author facets from s;
+</code></pre></div>
+Returns a list: List<Facet> with the facets for the specified field. Facet objects have the following boolean functions available, for example to apply different styling on the variety of facet states:</p>
+<ul>
+<li><em>f.isSelected()</em>: is this facet selected, i.e. filtered?</li>
+<li><em>f.isMust(), f.isShould(), f.isMustNot()</em>: check the filter behaviour of this facet.</li>
+</ul>
+<h2 id="filtering-on-facet">Filtering on facet<a class="headerlink" href="#filtering-on-facet" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>searcher := ~searcher with filter(s) selectedDateFacet.must(), selectedPriceFacet.must();
+</code></pre></div>
+Previously returned facets can be used to narrow the search results. The behaviour of the facet (must, should, mustnot) can be set on the facet object itself (should by default).</p>
+<h2 id="namespace-scoping-in-namespace-e1">Namespace scoping: 'in namespace e1'<a class="headerlink" href="#namespace-scoping-in-namespace-e1" title="Permanent link">&para;</a></h2>
+<p><div class="highlight"><pre><span></span><code>searcher := search Entity matching title: &quot;graph&quot; in namespace &quot;science&quot;;
+</code></pre></div>
+When using search namespaces, restricting a search to a single namespace is done using the <em>in namespace</em> construct followed by a String-compatible expression.</p>
+<h2 id="search-data-using-native-java-instead-of-search-language-some-expert-features">Search data using native java instead of search language (some expert features)<a class="headerlink" href="#search-data-using-native-java-instead-of-search-language-some-expert-features" title="Permanent link">&para;</a></h2>
+<p>The searcher class that is created for the example <code>Message</code> entity is <code>MessageSearcher</code>. The first advantage of using this searcher instead of the generated functions is the ability to interact with the searcher, for further refinements to the search query, or to get information like the total number of results, or time that was needed to perform the search.
+<div class="highlight"><pre><span></span><code>define page searchPage(query : String) {
+  var searcher := MessageSearcher().query(query);
+  var results := searcher.results();
+  var searchTime := searcher.searchTime(); //String
+
+ &quot;You searched for &#39;&quot; output(searcher.query()) &quot;&#39;, &quot; output(searcher.count()) &quot; results found in &quot; output(searchTime) &quot;.&quot;
+
+  if(searcher.count() &gt; 0) {
+    showResults(results)
+  }
+}
+define showResults(results : List&lt;Message&gt;) {
+  //code to view results
+}   
+</code></pre></div></p>
+<p>The available searcher functions generated for each searchable entity are:</p>
+<h2 id="disallow-use-of-lucene-in-query-and-filter-values">(Dis)Allow use of Lucene in query and filter values<a class="headerlink" href="#disallow-use-of-lucene-in-query-and-filter-values" title="Permanent link">&para;</a></h2>
+<p>(see <a href="http://lucene.apache.org/java/3_1_0/queryparsersyntax.html">here</a>)
+<div class="highlight"><pre><span></span><code>allowLuceneSyntax(allow : Bool) : EntitySearcher
+</code></pre></div></p>
+<h2 id="orand-terms-in-user-queries-by-default">OR/AND terms in user queries by default<a class="headerlink" href="#orand-terms-in-user-queries-by-default" title="Permanent link">&para;</a></h2>
+<p>OR is the default.
+<div class="highlight"><pre><span></span><code>defaultAnd() : EntitySearcher
+defaultOr() : EntitySearcher
+</code></pre></div></p>
+<h2 id="filter-results-by-field-value-get-filter-value">Filter results by field value, get filter value<a class="headerlink" href="#filter-results-by-field-value-get-filter-value" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>addFieldFilter(field : String, value : String) : EntitySearcher
+getFieldFilterValue(field : String) : String
+getFilteredFields() : List&lt;String&gt;
+removeFieldFilter(field : String)
+clearFieldFilters()
+</code></pre></div>
+<h2 id="get-spellautocomplete-suggestions">Get spell/autocomplete suggestions<a class="headerlink" href="#get-spellautocomplete-suggestions" title="Permanent link">&para;</a></h2>
+<p>The field(s) parameters specify which search field(s) to use for suggestions. 'limit' controls the max number of suggestions to retrieve. Additionally the namespace can be specified, if used. For spell suggestions the accuracy [0..1] can be set
+<div class="highlight"><pre><span></span><code>static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : List&lt;String&gt;
+static autoCompleteSuggest(toComplete : String, namespace : String, field : String, limit : Int) : List&lt;String&gt;
+static autoCompleteSuggest(toComplete : String, fields : List&lt;String&gt;, limit : Int) : List&lt;String&gt;
+static autoCompleteSuggest(toComplete : String, namespace : String, fields : List&lt;String&gt;, limit : Int) : List&lt;String&gt;
+static spellSuggest(toCorrect : String, fields : List&lt;String&gt;, accuracy : Float, limit : Int) : List&lt;String&gt;
+static spellSuggest(toCorrect : String, namespace : String, fields : List&lt;String&gt;, accuracy : Float, limit : Int) : List&lt;String&gt;
+static spellSuggest(toCorrect : String, field : String, accuracy : Float, limit : Int) : List&lt;String&gt;
+static spellSuggest(toCorrect : String, namespace : String, field : String, accuracy : Float, limit : Int) : List&lt;String&gt;
+</code></pre></div></p>
+<h2 id="indecrease-the-impact-of-a-search-field-in-ranking-of-results-by-boosting-at-query-time">In/Decrease the impact of a search field in ranking of results by boosting at query-time<a class="headerlink" href="#indecrease-the-impact-of-a-search-field-in-ranking-of-results-by-boosting-at-query-time" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>boost(field : String, boost : Float) : EntitySearcher
+</code></pre></div>
+<h2 id="faceting-on-a-search-field">Faceting on a search field<a class="headerlink" href="#faceting-on-a-search-field" title="Permanent link">&para;</a></h2>
+<p>The <code>max</code> parameter defines the maximum facets to collect for that field. For range facets, the ranges are encoded as String in the same format as range queries. Multiple ranges can be specified concatenated, optionally seperated with a symbol like white space or comma but that's not required."</code></p>
+<div class="highlight"><pre><span></span><code>enableFaceting(field : String, max : Int) : EntitySearcher
+enableFaceting(field : String, rangesAsString : String) : EntitySearcher
+getFacets(field : String) : List&lt;Facet&gt;
+addFacetSelection(facet : Facet) : EntitySearcher
+addFacetSelection(facets : List&lt;Facet&gt;) : EntitySearcher
+getFacetSelection() : List&lt;Facet&gt;
+getFacetSelection(field : String) : List&lt;Facet&gt;
+removeFacetSelection(facet : Facet) : EntitySearcher
+clearFacetSelection() : EntitySearcher
+clearFacetSelection(field : String) : EntitySearcher
+</code></pre></div>
+<h2 id="specify-search-fields-to-use-for-query-or-range">Specify search field(s) to use for query or range<a class="headerlink" href="#specify-search-fields-to-use-for-query-or-range" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>field(field : String) : EntitySearcher
+fields(fields : List&lt;String&gt;)] : EntitySearcher
+</code></pre></div>
+<h2 id="specify-offset-and-number-of-results-for-pagination">Specify offset and number of results (for pagination)<a class="headerlink" href="#specify-offset-and-number-of-results-for-pagination" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>setOffset(offset : Int) : EntitySearcher
+setLimit(limit : Int) : EntitySearcher
+</code></pre></div>
+<h2 id="hit-highlighting">Hit highlighting<a class="headerlink" href="#hit-highlighting" title="Permanent link">&para;</a></h2>
+<p>Highlight matched tokens using the analyzer from the specified search field in a given text, optionally specifying a pre- and posttag (bold by default), number of fragments, fragment length and fragment separator.
+There are 4 types of highlight methods. Replace highlight with the version that is suitable for you:</p>
+<ul>
+<li><em>highlight</em> - highlights normal text, trying to find matches by analyzing at most 50*1024 characters of the given text.</li>
+<li><em>highlightLargeText</em> - same as normal <em>highlight</em>, but without limit on the characters it analyzes, therefore it <em>may</em> need some more cpu time.</b></li>
+<li><em>highlightHTML</em> - same as normal <em>highlight</em>, but it leaves HTML tags intact such that matches in HTML tags are ignored. Used for highlighting text in HTML markup.</li>
+<li><em>highlightLargeHTML</em> - same as <em>highlightHTML</em>, but without limit on the characters it analyzes, therefore it <em>may</em> need some more cpu time</li>
+</ul>
+<div class="highlight"><pre><span></span><code>highlight(field : String, toHighlight : String) : String
+highlight(field : String, toHighlight : String, preTag : String, postTag : String) : String
+highlight(field : String, toHighlight : String, preTag : String, postTag : String, nOfFrgmts : Int, frgmtLength : Int, frgmtSeparator : String) : String
+</code></pre></div>
+<h2 id="find-similar-entities-based-on-text-fragment">Find similar entities based on text fragment<a class="headerlink" href="#find-similar-entities-based-on-text-fragment" title="Permanent link">&para;</a></h2>
+<p>Just like an ordinary query, first specify the fields using the <code>field(s)</code> function</p>
+<div class="highlight"><pre><span></span><code>moreLikeThis(text : String) : EntitySearcher
+</code></pre></div>
+<h2 id="setget-the-current-text-query">Set/get the current text query<a class="headerlink" href="#setget-the-current-text-query" title="Permanent link">&para;</a></h2>
+<p>Note: Query text from the first specified query is returned in case multiple queries are combined using boolean queries.
+<div class="highlight"><pre><span></span><code>getQuery() : String
+query(queryText : String) : EntitySearcher
+</code></pre></div></p>
+<h2 id="sort-results-by-field-ascending-or-descending">Sort results by field ascending or descending<a class="headerlink" href="#sort-results-by-field-ascending-or-descending" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>sortDesc(field : String) : EntitySearcher
+sortAsc(field : String) : EntitySearcher
+clearSorting() : EntitySearcher
+</code></pre></div>
+<h2 id="range-query-start-and-end-can-be-type-of-string-int-float-and-datedatetimetime-start-and-end-are-included-by-default">Range query, <em>start</em> and <em>end</em> can be type of String, Int, Float and Date/DateTime/Time. <em>start</em> and <em>end</em> are included by default<a class="headerlink" href="#range-query-start-and-end-can-be-type-of-string-int-float-and-datedatetimetime-start-and-end-are-included-by-default" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>range(start, end) : EntitySearcher
+range(start, end, includeMin : Bool, includeMax : Bool) : EntitySearcher
+</code></pre></div>
+<h2 id="setget-namespace">Set/get namespace<a class="headerlink" href="#setget-namespace" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>setNamespace(ns : String) : EntitySearcher
+getNamespace() : String
+removeNamespace() : EntitySearcher
+</code></pre></div>
+<h2 id="get-the-list-of-results">Get the list of results<a class="headerlink" href="#get-the-list-of-results" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>results() : List&lt;Entity&gt;
+</code></pre></div>
+<h2 id="get-the-number-of-results">Get the number of results<a class="headerlink" href="#get-the-number-of-results" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>count() : Int
+</code></pre></div>
+<h2 id="get-the-search-time">Get the search time<a class="headerlink" href="#get-the-search-time" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>searchTime() : String
+searchTimeMillis() : Int
+searchTimeSeconds() : Float
+</code></pre></div>
+<h2 id="filters">Filters<a class="headerlink" href="#filters" title="Permanent link">&para;</a></h2>
+<p>Filters are an efficient way to filter search results, because they are cached. If you expect to perform many queries using the same filter (like only showing <code>Message</code>s in a specific category), using a filter is the way to go:</p>
+<div class="highlight"><pre><span></span><code>MessageSearcher.query(userQuery).addFieldFilter(&quot;category&quot;,&quot;humor&quot;)
+</code></pre></div>
+<p>or</p>
+<div class="highlight"><pre><span></span><code>search Message matching userQuery with filter category:&quot;humor&quot;
+</code></pre></div>
+<p>To get the value of a previously added field filter, use the <code>getFieldFilterValue(field : String)</code> method.</p>
+<h2 id="search-namespaces">Search namespaces<a class="headerlink" href="#search-namespaces" title="Permanent link">&para;</a></h2>
+<p>Search namespaces become usefull if you want to allow searches on entities with some specific property value. For example searching <code>Message</code>s by category in the above example.
+Namespaces have some advantages over using field filters. An index is created for each namespace separately, instead of one for all entities of that type. Since the indexes are used as input for auto completion and spell checking, the use of namespaces enables suggestion services scoped to one, or all, namespace(s). </p>
+<h2 id="result-highlighting">Result highlighting<a class="headerlink" href="#result-highlighting" title="Permanent link">&para;</a></h2>
+<h2 id="spell-checking">Spell checking<a class="headerlink" href="#spell-checking" title="Permanent link">&para;</a></h2>
+<h2 id="auto-completion">Auto completion<a class="headerlink" href="#auto-completion" title="Permanent link">&para;</a></h2>
+<h2 id="faceted-search">Faceted search<a class="headerlink" href="#faceted-search" title="Permanent link">&para;</a></h2>
+<p>Facets can be displayed in many contexts. For example, when displaying a list of products, you want the product categories to be displayed as facets.
+Any searchable property can be used for faceting. The values, as they appear in the search index, are used for faceting. So if you use the default analyzer for the category property of Product, categories containing white spaces are not treated as single facet value. For this to work you need to define an additional field which doesn't tokenize the value of the property, for example by indexing this property untokenized:</p>
+<div class="highlight"><pre><span></span><code>entity Product{
+  name :: String
+  categories -&gt; Set&lt;Category&gt; (inverse=Category.products)
+
+  search mapping{
+    name
+    categories
+  }
+}
+entity Category {
+  name::String
+  products -&gt; Set&lt;Product&gt;
+
+  search mapping{
+    name using none //or &#39;name using no&#39; in v1.2.9.0
+  }
+}
+</code></pre></div>
+<p>Facets can be retrieved through the use of a searcher.
+You first need to specify the facets you want to use by enabling them in the searcher. 
+A typical example is to display facets in the search results:</p>
+<p>(updated April 5<sup>th</sup>)
+<div class="highlight"><pre><span></span><code>define searchbar(){
+  var query := &quot;&quot;;
+  form {
+    input(query)
+    submit action{
+        //construct a searcher and enable faceting on tags.name, limited to 20 top categories
+        //more facets can be enabled by separating the field(topN) facet definitions by a comma
+        var searcher := search Product matching query with facets categories.name(20);
+        return search(searcher);} {&quot;search&quot;}
+  }
+}
+
+define page search(searcher : ProductSearcher){
+    var results : List&lt;Product&gt; := results from searcher;
+    var facets  : List&lt;Facet&gt;   := categories.name facets from searcher;
+
+    header{&quot;Filter by product category:&quot;}
+    for(f : Facet in facets){
+        facetLink(f, searcher)
+    }separated-by{&quot; &quot;}
+
+    showResults(results)
+}
+define facetLink(facet: Facet, searcher: ProductSearcher){
+    submitlink narrow(facet){ if(facet.isSelected()){&quot;+&quot;} output(facet.getValue()) }&quot;(&quot; output(facet.getCount()) &quot;)&quot;
+
+    action narrow(facet : Facet){
+      if (facet.isSelected()) { searcher.removeFacetSelection(facet); } else { ~searcher matching facet.must(); }
+      goto search(searcher);
+    }
+}
+</code></pre></div></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../search/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Search" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Search
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../recommend/" class="md-footer__link md-footer__link--next" aria-label="Next: Recommend" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Recommend
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        
+          Made with
+          <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+            Material for MkDocs
+          </a>
+        
+        
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.indexes"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      
+    
+  </body>
+</html>
