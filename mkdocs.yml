@@ -32,7 +32,7 @@ nav:
     - reference/session-entities.md
     - reference/types.md
     - reference/pages.md
-    - reference/form.md
+    - reference/forms.md
     - reference/action-code.md
     - reference/native-java-interface.md
     - reference/validation.md
@@ -50,9 +50,7 @@ nav:
     - reference/services.md
     - reference/synchronization-framework.md
     - reference/mysql.md
-    - reference/download.md
     - reference/examples.md
-    - reference/tutorials.md
     - reference/development.md
   - Background:
     - background/index.md
