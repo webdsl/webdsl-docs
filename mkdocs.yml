@@ -24,6 +24,53 @@ nav:
     - reference/using-the-editor.md
     - reference/command-line-use.md
     - reference/webdsl-apps.md
+    - reference/app-configuration.md
+    - reference/production-server.md
+    - reference/lightweight-vps.md
+    - reference/request-processing.md
+    - reference/entities.md
+    - reference/session-entities.md
+    - reference/types.md
+    - reference/types-string.md
+    - reference/types-int.md
+    - reference/types-float.md
+    - reference/types-bool.md
+    - reference/types-list.md
+    - reference/types-set.md
+    - reference/types-secret.md
+    - reference/types-email.md
+    - reference/types-text.md
+    - reference/types-wikitext.md
+    - reference/types-patch.md
+    - reference/types-datetime.md
+    - reference/types-date.md
+    - reference/types-time.md
+    - reference/types-url.md
+    - reference/types-file.md
+    - reference/types-image.md
+    - reference/pages.md
+    - reference/form.md
+    - reference/action-code.md
+    - reference/native-java-interface.md
+    - reference/validation.md
+    - reference/access-control.md
+    - reference/queries.md
+    - reference/testing.md
+    - reference/ajax.md
+    - reference/styling.md
+    - reference/search.md
+    - reference/advanced-search.md
+    - reference/recommend.md
+    - reference/send-email.md
+    - reference/recurring-tasks.md
+    - reference/https-encryption.md
+    - reference/services.md
+    - reference/synchronization-framework.md
+    - reference/mysql.md
+    - reference/download.md
+    - reference/examples.md
+    - reference/tutorials.md
+    - reference/development.md
   - Background:
     - background/index.md
     - background/about.md
