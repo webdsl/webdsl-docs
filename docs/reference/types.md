@@ -25,12 +25,15 @@ Similarly, the Date times are equivalent as well:
 Enums
 -----
 Enumeration types are like `enum` in Java and other languages. You define them as follows:
-<verbatim>enum Gender {
+```
+enum Gender {
   maleGender("Male"),
-  femaleGender("Female")
-}</verbatim>
+  femaleGender("Female"),
+  otherGender("Other"),
+}
+```
 You can use them as follows:
-<verbatim>
+```
 entity User {
   gender -> Gender
 }
@@ -40,13 +43,13 @@ define page somePage() {
   input(u.gender) // shows a drop-down
   output(u.gender.name) // shows either Male or Female
 }
-</verbatim>
+```
 Or, in action code:
-<verbatim>
+```
 function setMale(u : User) {
   u.gender := maleGender;
 }
-</verbatim>
+```
 
 ## String
 

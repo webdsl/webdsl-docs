@@ -4,7 +4,7 @@ WebDSL supports a subset of [HQL](http://docs.jboss.org/hibernate/core/3.3/refer
 
 ## Examples
 
-<verbatim>
+```
 // select all updates
 var allUpdates : List<Update> := from Update;
 
@@ -17,4 +17,4 @@ var page : Int := 0;
 for(update : Update in from Update as u left join fetch u.user order by u.date desc limit 10*page, 10) {
    output(update.text)
 }
-</verbatim>
+```

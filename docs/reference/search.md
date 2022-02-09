@@ -1,26 +1,26 @@
 # Search
 
 WebDSL supports simple search capabilities through [Lucene](http://lucene.apache.org). Entity properties can be marked as "searchable" to subsequently be indexed:
-<verbatim>
+```
 entity Message {
   subject :: String (searchable)
   text    :: Text   (searchable)
   sender  -> ForumUser
 }
-</verbatim>
+```
 The searchable can be applied to the following built-in WebDSL types: String, Text, WikiText, Int, Long, Float and date types. Properties of user defined entity types are currently not supported to be searchable (i.e. sender in the previous example).
 
 If one or more properties of an entity are marked as searchable, a set of `searchEntity` functions are generated, in this case:
-<verbatim>
+```
 function searchMessage(query : String) : List<Message>
 function searchMessage(query : String, limit : Int)
                              : List<Message>
 function searchMessage(query : String, limit : Int,
                        offset : Int) : List<Message>
-</verbatim>
+```
 Which can be used from anywhere. For instance on a search page:
 
-<verbatim>
+```
 define page search(query : String) {
   var newQuery : String := query;
   action doSearch() {
@@ -36,7 +36,7 @@ define page search(query : String) {
     output(m)
   }
 }
-</verbatim>
+```
 
 The query syntax adheres to [Lucene's query syntax](http://lucene.apache.org/core/old_versioned_docs/versions/3_1_0/queryparsersyntax.html) as does the [scoring](http://lucene.apache.org/core/old_versioned_docs/versions/3_1_0/scoring.html).
 

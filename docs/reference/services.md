@@ -6,7 +6,7 @@ WebDSL includes a simple way to define string and JSON-based webservices.
 
 The JSON interface is defined as follows:
 
-<verbatim>
+```
   native class org.json.JSONObject as JSONObject {
     constructor()
     constructor(String)
@@ -41,11 +41,11 @@ The JSON interface is defined as follows:
     toString() : String
     toString(Int) : String
   } 
-</verbatim>
+```
 
 Example use in WebDSL:
 
-<verbatim>
+```
 function myJsonFun() : String {
     var obj := JSONObject("{}");
     obj.put("name", "Pete");
@@ -53,13 +53,13 @@ function myJsonFun() : String {
     return obj.toString();
     // Will return '{"name": "Pete", "age": 27}'
 }
-</verbatim>
+```
 
 ## Defining services
 
 A service is simply a WebDSL function that uses the `service` keyword instead of `function`, you don't have to specify a return type, it will convert anything you return to a string (using `.toString()`):
 
-<verbatim>
+```
 entity Document {
   title :: String (id, name)
   text  :: Text
@@ -80,28 +80,28 @@ service document(id : String) {
     return doc.title;
   }
 }
-</verbatim>
+```
 
 services are mapped to `/serviceName`, e.g. `/document`. Here's a few sample requests to test (note, these are services part of an application called "hellojson"):
 
-<verbatim>
+```
 $ curl -X PUT 'http://localhost:8080/hellojson/document/my-first-doc' \
        -d '{"text": "This is my first document"}'
 my-first-doc
 $ curl http://localhost:8080/hellojson/document/my-first-doc
 {"text":""This is my first document","title":"my-first-doc"}
-</verbatim>
+```
 
 But, like pages, services can also have entities as arguments:
 
-<verbatim>
+```
 service documentJson(doc : Document) {
    var obj := JSONObject();
    obj.put("title", doc.title);
    obj.put("text", doc.text);
    return obj;
 }
-</verbatim>
+```
 
 ## Integration with Mobl
 

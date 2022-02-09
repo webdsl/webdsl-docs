@@ -8,7 +8,7 @@ Collaborative filtering systems are content agnostic. These systems focus on the
 ## Examples
 One example is a book store where consumers buy books, so in this case the consumer is the user and the book is the item. Users have preferences for items, but its up to you whether you take those into account. The preference value can be expressed on a scale that matches your needs, for example 0 to 1 or 1 to 5, as long as it’s a number.
 
-<verbatim>
+```
 entity Customer {
 	name :: String(id)	
 	books -> List<BookPurchase>
@@ -31,7 +31,7 @@ recommend BookPurchase {
 	item = book
 	value = pref
 }
-</verbatim>
+```
 
 For Mahout these preferences indicate which books are very popular and which are less. Such preferences are not obligatory but if implemented can be used to order the recommendations based on popularity.  
 
@@ -45,7 +45,7 @@ In order to express the relation between a user and his or her items you need to
 
 ### Recommendation block
 The name of the relation entity is used as the name to call the recommendation system.
-<verbatim>
+```
 recommend RelationEntityName {
 	user = by
 	item = book
@@ -56,7 +56,7 @@ recommend RelationEntityName {
 	type = Both
 	schedule = 1 weeks
 }
-</verbatim>
+```
 The recommendation block has two obligatory values. These specify which variable in the relation entity holds the reference to the user and the item instance. So in above’s book store example the name of the recommendation block matches the name of the relation, which is BookPurchase. The user and item variables are set to by and book respectively.
 The user and item values:
 
@@ -115,9 +115,9 @@ rebuild the mahout index in the background.
 The default value is: 1 weeks  
   
 **NOTE on scheduling** Scheduling through the definition of the recommendation is not supported yet, instead use the default method of WebDSL to schedule the reconstruct function every x days. For example:
-<verbatim>
+```
 invoke RelationEntity.reconstructRecommendationCache() every 2 days
-</verbatim>
+```
 
 
 ## Implementation
@@ -127,25 +127,25 @@ There are two ways to get recommendations, which method you need depends on the 
 
 ### User-to-item recommendations
 The user-to-item recommendations are accessible by calling to the method:
-<verbatim>
+```
 RelationEntity.getUserRecommendations(user : UserType, maxNum : Int) : List<ItemType>
 RelationEntity.getUserRecommendations(user : UserType) : List<ItemType>
-</verbatim>
-This method returns a <verbatim>List<ItemType></verbatim> as its result and could be filtered further or simply looped through as any normal list. The user argument refers to the user for which you want to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
+```
+This method returns a `List<ItemType>` as its result and could be filtered further or simply looped through as any normal list. The user argument refers to the user for which you want to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
 
 ### Item-to-item recommendations
 The item-to-item recommendations are very similar to the user-to-user recommendation methods. The major difference between these function calls is the fact that you supply an item to the function so you could get a list of recommendations based on that single item. The item-to-item methods are:
-<verbatim>
+```
 RelationEntity.getItemRecommendations(item : ItemType, maxNum : Int) : List<ItemType>
 RelationEntity.getItemRecommendations(item : ItemType) : List<ItemType>
-</verbatim>
-Just like the user-to-item recommendations these functions result in a <verbatim>List<ItemType</verbatim>. The item argument refers to the item that you want to use as a reference to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
+```
+Just like the user-to-item recommendations these functions result in a `List<ItemType>`. The item argument refers to the item that you want to use as a reference to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
 
 ## Testing the speed
 Determining the recommendations takes a while to compute, this is dependent on several factors including the size of the data set, the type of relations (binary or value based), if there are duplicate relations possible, and several configuration options. The configuration options that play a major role here are the algorithm type, the neighborhood size, and its related neighborhood algorithm. With the following function call you can determine how long the last operation of the recommendation system took in milliseconds:
-<verbatim>
+```
 RelationEntity.getLastExecutionTime() : Int
-</verbatim>
+```
 
 ## Precision and recall testing
 The precision and recall test is used to determine the precision of the recommendations. In other words, with this test you can determine the quality of the recommendations that will be given back. The precision and recall performance of the recommendation system depends on the algorithm used and the type of network you want it to analyze.  
@@ -153,16 +153,16 @@ The precision and recall test is used to determine the precision of the recommen
 *NOTE:* Do not use this function on production systems, as it takes a while to compute and does not add any value on a live production machine. It should only be used to determine the type of algorithm that performs best during the development phase.  
   
 *REQUIREMENT:* In order for the precision and recall method to return valuable results you need to test a network that is filled with data as it would be when used in production. Compared to a real data set a random data set could falsely state that the performance of algorithm x is very good, while you should use algorithm y.
-<verbatim>
+```
 RelationEntity.evaluateIRStats() : String
-</verbatim>
-The precision and recall float values are both encapsulated in a string returned by this function, for example: <verbatim>"0.2714285714285714 :: 0.2857142852714785"</verbatim>
+```
+The precision and recall float values are both encapsulated in a string returned by this function, for example: `"0.2714285714285714 :: 0.2857142852714785"`
 
 ## Building the mahout index
 With the schedule parameter of the recommend configuration you can set when the mahout index should be rebuilt as discussed before. However, if you want to build the mahout index manually that is possible too.
 The function you need to call in order to reconstruct the index is:  
 
 *NOTE:* Do not use the manual function on production systems as it can take several hours to compute and would block all the open connections to the website in the meanwhile.  
-<verbatim>
+```
 RelationEntity.reconstructRecommendationCache() : void
-</verbatim>
+```

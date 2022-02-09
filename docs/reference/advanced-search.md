@@ -91,7 +91,7 @@ search mapping ForumUser {
 ## Using annotations
 
 Search fields can also be specified using property annotations:
-<verbatim>
+```
 //Using searchable annotations
 entity Message {
   subject :: String (searchable)
@@ -99,7 +99,7 @@ entity Message {
   category:: String (searchable)
   sender  -> ForumUser (searchable())
 }
-</verbatim>
+```
 
 The above code marks the entity `Message` searchable, and it has 3 search fields: `subject`, `text` using the default analyzer, and `textSnowball`, which uses the snowball porter analyzer. Searchable annotations have no restriction w.r.t. search mappings, and both can be used interchangeably (not recommended since it's less transparent). The following table shows the annotation equivalent of specifications in search mappings.
 
@@ -193,13 +193,13 @@ More advanced analysis may require different behavior at search and query time. 
 For each indexed entity, search functions and a searcher class are automatically generated. For simple searches, the generated functions will suffice. For more advanced searches, the magic is in the generated entity searcher(s).
 ### Search data using generated search functions
 For the example entity `Message`, the following search functions are generated.
-<verbatim>
+```
 function searchMessage(query : String) : List<Message>
 function searchMessage(query : String, limit : Int)
                              : List<Message>
 function searchMessage(query : String, limit : Int,
                        offset : Int) : List<Message>
-</verbatim>
+```
 The limit and offset parameters can be used for paginated results. It only loads at most the `limit` number of results from the database (for efficiency/faster pageloading). These functions use the default search fields when searching, and the specified analyzers are applied for each search field.
 
 
@@ -207,52 +207,52 @@ The limit and offset parameters can be used for paginated results. It only loads
 
 More features are available when using WebDSL's search language designed to perform search operations. The language let you interact with the generated Searcher object for the targeted entity. A reference to (or initialization of) a searcher is followed by one or more constructs in which search criteria can be declared.
 
-<verbatim>
+```
 //matches Messages with "tablet", but without "ipad"
 var msgSearcher := search Message matching +"tablet", -"ipad";
 
 //enable faceting on an existing searcher
 msgSearcher := ~msgSearcher with facets sender.forumName(20), category(10)
-</verbatim>
+```
 
 List of search language constructs:
 
 ## Retrieving search results
-<verbatim>
+```
 var searcher := search Book matching author: "dahl";
 var results := searcher.results(); //returns List<Book>;
-</verbatim>
+```
 Calling .results() on a searcher returns the search results.
 Calling .count() on a searcher returns the total number of results.
 
 ## Simple and boolean queries: 'matching { [{field ,}:] {qExp ,} ,}'
-<verbatim>
+```
 searcher := search Entity matching title: "user interface";
 searcher := search Entity matching title, description: userQuery; 
 searcher := search Entity matching "user interface";
 searcher := search Entity matching title: +userQuery, -"case study"; 
 searcher := search Entity matching ranking:4 to 5, title:-"language"; 
-</verbatim>
+```
 Declares a searcher that matches a simple or boolean query. Fields are optional: if the query expression is not preceded by a field constraint, the default search fields are used (i.e. all search fields if no default fields are defined, see ...). qExp can be any String compatible WebDSL expression or a range expression optionally prefixed with a boolean operator (+ for must, - for mustnot, nothing for should).
 
 ## Range queries
-<verbatim>
+```
 searcher := search Entity matching rating: {1 to 3}
 searcher := search Entity matching rating: [startDate to endDate]
 searcher := search Entity matching rating: -[* to sinceDate]
-</verbatim>
+```
 Range expressions are in the form _[minExp to maxExp]_ (including min and max value) or _{minExp to maxExp}_ (exludes min and max, where both expressions can be any expression of a simple WebDSL builtin type. An open range is specified with an asterisk : _[* to "A"}_ for example.
 
 ## Pagination
-<verbatim>
+```
 var searcher := search Book matching author: "dahl" start 20 limit 10
-</verbatim>
+```
 With the _start_ and _limit_ keywords, you can control which results to be retrieved.
 
 ## Configuration options: '[ {option* ,} ]'
-<verbatim>
+```
 searcher := search Entity on title: q [no lucene, strict matching];
-</verbatim>
+```
 Declare the searcher's options. Available options are:
 
 *   _lucene_: allow [lucene query syntax](http://lucene.apache.org/java/3_1_0/queryparsersyntax.html)
@@ -262,47 +262,47 @@ Declare the searcher's options. Available options are:
 
 
 ## Filtering: 'with filter(s) {filterconstraint* ,}'
-<verbatim>
+```
 searcher := search Entity matching title: "graph" 
                           with filter hidden:false;
-</verbatim>
+```
 Specify a filter constraint. A filter constraint is a field-value expression.
 Be aware that when using a filter, a bitset is constructed and cached to accelerate future queries using the same filter. Filters are not considered in result ranking. Thus, only use field-value filters if you expect the same filtering to occur frequently.
 
 ## Enabling facets: 'with facet(s) field1(e1), field2(e2)'
 Example:
-<verbatim>
+```
 searcher := search Entity matching title: "graph" with facet author(10);
 searcher := search Entity matching title: "graph" with facets author(10), rating([* to 1],[2 to 3},[3 to 4},[4 to *]);
-</verbatim>
+```
 Specify enabled facets. These can be discrete or range facets
 
 ## Retrieving facets: 'field facets from searcherExp'
-<verbatim>
+```
 facets := author facets from s;
-</verbatim>
+```
 Returns a list: List<Facet> with the facets for the specified field. Facet objects have the following boolean functions available, for example to apply different styling on the variety of facet states:
 
  *   _f.isSelected()_: is this facet selected, i.e. filtered?
  *   _f.isMust(), f.isShould(), f.isMustNot()_: check the filter behaviour of this facet.
 
 ## Filtering on facet
-<verbatim>
+```
 searcher := ~searcher with filter(s) selectedDateFacet.must(), selectedPriceFacet.must();
-</verbatim>
+```
 Previously returned facets can be used to narrow the search results. The behaviour of the facet (must, should, mustnot) can be set on the facet object itself (should by default).
 
 ## Namespace scoping: 'in namespace e1'
-<verbatim>
+```
 searcher := search Entity matching title: "graph" in namespace "science";
-</verbatim>
+```
 When using search namespaces, restricting a search to a single namespace is done using the _in namespace_ construct followed by a String-compatible expression.
 
 
 ## Search data using native java instead of search language (some expert features)
 
 The searcher class that is created for the example `Message` entity is `MessageSearcher`. The first advantage of using this searcher instead of the generated functions is the ability to interact with the searcher, for further refinements to the search query, or to get information like the total number of results, or time that was needed to perform the search.
-<verbatim>
+```
 define page searchPage(query : String) {
   var searcher := MessageSearcher().query(query);
   var results := searcher.results();
@@ -317,30 +317,38 @@ define page searchPage(query : String) {
 define showResults(results : List<Message>) {
   //code to view results
 }	
-</verbatim>
+```
 
 The available searcher functions generated for each searchable entity are:
 
 ## (Dis)Allow use of Lucene in query and filter values
+
 (see [here](http://lucene.apache.org/java/3_1_0/queryparsersyntax.html))
-<verbatim>allowLuceneSyntax(allow : Bool) : EntitySearcher</verbatim>
+```
+allowLuceneSyntax(allow : Bool) : EntitySearcher
+```
 
 ## OR/AND terms in user queries by default
 OR is the default.
-<verbatim>defaultAnd() : EntitySearcher
-defaultOr() : EntitySearcher</verbatim>
+```
+defaultAnd() : EntitySearcher
+defaultOr() : EntitySearcher
+```
 
 ## Filter results by field value, get filter value ##
-<verbatim>addFieldFilter(field : String, value : String) : EntitySearcher
+```
+addFieldFilter(field : String, value : String) : EntitySearcher
 getFieldFilterValue(field : String) : String
 getFilteredFields() : List<String>
 removeFieldFilter(field : String)
-clearFieldFilters()</verbatim>
+clearFieldFilters()
+```
 
 ## Get spell/autocomplete suggestions
 
 The field(s) parameters specify which search field(s) to use for suggestions. 'limit' controls the max number of suggestions to retrieve. Additionally the namespace can be specified, if used. For spell suggestions the accuracy [0..1] can be set
-<verbatim>static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : List<String>
+```
+static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : List<String>
 static autoCompleteSuggest(toComplete : String, namespace : String, field : String, limit : Int) : List<String>
 static autoCompleteSuggest(toComplete : String, fields : List<String>, limit : Int) : List<String>
 static autoCompleteSuggest(toComplete : String, namespace : String, fields : List<String>, limit : Int) : List<String>
@@ -348,15 +356,19 @@ static spellSuggest(toCorrect : String, fields : List<String>, accuracy : Float,
 static spellSuggest(toCorrect : String, namespace : String, fields : List<String>, accuracy : Float, limit : Int) : List<String>
 static spellSuggest(toCorrect : String, field : String, accuracy : Float, limit : Int) : List<String>
 static spellSuggest(toCorrect : String, namespace : String, field : String, accuracy : Float, limit : Int) : List<String>
-</verbatim>
+```
 
 ## In/Decrease the impact of a search field in ranking of results by boosting at query-time
-<verbatim>boost(field : String, boost : Float) : EntitySearcher</verbatim>
+```
+boost(field : String, boost : Float) : EntitySearcher
+```
 
 ## Faceting on a search field
 
 The <code>max</code> parameter defines the maximum facets to collect for that field. For range facets, the ranges are encoded as String in the same format as range queries. Multiple ranges can be specified concatenated, optionally seperated with a symbol like white space or comma but that's not required."</code>
-<verbatim>enableFaceting(field : String, max : Int) : EntitySearcher
+
+```
+enableFaceting(field : String, max : Int) : EntitySearcher
 enableFaceting(field : String, rangesAsString : String) : EntitySearcher
 getFacets(field : String) : List<Facet>
 addFacetSelection(facet : Facet) : EntitySearcher
@@ -366,17 +378,19 @@ getFacetSelection(field : String) : List<Facet>
 removeFacetSelection(facet : Facet) : EntitySearcher
 clearFacetSelection() : EntitySearcher
 clearFacetSelection(field : String) : EntitySearcher
-
-</verbatim>
+```
 
 ## Specify search field(s) to use for query or range
-<verbatim>field(field : String) : EntitySearcher
-fields(fields : List<String>)] : EntitySearcher</verbatim>
+```
+field(field : String) : EntitySearcher
+fields(fields : List<String>)] : EntitySearcher
+```
 
 ## Specify offset and number of results (for pagination)
-<verbatim>setOffset(offset : Int) : EntitySearcher
+```
+setOffset(offset : Int) : EntitySearcher
 setLimit(limit : Int) : EntitySearcher
-</verbatim>
+```
 
 ## Hit highlighting
 Highlight matched tokens using the analyzer from the specified search field in a given text, optionally specifying a pre- and posttag (bold by default), number of fragments, fragment length and fragment separator.
@@ -387,52 +401,76 @@ There are 4 types of highlight methods. Replace highlight with the version that 
  * _highlightHTML_ - same as normal _highlight_, but it leaves HTML tags intact such that matches in HTML tags are ignored. Used for highlighting text in HTML markup.
  * _highlightLargeHTML_ - same as _highlightHTML_, but without limit on the characters it analyzes, therefore it _may_ need some more cpu time
 
-<verbatim>highlight(field : String, toHighlight : String) : String
+```
+highlight(field : String, toHighlight : String) : String
 highlight(field : String, toHighlight : String, preTag : String, postTag : String) : String
 highlight(field : String, toHighlight : String, preTag : String, postTag : String, nOfFrgmts : Int, frgmtLength : Int, frgmtSeparator : String) : String
-</verbatim>
+```
 
 ## Find similar entities based on text fragment
 Just like an ordinary query, first specify the fields using the <code>field(s)</code> function
 
-<verbatim>moreLikeThis(text : String) : EntitySearcher</verbatim>
+```
+moreLikeThis(text : String) : EntitySearcher
+```
 
 ## Set/get the current text query
 Note: Query text from the first specified query is returned in case multiple queries are combined using boolean queries.
-<verbatim>getQuery() : String
-query(queryText : String) : EntitySearcher</verbatim>
+```
+getQuery() : String
+query(queryText : String) : EntitySearcher
+```
 
 ## Sort results by field ascending or descending
-<verbatim>sortDesc(field : String) : EntitySearcher
+```
+sortDesc(field : String) : EntitySearcher
 sortAsc(field : String) : EntitySearcher
-clearSorting() : EntitySearcher</verbatim>
+clearSorting() : EntitySearcher
+```
 
 ## Range query, _start_ and _end_ can be type of String, Int, Float and Date/DateTime/Time. _start_ and _end_ are included by default
-<verbatim>range(start, end) : EntitySearcher
-range(start, end, includeMin : Bool, includeMax : Bool) : EntitySearcher</verbatim>
+```
+range(start, end) : EntitySearcher
+range(start, end, includeMin : Bool, includeMax : Bool) : EntitySearcher
+```
 
 ## Set/get namespace
-<verbatim>setNamespace(ns : String) : EntitySearcher
+```
+setNamespace(ns : String) : EntitySearcher
 getNamespace() : String
-removeNamespace() : EntitySearcher</verbatim>
+removeNamespace() : EntitySearcher
+```
 
 ## Get the list of results
-<verbatim>results() : List<Entity></verbatim>
+```
+results() : List<Entity>
+```
 
 ## Get the number of results
-<verbatim>count() : Int</verbatim>
+```
+count() : Int
+```
 
 ## Get the search time
-<verbatim>searchTime() : String
+```
+searchTime() : String
 searchTimeMillis() : Int
 searchTimeSeconds() : Float
-</verbatim>
+```
 
 ## Filters
 Filters are an efficient way to filter search results, because they are cached. If you expect to perform many queries using the same filter (like only showing `Message`s in a specific category), using a filter is the way to go:
-<verbatim>MessageSearcher.query(userQuery).addFieldFilter("category","humor")</verbatim>
+
+```
+MessageSearcher.query(userQuery).addFieldFilter("category","humor")
+```
+
 or
-<verbatim>search Message matching userQuery with filter category:"humor"</verbatim>
+
+```
+search Message matching userQuery with filter category:"humor"
+```
+
 To get the value of a previously added field filter, use the `getFieldFilterValue(field : String)` method.
 
 ## Search namespaces
@@ -449,7 +487,7 @@ Namespaces have some advantages over using field filters. An index is created fo
 Facets can be displayed in many contexts. For example, when displaying a list of products, you want the product categories to be displayed as facets.
 Any searchable property can be used for faceting. The values, as they appear in the search index, are used for faceting. So if you use the default analyzer for the category property of Product, categories containing white spaces are not treated as single facet value. For this to work you need to define an additional field which doesn't tokenize the value of the property, for example by indexing this property untokenized:
 
-<verbatim>
+```
 entity Product{
   name :: String
   categories -> Set<Category> (inverse=Category.products)
@@ -467,14 +505,14 @@ entity Category {
     name using none //or 'name using no' in v1.2.9.0
   }
 }
-</verbatim>
+```
 
 Facets can be retrieved through the use of a searcher.
 You first need to specify the facets you want to use by enabling them in the searcher. 
 A typical example is to display facets in the search results:
 
 (updated April 5th)
-<verbatim>
+```
 define searchbar(){
   var query := "";
   form {
@@ -506,4 +544,4 @@ define facetLink(facet: Facet, searcher: ProductSearcher){
       goto search(searcher);
     }
 }
-</verbatim>
+```

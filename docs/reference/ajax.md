@@ -4,7 +4,7 @@ WebDSL provides ajax operations which allow you to easily replace an element or 
 
 ## Ajax Operations
 
-<verbatim>
+```
 replace(target, templatecall);
 append (target, templatecall);
 clear  (target);
@@ -16,7 +16,7 @@ refresh();
 visibility(target, show/hide/toggle);
 
 runscript(String);
-</verbatim>
+```
 
 The most commonly used operation is replace, for example:
 
@@ -78,16 +78,16 @@ Since an ajaxtemplate results in an extra entry point at the server, it must be 
 ## DOM Event Handling
 
 To invoke actions when an HTML event is fired, for example when pressing a key, event attributes can be defined on elements. The syntax of such an attribute is:
-<verbatim>
+```
 <event name> := <action call>
-</verbatim>
+```
 <a href="http://w3schools.com/tags/ref_eventattributes.asp">W3schools.com</a> provides an overview of all available events. 
 
 Example:
-<verbatim>
+```
 "quicksearch: " 
 input(search)[onkeyup := updatesearch(search)]
-</verbatim>
+```
 
 The result is that the `updatesearch` action is invoked on the server.
 

@@ -42,9 +42,12 @@ The following operators are supported:
 * not: <tt>!</tt>
 
 Example:
-<verbatim>if(!(b is a String) && (b in [8, 5] || b + 3 = 7)) {
+
+```
+if(!(b is a String) && (b in [8, 5] || b + 3 = 7)) {
    // ...
-}</verbatim>
+}
+```
 
 **variables**  
 Variables can be accessed by use of their identifiers and their properties using the . notation. Example: <tt>person.lastName</tt>
