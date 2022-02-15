@@ -17,7 +17,7 @@ Data models in WebDSL are defined using *entity* definitions. An entity definiti
 A property consists of 4 parts:
 
 * a name
-* a property kind, which can either be value (::), reference (->) or composite (<>)
+* a property kind, which can either be a primitive value, reference to an entity, or collection of an entity
 
 The difference between reference and composite property kinds is that 
 composite indicates that the referred entity is part of the one referring to it. The only effect this currently has is that composite cascades delete (deleting the entity will also delete the referred entity). 
@@ -300,11 +300,11 @@ A typical scenario where these functions come in handy is a create/edit page for
     entity Page {
       identifier : String  (id, validate(isUniquePage(this), "Identifier is taken")
     }
-    define page createPage(){ 
+    page createPage { 
       var p := Page{}
-      form{
+      form {
         label("Identifier"){input(p.identifier)}
-        action("save",save())
+        submit save() { "save" }
         action save(){
           p.save();
           message("New page created.");
@@ -330,7 +330,7 @@ Example:
     //application global var
     var u_1 := User{username:= "test"}
  
-    page root(){
+    page root {
       navigate(createUser()){ "create" } " "
       navigate(user(u_1)){ "view" } " "
       navigate(editUser(u_1)){ "edit" } " "
