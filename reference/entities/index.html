@@ -1688,7 +1688,7 @@
 <p>A property consists of 4 parts:</p>
 <ul>
 <li>a name</li>
-<li>a property kind, which can either be value (::), reference (-&gt;) or composite (&lt;&gt;)</li>
+<li>a property kind, which can either be a primitive value, reference to an entity, or collection of an entity</li>
 </ul>
 <p>The difference between reference and composite property kinds is that 
 composite indicates that the referred entity is part of the one referring to it. The only effect this currently has is that composite cascades delete (deleting the entity will also delete the referred entity). </p>
@@ -1943,11 +1943,11 @@ entity Super {
 <div class="codehilite"><pre><span></span><code>entity Page {
   identifier : String  (id, validate(isUniquePage(this), &quot;Identifier is taken&quot;)
 }
-define page createPage(){ 
+page createPage { 
   var p := Page{}
-  form{
+  form {
     label(&quot;Identifier&quot;){input(p.identifier)}
-    action(&quot;save&quot;,save())
+    submit save() { &quot;save&quot; }
     action save(){
       p.save();
       message(&quot;New page created.&quot;);
@@ -1971,7 +1971,7 @@ derive CRUD User
 //application global var
 var u_1 := User{username:= &quot;test&quot;}
 
-page root(){
+page root {
   navigate(createUser()){ &quot;create&quot; } &quot; &quot;
   navigate(user(u_1)){ &quot;view&quot; } &quot; &quot;
   navigate(editUser(u_1)){ &quot;edit&quot; } &quot; &quot;
