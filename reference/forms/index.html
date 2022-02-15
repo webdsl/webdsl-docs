@@ -1574,12 +1574,12 @@ input template call:</p>
 <li>Text, WikiText -&gt; textarea</li>
 <li>Bool -&gt; checkbox</li>
 <li>Date, DateTime, Time -&gt; date picker</li>
-<li>List<Entity>, Set<Entity> -&gt; multiselect (bug: List actually requires
+<li>[Entity], {Entity} -&gt; multiselect (bug: List actually requires
 a different type of input, to allow duplicates and control ordering)</li>
 <li>Entity -&gt; select</li>
 </ul>
 <p>For example, to get a checkbox, use:</p>
-<div class="codehilite"><pre><span></span><code>page root(){
+<div class="codehilite"><pre><span></span><code>page root {
  var x : Bool := false
  form{
    input(x)
@@ -1590,7 +1590,7 @@ a different type of input, to allow duplicates and control ordering)</li>
 
 <p>or:</p>
 <div class="codehilite"><pre><span></span><code>entity TestEntity {
- x : Bool
+  x : Bool
 }
 define editTestEntity (e:TestEntity){
  form{
@@ -1709,8 +1709,8 @@ page root {
     table{
       for(u:User){
         output(u.username)
-        select(u.teammate, teammates)
-        select(u.group, groups)
+        input(u.teammate, teammates)
+        input(u.group, groups)
       }
     }
     submit(&quot;save&quot;,action{})
@@ -1730,8 +1730,8 @@ page root {
     table{
       for(u:User){
         output(u.username)
-        select(u.teammate, teammates)
-        select(u.group, groups)
+        input(u.teammate, teammates)
+        input(u.group, groups)
       }
     }
     submit action{ }{ &quot;save&quot; }
