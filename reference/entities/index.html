@@ -1673,15 +1673,15 @@
                 <h1 id="entities">Entities<a class="headerlink" href="#entities" title="Permanent link">&para;</a></h1>
 <p>Data models in WebDSL are defined using <em>entity</em> definitions. An entity definition consists of the entity's name, possibly a super-entity from which it inherits, 0 or more properties and 0 or more entity functions:</p>
 <div class="codehilite"><pre><span></span><code>entity User {
-  name     :: String (length = 25)
-  email    :: Email
-  password :: Secret
-  homepage :: URL
-  pages    -&gt; Set&lt;Page&gt;
-  function checkPassword(s : String) : Bool { 
-    return password.check(s);
+  name     : String (length = 25)
+  email    : Email
+  password : Secret
+  homepage : URL
+  pages    : {Page}
+  function checkPassword( s: String ): Bool { 
+    return password.check( s );
   }
-  predicate sameUser(u:User){ this == u } 
+  predicate sameUser( u: User ){ this == u } 
 }
 </code></pre></div>
 
@@ -1693,7 +1693,7 @@
 <p>The difference between reference and composite property kinds is that 
 composite indicates that the referred entity is part of the one referring to it. The only effect this currently has is that composite cascades delete (deleting the entity will also delete the referred entity). </p>
 <ul>
-<li>a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, Set<Person>, and List<Person>. </li>
+<li>a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, {Person} (set), and [Person] (list). </li>
 </ul>
 <p>For a complete overview of the available types, see [[page(Types)|Types]].</p>
 <ul>
@@ -1701,23 +1701,23 @@ composite indicates that the referred entity is part of the one referring to it.
 </ul>
 <p>An example data model for a blogging site:</p>
 <div class="codehilite"><pre><span></span><code>entity Author {
-  name     :: String
-  email    :: Email
-  password :: Secret
-  posts    -&gt; Set&lt;Post&gt; (inverse=Post.author)
+  name     : String
+  email    : Email
+  password : Secret
+  posts    : {Post} (inverse = author)
 }
 
 entity Post {
-  author   -&gt; Author
-  title    :: String
-  text     :: Text
-  comments -&gt; Set&lt;Comment&gt; (inverse=Comment.post)
+  author   : Author
+  title    : String
+  text     : Text
+  comments : {Comment} (inverse = post)
 }
 
 entity Comment {
-  post     -&gt; Post
-  author   :: String
-  text     :: Text
+  post     : Post
+  author   : String
+  text     : Text
 }
 </code></pre></div>
 
@@ -1757,15 +1757,15 @@ test constructors {
 <h2 id="name-property">Name Property<a class="headerlink" href="#name-property" title="Permanent link">&para;</a></h2>
 <p>The 'name' property is special, it is declared for each entity. By default it is a derived property that simply returns the id of the entity (which is also a special property declared for each entity, id:UUID is set automatically). 
 The name can be customized by declaring a real name property:</p>
-<div class="codehilite"><pre><span></span><code>name :: String
+<div class="codehilite"><pre><span></span><code>name : String
 </code></pre></div>
 
 <p>Or derived name property:</p>
-<div class="codehilite"><pre><span></span><code>name :: String := firstname + lastname
+<div class="codehilite"><pre><span></span><code>name : String := firstname + lastname
 </code></pre></div>
 
 <p>Or by declaring a property as the name using an annotation:</p>
-<div class="codehilite"><pre><span></span><code>someproperty :: String (name)
+<div class="codehilite"><pre><span></span><code>someproperty : String (name)
 </code></pre></div>
 
 <p>The name property is used in <code>input</code> and <code>select</code> template elements to refer to an entity. Example:</p>
@@ -1780,17 +1780,17 @@ init{
 }
 entity User{} 
 entity UserList{
-  users -&gt; List&lt;User&gt;
+  users : [User]
 }
 var globalList := UserList{}
 
-define page root(){
-  for(u:User in globalList.users){
+page root {
+  for( u in globalList.users ){
     output(u.name) //there is always a name property
   }
   form{ 
-    input(globalList.users) //this will show three UUIDs as options
-    submit(&quot;save&quot;,action{})
+    input( globalList.users ) //this will show three UUIDs as options
+    submit action{ }{ &quot;save&quot; }
   }
 }
 </code></pre></div>
@@ -1799,13 +1799,13 @@ define page root(){
 <h2 id="allowed-property-annotation">Allowed Property Annotation<a class="headerlink" href="#allowed-property-annotation" title="Permanent link">&para;</a></h2>
 <p>The <code>allowed</code> annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:</p>
 <div class="codehilite"><pre><span></span><code>entity Person{
-  friends -&gt; Set&lt;Person&gt; (allowed=from Person as p where p != this)
+  friends : {Person} (allowed = from Person as p where p != this)
 }
 var p1 := Person{}
-define page root(){
-  form{
-    input(p1.friends)
-    submit action{} {&quot;save&quot;}
+page root {
+  form {
+    input( p1.friends )
+    submit action{ }{&quot;save&quot;}
   } 
 }
 </code></pre></div>
@@ -1815,10 +1815,10 @@ define page root(){
 <p>Entities can inherit properties and functions from other entities, like subclassing in Object-Oriented programming.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>entity Sub : Super {
-  str :: String
+  str : String
 }
 entity Super {
-  i :: Int
+  i : Int
 }
 function test(){
   var e1 := Sub{ i := 1 str := &quot;sdf&quot; };
@@ -1864,22 +1864,22 @@ entity Super {
 <h2 id="generated-properties-for-entities">Generated Properties for Entities<a class="headerlink" href="#generated-properties-for-entities" title="Permanent link">&para;</a></h2>
 <p>For defined entities, a number of properties are automatically generated.</p>
 <h3 id="id">ID<a class="headerlink" href="#id" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>id :: UUID
+<div class="codehilite"><pre><span></span><code>id : UUID
 </code></pre></div>
 
 <p>The id property is used in the database as key for the objects. The property is can only be read. </p>
 <h3 id="version">Version<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>version :: Int
+<div class="codehilite"><pre><span></span><code>version : Int
 </code></pre></div>
 
 <p>The version property is a hibernate property which auto-increases for an object that is dirty when it is written to the database. </p>
 <h3 id="created">Created<a class="headerlink" href="#created" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>created :: DateTime
+<div class="codehilite"><pre><span></span><code>created : DateTime
 </code></pre></div>
 
 <p>The created property is a generated property which is set on the save of an object also with cascaded saves.</p>
 <h3 id="modified">Modified<a class="headerlink" href="#modified" title="Permanent link">&para;</a></h3>
-<div class="codehilite"><pre><span></span><code>modified :: DateTime
+<div class="codehilite"><pre><span></span><code>modified : DateTime
 </code></pre></div>
 
 <p>The modified property is a generated property which is automatically set on flush of an dirty object.</p>
@@ -1941,7 +1941,7 @@ entity Super {
 <h3 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h3>
 <p>A typical scenario where these functions come in handy is a create/edit page for an entity. In the following example the isUniquePage function is used to verify that the new page has a unique identifier property:</p>
 <div class="codehilite"><pre><span></span><code>entity Page {
-  identifier :: String  (id, validate(isUniquePage(this), &quot;Identifier is taken&quot;)
+  identifier : String  (id, validate(isUniquePage(this), &quot;Identifier is taken&quot;)
 }
 define page createPage(){ 
   var p := Page{}
@@ -1963,7 +1963,7 @@ define page createPage(){
 <div class="codehilite"><pre><span></span><code>application test
 
 entity User {
-  username    :: String
+  username : String
 }
 
 derive CRUD User
@@ -1971,7 +1971,7 @@ derive CRUD User
 //application global var
 var u_1 := User{username:= &quot;test&quot;}
 
-define page root(){
+page root(){
   navigate(createUser()){ &quot;create&quot; } &quot; &quot;
   navigate(user(u_1)){ &quot;view&quot; } &quot; &quot;
   navigate(editUser(u_1)){ &quot;edit&quot; } &quot; &quot;
@@ -1981,19 +1981,19 @@ define page root(){
 
 <p>As the navigates indicate, the pages that are created are:</p>
 <p>view: </p>
-<div class="codehilite"><pre><span></span><code>define page entity(arg:Entity){...}
+<div class="codehilite"><pre><span></span><code>page entity(arg:Entity){...}
 </code></pre></div>
 
 <p>create: </p>
-<div class="codehilite"><pre><span></span><code>define page createEntity(){...}
+<div class="codehilite"><pre><span></span><code>page createEntity(){...}
 </code></pre></div>
 
 <p>edit: </p>
-<div class="codehilite"><pre><span></span><code>define page editEntity(arg:Entity){...}
+<div class="codehilite"><pre><span></span><code>page editEntity(arg:Entity){...}
 </code></pre></div>
 
 <p>manage (delete): </p>
-<div class="codehilite"><pre><span></span><code>define page manageEntity(){...}
+<div class="codehilite"><pre><span></span><code>page manageEntity(){...}
 </code></pre></div>
 
 <p>These pages are particularly useful when you're just constructing the domain model, because the generated pages are usually too generic for a real application.</p>
