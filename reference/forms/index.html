@@ -939,11 +939,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#select" class="md-nav__link">
-    Select
+  <a href="#input-for-entity" class="md-nav__link">
+    input for Entity
   </a>
   
-    <nav class="md-nav" aria-label="Select">
+    <nav class="md-nav" aria-label="input for Entity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1489,11 +1489,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#select" class="md-nav__link">
-    Select
+  <a href="#input-for-entity" class="md-nav__link">
+    input for Entity
   </a>
   
-    <nav class="md-nav" aria-label="Select">
+    <nav class="md-nav" aria-label="input for Entity">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1549,8 +1549,8 @@
                 <h1 id="forms">Forms<a class="headerlink" href="#forms" title="Permanent link">&para;</a></h1>
 <p>The <code>form</code> element enables user input, and should include <code>submit</code> or <code>submitlink</code> elements to handle that user input. When pressing such a submit button/link, data binding will be performed for all inputs in the form.</p>
 <div class="codehilite"><pre><span></span><code>form {
-  var name : String
-  var pass : Secret
+  var name: String
+  var pass: Secret
 
   label(&quot;Username:&quot;){ input(name) }
   label(&quot;Password:&quot;){ input(pass) }
@@ -1579,7 +1579,7 @@ a different type of input, to allow duplicates and control ordering)</li>
 <li>Entity -&gt; select</li>
 </ul>
 <p>For example, to get a checkbox, use:</p>
-<div class="codehilite"><pre><span></span><code>define root(){
+<div class="codehilite"><pre><span></span><code>page root(){
  var x : Bool := false
  form{
    input(x)
@@ -1590,7 +1590,7 @@ a different type of input, to allow duplicates and control ordering)</li>
 
 <p>or:</p>
 <div class="codehilite"><pre><span></span><code>entity TestEntity {
- x :: Bool
+ x : Bool
 }
 define editTestEntity (e:TestEntity){
  form{
@@ -1602,18 +1602,18 @@ define editTestEntity (e:TestEntity){
 
 <h2 id="page-variables">Page Variables<a class="headerlink" href="#page-variables" title="Permanent link">&para;</a></h2>
 <p>Page and template definitions can contain variables. This example displays "Dexter":</p>
-<div class="codehilite"><pre><span></span><code>define page cat() {
+<div class="codehilite"><pre><span></span><code>page cat {
   var c := Cat { name := &quot;Dexter&quot; }
   output(c.name)
 }
 
 entity Cat {
-  name :: String
+  name : String
 }
 </code></pre></div>
 
 <p>These variables are necessary when constructing a page that creates a new entity instance. The instance can be created in the variable and data binding can be used for the input page elements. The next example allows new cat entity instances to be created, and the default name in the input form is "Dexter":</p>
-<div class="codehilite"><pre><span></span><code>define page newCat() {
+<div class="codehilite"><pre><span></span><code>page newCat {
   var c := Cat { name := &quot;Dexter&quot; }
   form{
     label(&quot;Cat&#39;s name:&quot;){ input(c.name) }
@@ -1623,7 +1623,7 @@ entity Cat {
 </code></pre></div>
 
 <p>It is possible to initialize such a page/template variable with arbitrary statments using an 'init' action:</p>
-<div class="codehilite"><pre><span></span><code>define page newCat() {
+<div class="codehilite"><pre><span></span><code>page newCat {
   var c
   init {
     c := Cat{};
@@ -1638,7 +1638,7 @@ entity Cat {
 
 <p>Be aware that these type of variables (and the init blocks) are handled separately from the other elements. They do not adhere to template control flow constructs like 'if' and 'for'; they are extracted from the definition. However, you can express such functionality in the 'init' block. For example:</p>
 <p>error:</p>
-<div class="codehilite"><pre><span></span><code>define page bad() {
+<div class="codehilite"><pre><span></span><code>page bad {
   if(someConditionFunction()){
     var c := Cat{}
   }
@@ -1650,7 +1650,7 @@ entity Cat {
 </code></pre></div>
 
 <p>ok:</p>
-<div class="codehilite"><pre><span></span><code>define page good() {
+<div class="codehilite"><pre><span></span><code>page good {
   var c
   init{ 
     if(someConditionFunction()){
@@ -1664,19 +1664,19 @@ entity Cat {
 }
 </code></pre></div>
 
-<h2 id="select">Select<a class="headerlink" href="#select" title="Permanent link">&para;</a></h2>
-<p><code>select(x, y)</code> can be used as input for an entity variable or for a collection of entities variable, where <code>x</code> is the variable or fieldaccess and <code>y</code> is the collection of options. It will create a dropdown box/select or a multi-select respectively. The <code>name</code> property of an entity is used to describe the entity in a select, see [[singlepage(nameproperty)| name property]].</p>
+<h2 id="input-for-entity">input for Entity<a class="headerlink" href="#input-for-entity" title="Permanent link">&para;</a></h2>
+<p><code>input(x, y)</code> can be used as input for an entity variable or for a collection of entities variable, where <code>x</code> is the variable or fieldaccess and <code>y</code> is the collection of options. It will create a dropdown box/select or a multi-select respectively. The <code>name</code> property of an entity is used to describe the entity in a select, see [[singlepage(nameproperty)| name property]].</p>
 <p><code>input(x)</code> for an entity reference property or a collection property is the same as <code>select</code>, with as options all entities of its type that are in the database.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>entity User {
-  username :: String (name)
-  teammate -&gt; User
-  group -&gt; Set&lt;Group&gt;
+  username : String (name)
+  teammate : User
+  group : {Group}
 }
 entity Group {
-  groupname :: String (name)
+  groupname : String (name)
 }
-init{ //application init
+init { // application init
   var u := User { username := &quot;Alice&quot; };
   u.save();
   u := User { username := &quot;Bob&quot;};
@@ -1686,10 +1686,10 @@ init{ //application init
   g := Group { groupname := &quot;group 2&quot; };
   g.save();
 }
-define page root(){
+page root {
   form{
     table{
-      for(u:User){
+      for( u: User ){
         output(u.username)
         input(u.teammate)
         input(u.group)
@@ -1702,7 +1702,7 @@ define page root(){
 
 <p><code>input(u.teammate)</code> is a dropdown/select with options <code>null</code>, "Alice", "Bob". <code>input(u.group)</code> is a multi-select with options "group 1" and "group 2".</p>
 <p>Example 2:</p>
-<div class="codehilite"><pre><span></span><code>define page root(){
+<div class="codehilite"><pre><span></span><code>page root {
   var teammates := from User
   var groups := from Group
   form{
@@ -1723,7 +1723,7 @@ define page root(){
 <div class="codehilite"><pre><span></span><code>var u3 := User { username:=&quot;Dave&quot; }
 var g3 := Group { groupname:=&quot;group 3&quot; }
 
-define page root(){
+page root {
   var teammates := [u3]
   var groups := {g3}
   form{
@@ -1734,7 +1734,7 @@ define page root(){
         select(u.group, groups)
       }
     }
-    submit(&quot;save&quot;,action{})
+    submit action{ }{ &quot;save&quot; }
   }
 }
 </code></pre></div>
@@ -1742,28 +1742,28 @@ define page root(){
 <p>Options are restricted in this example, <code>null</code> and "Dave" for <code>select(u.teammate, teammates)</code> and only "group 3" for <code>select(u.group, groups)</code></p>
 <h3 id="null">Null<a class="headerlink" href="#null" title="Permanent link">&para;</a></h3>
 <p>The <code>null</code> option for a select can be removed either by a <code>not null</code> annotation on the property:</p>
-<div class="codehilite"><pre><span></span><code>teammate -&gt; User (not null)
+<div class="codehilite"><pre><span></span><code>teammate : User (not null)
 </code></pre></div>
 
 <p>Or by setting <code>[not null]</code> on the <code>input</code> or <code>select</code> itself:</p>
 <div class="codehilite"><pre><span></span><code>input(u.teammate)[not null]
-select(u.teammate, teammates)[not null]
+input(u.teammate, teammates)[not null]
 </code></pre></div>
 
 <h3 id="allowed">Allowed<a class="headerlink" href="#allowed" title="Permanent link">&para;</a></h3>
 <p>The possible options can also be determined using an annotation on the property:</p>
-<div class="codehilite"><pre><span></span><code>group -&gt; Set&lt;Group&gt; (allowed = {g3})
+<div class="codehilite"><pre><span></span><code>group : {Group} (allowed = {g3})
 </code></pre></div>
 
 <p>In this case just using <code>input(u.group)</code> will only show "group 3"</p>
 <h2 id="radio-buttons">Radio Buttons<a class="headerlink" href="#radio-buttons" title="Permanent link">&para;</a></h2>
 <p>Radio buttons can be used as an alternative to <code>select</code> for selecting an entity from a list of entities. The <code>name</code> property, or the property with <code>name</code> annotation, will be used as a label for the corresponding radio button.</p>
-<div class="codehilite"><pre><span></span><code>entity Person{
-  name :: String
-  parent -&gt; Person
+<div class="codehilite"><pre><span></span><code>entity Person {
+  name   : String
+  parent : Person
 }
 
-define page editPerson(p:Person){
+page editPerson(p:Person){
   radio(p.parent, getPersonList())
 }
 </code></pre></div>
@@ -1771,7 +1771,7 @@ define page editPerson(p:Person){
 <h2 id="captcha">Captcha<a class="headerlink" href="#captcha" title="Permanent link">&para;</a></h2>
 <p>The <code>captcha</code> element creates a fully automatic <a href="http://en.wikipedia.org/wiki/CAPTCHA">CAPTCHA</a> form element.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page root(){
+<div class="codehilite"><pre><span></span><code>page root {
   var i : Int
   form{
     input(i)
