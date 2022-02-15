@@ -1786,12 +1786,12 @@
                 
                 <h1 id="pages">Pages<a class="headerlink" href="#pages" title="Permanent link">&para;</a></h1>
 <p>Pages in WebDSL can be defined using the following construct:  </p>
-<div class="codehilite"><pre><span></span><code> define page [pagename]( [page-arguments]* ){ [page-elements]* }
+<div class="codehilite"><pre><span></span><code> page [pagename]( [page-arguments]* ){ [page-elements]* }
 </code></pre></div>
 
 <p>There are basic output elements for structure and layout of the page, such as <code>title</code> and <code>header</code>. </p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page root() {
+<div class="codehilite"><pre><span></span><code>page root {
   title { &quot;Page title&quot; }
   section {
     header{ &quot;Hello world.&quot; }  
@@ -1803,7 +1803,7 @@
 <h2 id="page-parameters">Page Parameters<a class="headerlink" href="#page-parameters" title="Permanent link">&para;</a></h2>
 <p>Pages can have parameters, and <code>output</code> is used for inserting data values. </p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page user(u : User) {
+<div class="codehilite"><pre><span></span><code>page user(u : User) {
   &quot;The name of this user is &quot; output(u.name)
 }
 </code></pre></div>
@@ -1811,7 +1811,7 @@
 <h2 id="input-forms">Input Forms<a class="headerlink" href="#input-forms" title="Permanent link">&para;</a></h2>
 <p>The <code>form</code> element in combination with <code>submit</code> is used for submitting data. <code>input</code> elements perform automatic data binding upon submit. For more information about forms, go to the [[page(form)|Form page]].</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page editUser(u:User){
+<div class="codehilite"><pre><span></span><code>page editUser(u:User){
   form{
     input(u.name)
     submit action{} { &quot;save&quot; } 
@@ -1822,10 +1822,10 @@
 <h2 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h2>
 <p>Pages can be made reusable by declaring them as template, and calling them from other pages or templates.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define common(){
+<div class="codehilite"><pre><span></span><code>template common(){
   header{ &quot;my page&quot; }
 }
-define page root(){
+page root(){
   common()
 }
 </code></pre></div>
@@ -1833,14 +1833,14 @@ define page root(){
 <h2 id="output">Output<a class="headerlink" href="#output" title="Permanent link">&para;</a></h2>
 <p>The <code>output(&lt;expression&gt;)</code> template call is used to display a value in a page. It can also be used with Entity type expressions, and collections.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page user(u:User){
+<div class="codehilite"><pre><span></span><code>page user(u:User){
   output(u)
 }
 </code></pre></div>
 
 <p>The <code>output</code> template can be customized for each entity type.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define output(u:User){
+<div class="codehilite"><pre><span></span><code>template output(u:User){
   &quot;user with name: &quot; output(u.name)
 }
 </code></pre></div>
@@ -1878,7 +1878,7 @@ define page root(){
 
 <p>Displays an image. Images placed in an "images" folder in the root directory of your application will be automatically copied during deployment.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page root(){
+<div class="codehilite"><pre><span></span><code>page root(){
   image(&quot;https://webdsl.org/webdslorg/images/WebDSL-small.png&quot;) 
   image(&quot;/images/WebDSL-small.png&quot;) 
 }
@@ -1911,47 +1911,47 @@ block(String){ &lt;page element*&gt; }
 <p>Groups text; optionally defines a class for referencing in CSS. Results in a &lt;div&gt; element in HTML.</p>
 <h2 id="templates_1">Templates<a class="headerlink" href="#templates_1" title="Permanent link">&para;</a></h2>
 <p>Templates enable reuse of page elements. For example, a template for a footer could be:</p>
-<div class="codehilite"><pre><span></span><code>define footer() { All your page are belong to us. }
+<div class="codehilite"><pre><span></span><code>template footer() { All your page are belong to us. }
 </code></pre></div>
 
 <p>This template can be included in a page with a template call: </p>
-<div class="codehilite"><pre><span></span><code>define page example(){
+<div class="codehilite"><pre><span></span><code>page example(){
   footer
 }
 </code></pre></div>
 
 <p>Like pages, templates can be parameterized.</p>
-<div class="codehilite"><pre><span></span><code>define edit(g:Group){
+<div class="codehilite"><pre><span></span><code>template edit(g:Group){
   form {
     input(g.members)
     action(&quot;save&quot;,action{})
   } 
 }
 
-define page editGroup(g:Group){
+page editGroup(g:Group){
   edit(g)
 }
 </code></pre></div>
 
 <h3 id="overloading">Overloading<a class="headerlink" href="#overloading" title="Permanent link">&para;</a></h3>
 <p>While pages must have unique names, templates can be overloaded. The overloading is resolved compile-time, based on the static types of the arguments.</p>
-<div class="codehilite"><pre><span></span><code>define edit(g:Group){...}
-define edit(u:User){...}
+<div class="codehilite"><pre><span></span><code>template edit(g:Group){...}
+template edit(u:User){...}
 
-define page editGroup(g:Group){
+page editGroup(g:Group){
   edit(g)
 }
 </code></pre></div>
 
 <h3 id="dynamically-scoped-templates-redefinitions">Dynamically scoped templates redefinitions<a class="headerlink" href="#dynamically-scoped-templates-redefinitions" title="Permanent link">&para;</a></h3>
 <p>Template definitions can be redefined locally in a page or template, to change their meaning in that specific context. All uses are replaced in templates called from the redefining template.</p>
-<div class="codehilite"><pre><span></span><code>define main{
+<div class="codehilite"><pre><span></span><code>template main{
   body()
 }
-define body(){
+template body(){
   &quot;default body&quot;
 }
-define page root(){
+page root(){
   main
   define body(){
     &quot;custom body&quot;
@@ -2011,7 +2011,7 @@ define page root(){
 <p>Each of the four parts is optional, but they have to be specified in this order. The filtering is done in the application, so use queries instead of filters to optimize the WebDSL application.</p>
 <h2 id="xml-embedding">XML Embedding<a class="headerlink" href="#xml-embedding" title="Permanent link">&para;</a></h2>
 <p>XML fragments can be embedded directly in templates. This allows easy reuse of existing XHTML fragments and CSS. For example: </p>
-<div class="codehilite"><pre><span></span><code>define main() {
+<div class="codehilite"><pre><span></span><code>template main() {
   &lt;div id=&quot;pagewrapper&quot;&gt;
     &lt;div id=&quot;header&quot;&gt;
       header()
@@ -2025,7 +2025,7 @@ define page root(){
 </code></pre></div>
 
 <p>While the name and attribute names are fixed, the attribute values can be any WebDSL expression that produces a string:</p>
-<div class="codehilite"><pre><span></span><code>define test(i : Int) {
+<div class="codehilite"><pre><span></span><code>template test(i : Int) {
   &lt;div id=&quot;page&quot; + &quot;wrapper&quot; + i /&gt;
 }
 </code></pre></div>
@@ -2033,21 +2033,21 @@ define page root(){
 <h2 id="include-css">Include CSS<a class="headerlink" href="#include-css" title="Permanent link">&para;</a></h2>
 <p>The <code>includeCSS(String)</code> template call allows you to include a CSS file in the resulting page. CSS files can be included in your project by placing them in a stylesheets/ directory in the project root.</p>
 <p>Example 1:</p>
-<div class="codehilite"><pre><span></span><code>define page root() {
+<div class="codehilite"><pre><span></span><code>page root() {
   includeCSS(&quot;dropdownmenu.css&quot;)
 }
 </code></pre></div>
 
 <p>It is also possible to include a CSS file using an absolute URL. </p>
 <p>Example 2:</p>
-<div class="codehilite"><pre><span></span><code>define page root() {
+<div class="codehilite"><pre><span></span><code>page root() {
   includeCSS(&quot;https://webdsl.org/stylesheets/common_.css&quot;)
 }
 </code></pre></div>
 
 <p>The media attribute can be set by passing it as second argument in <code>includeCSS(String,String)</code></p>
 <p>Example 3:</p>
-<div class="codehilite"><pre><span></span><code>define page root(){
+<div class="codehilite"><pre><span></span><code>page root(){
   includeCSS(&quot;https://webdsl.org/stylesheets/common_.css&quot;,&quot;screen&quot;)
 }
 </code></pre></div>
@@ -2055,14 +2055,14 @@ define page root(){
 <h2 id="include-javascipt">Include Javascipt<a class="headerlink" href="#include-javascipt" title="Permanent link">&para;</a></h2>
 <p>The <code>includeJS(String)</code> template call allows you to include a javascript file in the resulting page. Javascript files can be included in your project by placing them in a javascript/ directory in the project root.</p>
 <p>Example 1:</p>
-<div class="codehilite"><pre><span></span><code>define page root() {
+<div class="codehilite"><pre><span></span><code>page root() {
   includeJS(&quot;sdmenu.js&quot;)
 }
 </code></pre></div>
 
 <p>It is also possible to include a Javascript file using an absolute URL. </p>
 <p>Example 2:</p>
-<div class="codehilite"><pre><span></span><code>define page root() {
+<div class="codehilite"><pre><span></span><code>page root() {
   includeJS(&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js&quot;)
 }
 </code></pre></div>
@@ -2070,7 +2070,7 @@ define page root(){
 <h2 id="page-not-found-error">Page Not Found Error<a class="headerlink" href="#page-not-found-error" title="Permanent link">&para;</a></h2>
 <p>When an invalid URL is being requested from a WebDSL application, the default response is to give a 404 error. To customize this error page, define a <code>pagenotfound</code> page in your application.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page pagenotfound() {
+<div class="codehilite"><pre><span></span><code>page pagenotfound() {
   title{ &quot;myapp / page not found (404)&quot; }
   main()
   define body() {
@@ -2093,7 +2093,7 @@ define page root(){
 
 <p><code>attrname</code> is an attribute name, and <code>e</code> is a webdsl expression such as <code>"foo"</code> or <code>"foo"+bar</code>.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define page root(){ 
+<div class="codehilite"><pre><span></span><code>page root(){ 
   var somevalue := &quot;lo&quot;
   image(&quot;/images/logosmall.png&quot;)[alt = somevalue+&quot;go&quot;, longdesc = &quot;blablabla&quot;]
   navigate root()[title = &quot;root page&quot;]{ &quot;root&quot; }
@@ -2102,7 +2102,7 @@ define page root(){
 
 <h2 id="override-modifier">Override Modifier<a class="headerlink" href="#override-modifier" title="Permanent link">&para;</a></h2>
 <p>Template and page definitions can be overridden using the <code>override</code> modifier, e.g. to override a built-in page such as <code>pagenotfound</code>:</p>
-<div class="codehilite"><pre><span></span><code>define override page pagenotfound(){
+<div class="codehilite"><pre><span></span><code>override page pagenotfound(){
   &quot;page does not exist!&quot;
 }
 </code></pre></div>
