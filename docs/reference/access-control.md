@@ -14,8 +14,8 @@ login template). The resulting generated session entity will be:
 
     session securityContext
     {
-      principal -> User
-      loggedIn :: Bool := this.principal != null
+      principal : User
+      loggedIn : Bool := this.principal != null
     }
 
 Note that this principal declaration is used to enable access control in the application.
@@ -28,15 +28,15 @@ Authentication can be added manually, instead of using the generated authenticat
 
      principal is User with credentials name, password
   
-    entity User{
-      name :: String
-      password :: Secret
+    entity User {
+      name : String
+      password : Secret
     }
   
-    define login(){
+    template login {
       var username := ""
       var password : Secret := ""
-      form{ 
+      form { 
         label("Name: "){ input(username) }
         label("Password: "){ input(password) }
         captcha()
@@ -49,7 +49,7 @@ Authentication can be added manually, instead of using the generated authenticat
       }
     }
   
-    define logout(){
+    template logout {
       "Logged in as " output(securityContext.principal)
       form{
         submitlink logout() {"Log Out"}
@@ -59,13 +59,13 @@ Authentication can be added manually, instead of using the generated authenticat
       }
     }
       
-    define page root(){
+    page root {
       login()
       " "
       logout()
     }
     
-    init{
+    init {
       var u1 : User := 
         User{ name := "test" password := ("test" as Secret).digest() };
       u1.save();
@@ -182,33 +182,6 @@ better structure to the policy implementation. An example of a predicate:
   }
 ```
 
-Pointcuts are groups of resources to which conditions can be specified at once.
-Especially the open parts of the web application are easy to handle with
-pointcuts, an example:
-```
-  pointcut openSections(){
-    page home(),
-    page createDocument(),
-    page createUser(),
-    page viewUser(*)
-  }
-  rule pointcut openSections(){
-    true
-  }
-```
-Pointcuts can also be used with parameters:
-```
-  pointcut ownUserSections(u:User){
-    page showUser(u),
-    page viewUser(u),
-    page someUserTask(u,*)
-  }
-  rule pointcut ownUserSections(u:User){
-    u == principal
-  }
-```
-Note that each parameter must be used in each pointcut element, this indicates the value to be used as argument for the pointcut check. A wildcard * can follow to indicate that there may be additional arguments.
-
 ## Inferring Visibility
 
 A disabled page or action redirects to a very simple page stating access denied.
@@ -231,7 +204,7 @@ An example of extending an entity is adding a set of users property to a documen
 the users allowed access to that document:
 ```
   extend entity Document{
-    allowedUsers -> Set<User>
+    allowedUsers : {User}
   }
 ```
 
@@ -242,7 +215,7 @@ All the data of the Access Control policy is integrated into the WebDSL
 application. An option is to incorporate the administration into an existing page with a
 template. This example illustrates the use of a template for administration:
 ```
-  define allowedUsersRow(document:Document){
+  template allowedUsersRow(document:Document){
     row{ "Allowed Users:" input(document.allowedUsers) }
   }
 ```
@@ -263,22 +236,22 @@ including the access control definitions and the template. The unresolved templa
 	application minimalac
 	
 	  entity User {
-	  	name :: String
-	  	password :: Secret
+	  	name : String
+	  	password : Secret
 	  }
 	  
-	  init{
+	  init {
 	  	var u := User{ name := "1" password := ("1" as Secret).digest()  };
 	  	u.save();
 	  }
 	  
-	  define page root(){
+	  page root {
 	  	authentication()
 	  	" "
 	  	navigate protectedPage() { "go" }
 	  }
 	  
-	  define page protectedPage(){ "access granted" }
+	  page protectedPage { "access granted" }
 	  
 	  principal is User with credentials name, password
 	  
