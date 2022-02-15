@@ -29,13 +29,13 @@ input template call:
 * Text, WikiText -> textarea
 * Bool -> checkbox
 * Date, DateTime, Time -> date picker
-* List<Entity>, Set<Entity> -> multiselect (bug: List actually requires
+* [Entity], {Entity} -> multiselect (bug: List actually requires
 a different type of input, to allow duplicates and control ordering)
 * Entity -> select
 
 For example, to get a checkbox, use:
 
-    page root(){
+    page root {
      var x : Bool := false
      form{
        input(x)
@@ -46,7 +46,7 @@ For example, to get a checkbox, use:
 or:
 
     entity TestEntity {
-     x : Bool
+      x : Bool
     }
     define editTestEntity (e:TestEntity){
      form{
@@ -172,8 +172,8 @@ Example 2:
         table{
           for(u:User){
             output(u.username)
-            select(u.teammate, teammates)
-            select(u.group, groups)
+            input(u.teammate, teammates)
+            input(u.group, groups)
           }
         }
         submit("save",action{})
@@ -194,8 +194,8 @@ Example 3:
         table{
           for(u:User){
             output(u.username)
-            select(u.teammate, teammates)
-            select(u.group, groups)
+            input(u.teammate, teammates)
+            input(u.group, groups)
           }
         }
         submit action{ }{ "save" }
