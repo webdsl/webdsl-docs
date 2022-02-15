@@ -1561,8 +1561,8 @@ The credentials are not used in the current implementation (the idea is to deriv
 login template). The resulting generated session entity will be:</p>
 <div class="codehilite"><pre><span></span><code>session securityContext
 {
-  principal -&gt; User
-  loggedIn :: Bool := this.principal != null
+  principal : User
+  loggedIn : Bool := this.principal != null
 }
 </code></pre></div>
 
@@ -1572,15 +1572,15 @@ login template). The resulting generated session entity will be:</p>
 <p>Authentication can be added manually, instead of using the generated authentication templates. Here is a small example application with custom authentication:</p>
 <div class="codehilite"><pre><span></span><code> principal is User with credentials name, password
 
-entity User{
-  name :: String
-  password :: Secret
+entity User {
+  name : String
+  password : Secret
 }
 
-define login(){
+template login {
   var username := &quot;&quot;
   var password : Secret := &quot;&quot;
-  form{ 
+  form { 
     label(&quot;Name: &quot;){ input(username) }
     label(&quot;Password: &quot;){ input(password) }
     captcha()
@@ -1593,7 +1593,7 @@ define login(){
   }
 }
 
-define logout(){
+template logout {
   &quot;Logged in as &quot; output(securityContext.principal)
   form{
     submitlink logout() {&quot;Log Out&quot;}
@@ -1603,13 +1603,13 @@ define logout(){
   }
 }
 
-define page root(){
+page root {
   login()
   &quot; &quot;
   logout()
 }
 
-init{
+init {
   var u1 : User := 
     User{ name := &quot;test&quot; password := (&quot;test&quot; as Secret).digest() };
   u1.save();
@@ -1711,30 +1711,6 @@ better structure to the policy implementation. An example of a predicate:
     mayViewDocument(principal,d)
   }
 </code></pre></div></p>
-<p>Pointcuts are groups of resources to which conditions can be specified at once.
-Especially the open parts of the web application are easy to handle with
-pointcuts, an example:
-<div class="highlight"><pre><span></span><code>  pointcut openSections(){
-    page home(),
-    page createDocument(),
-    page createUser(),
-    page viewUser(*)
-  }
-  rule pointcut openSections(){
-    true
-  }
-</code></pre></div>
-Pointcuts can also be used with parameters:
-<div class="highlight"><pre><span></span><code>  pointcut ownUserSections(u:User){
-    page showUser(u),
-    page viewUser(u),
-    page someUserTask(u,*)
-  }
-  rule pointcut ownUserSections(u:User){
-    u == principal
-  }
-</code></pre></div>
-Note that each parameter must be used in each pointcut element, this indicates the value to be used as argument for the pointcut check. A wildcard * can follow to indicate that there may be additional arguments.</p>
 <h2 id="inferring-visibility">Inferring Visibility<a class="headerlink" href="#inferring-visibility" title="Permanent link">&para;</a></h2>
 <p>A disabled page or action redirects to a very simple page stating access denied.
 Since this is not very user friendly, the visibility of navigate links and action 
@@ -1751,7 +1727,7 @@ and control the visibility by a rule on the template.</p>
 An example of extending an entity is adding a set of users property to a document representing 
 the users allowed access to that document:
 <div class="highlight"><pre><span></span><code>  extend entity Document{
-    allowedUsers -&gt; Set&lt;User&gt;
+    allowedUsers : {User}
   }
 </code></pre></div></p>
 <h2 id="administration-of-access-control">Administration of Access Control<a class="headerlink" href="#administration-of-access-control" title="Permanent link">&para;</a></h2>
@@ -1759,7 +1735,7 @@ the users allowed access to that document:
 All the data of the Access Control policy is integrated into the WebDSL
 application. An option is to incorporate the administration into an existing page with a
 template. This example illustrates the use of a template for administration:
-<div class="highlight"><pre><span></span><code>  define allowedUsersRow(document:Document){
+<div class="highlight"><pre><span></span><code>  template allowedUsersRow(document:Document){
     row{ &quot;Allowed Users:&quot; input(document.allowedUsers) }
   }
 </code></pre></div>
@@ -1777,22 +1753,22 @@ including the access control definitions and the template. The unresolved templa
 <div class="codehilite"><pre><span></span><code>application minimalac
 
   entity User {
-    name :: String
-    password :: Secret
+    name : String
+    password : Secret
   }
 
-  init{
+  init {
     var u := User{ name := &quot;1&quot; password := (&quot;1&quot; as Secret).digest()  };
     u.save();
   }
 
-  define page root(){
+  page root {
     authentication()
     &quot; &quot;
     navigate protectedPage() { &quot;go&quot; }
   }
 
-  define page protectedPage(){ &quot;access granted&quot; }
+  page protectedPage { &quot;access granted&quot; }
 
   principal is User with credentials name, password
 
