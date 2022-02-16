@@ -106,7 +106,7 @@ Inverse annotations can cause problems due to save cascading in WebDSL, if an in
 
 ### Important Note 2: data validation
 
-Don't use WebDSL's data validation described on the [[selectpage(Manual/Validation)|Validation]] page in combination with this example, because validation is done with custom code here. Data validation will be integrated with ajax to more easily get the result that is implemented in this example.
+Don't use WebDSL's data validation described on the [Validation](../validation) page in combination with this example, because validation is done with custom code here. Data validation will be integrated with ajax to more easily get the result that is implemented in this example.
 
 We're going to create an edit page for a `Person` entity:
 
@@ -117,7 +117,7 @@ We're going to create an edit page for a `Person` entity:
 	  children    : Set<Person>
 	}
 
-The name annotation indicates that the `username` is used to refer to the Person entity in select inputs, such as those for the `parents` and `children` property, see [[selectpage(Entities/nameproperty)|name property page]].
+The name annotation indicates that the `username` is used to refer to the Person entity in select inputs, such as those for the `parents` and `children` property, see the [Name Property](../entities#name-property) page.
 
 The `root` page includes a `personedit` template and passes it a new `Person` object.
 

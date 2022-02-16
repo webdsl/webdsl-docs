@@ -15,7 +15,7 @@ login template). The resulting generated session entity will be:
     session securityContext
     {
       principal : User
-      loggedIn : Bool := this.principal != null
+      loggedIn  : Bool := this.principal != null
     }
 
 Note that this principal declaration is used to enable access control in the application.
@@ -36,12 +36,14 @@ Authentication can be added manually, instead of using the generated authenticat
     template login {
       var username := ""
       var password : Secret := ""
+
       form { 
         label("Name: "){ input(username) }
         label("Password: "){ input(password) }
         captcha()
-        submit login() {"Log In"}
+        submit login() { "Log In" }
       }
+
       action login(){
         validate(authenticate(username,password), 
           "The login credentials are not valid.");

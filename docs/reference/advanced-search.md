@@ -58,7 +58,7 @@ Prefix a <code>mapping specification</code> with the plus sign if you want this 
 Search mappings belong to an entity and can be placed inside an entity declaration, or somewhere else by adding the entity name. Names of the search fields are scoped to entities, so different entities may share the same names for search fields.
 
 ```
-//Embedded search mapping
+// Embedded search mapping
 entity Message {
   subject  : String
   text     : Text
@@ -76,7 +76,7 @@ entity Message {
 ```
 
 ```
-//External search mapping
+// External search mapping
 entity ForumUser : User {
   forumName : String
   forumPwd  : Secret
@@ -92,7 +92,7 @@ search mapping ForumUser {
 
 Search fields can also be specified using property annotations:
 ```
-//Using searchable annotations
+// Using searchable annotations
 entity Message {
   subject  : String (searchable)
   text     : Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)

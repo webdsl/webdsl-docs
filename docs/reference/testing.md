@@ -50,7 +50,7 @@ or
 
 where 'test-web' will automatically create an application.ini and 'check-web' will use an existing one.
 
-These commands start up tomcat and run the tests. Tests are currently expressed by calls to WebDriver with HTMLUnit behind it (a better abstraction specific to WebDSL tests is planned, current web testing is mainly to support testing the compiler). The interface is described here (see [[selectpage(Manual/NativeClass)|Native Class]]):
+These commands start up tomcat and run the tests. Tests are currently expressed by calls to WebDriver with HTMLUnit behind it (a better abstraction specific to WebDSL tests is planned, current web testing is mainly to support testing the compiler). The interface is described here (see [Native Java Interface](../native-java-interface)):
 
     https://svn.strategoxt.org/repos/WebDSL/webdsls/trunk/src/org/webdsl/dsl/languages/test/native-classes.str
 

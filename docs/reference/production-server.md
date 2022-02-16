@@ -49,9 +49,9 @@ to generate a thread dump in the catalina.out log.
 MySQL
 ----
 
-See [[selectpage(Manual/mysql)|MySQL]] section.
+See the [MySQL](../mysql) page.
 
 Lightweight VPS
 ----
 
-See [[selectpage(Manual/lightweight-server)|Lightweight VPS]] section, also contains step-by-step installation.
+See the [Lightweight VPS](../lightweight-vps) page, it also contains a step-by-step installation guide.

@@ -40,7 +40,7 @@ Validation can be specified directly in pages:
               validate(u.password == p, "Password does not match") 
             } 
           } 
-          action("Save", action{ } ) 
+          submit action {} { "Save" }
         } 
       }
     } 
@@ -53,7 +53,8 @@ Validation can be specified in actions:
         group("User Group") { 
         label("Name") { input(ug.name) } 
         label("Owner") { input(ug.owner) } 
-        action("Save", save()) } } 
+        submit save() { "Save" }
+
         action save() { 
           validate(email(newGroupNotify(ug)),"Owner could not be notified by email"); 
           return userGroup(ug); 

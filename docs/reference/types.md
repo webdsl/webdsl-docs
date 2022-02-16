@@ -97,7 +97,7 @@ Returns a list of strings produced by splitting this string around matches of **
 
 **makePatch(new : String):Patch**
 
-Creates a Patch from this String to the **new** String, see [[page(Patch)|Patch type]].
+Creates a Patch from this String to the **new** String, see [Patch](#patch).
 
 **diff(new : String):List<String>**
 
@@ -366,7 +366,7 @@ A String can also be cast to a Secret:
 
 ### Functions
 
-**all [[page(String)|String]] functions**
+**all [String](#string) functions**
 
 Secret is compatible with String.
 
@@ -395,7 +395,7 @@ Example:
 
 ## Email
 
-Represents an e-mail address as a string. If you are interested in sending email from your application, have a look at the [SendEmail](https://webdsl.org/selectpage/Manual/SendEmail) page. The page input for an Email is a textfield with the following validation: 
+Represents an e-mail address as a string. If you are interested in sending email from your application, have a look at the [Send Email](../send-email) page. The page input for an Email is a textfield with the following validation: 
 
     validate(/[a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?/.match(this), "Not a valid email address")
 
@@ -420,7 +420,7 @@ A String can also be cast to an Email:
 
 ### Functions
 
-**all [[page(String)|String]] functions**
+**all [String](#string) functions**
 
 Email is compatible with String.
 
@@ -449,7 +449,7 @@ A String can also be cast to a Text:
 
 ### Functions
 
-**all [[page(String)|String]] functions**
+**all [String](#string) functions**
 
 Text is compatible with String.
 
@@ -458,7 +458,7 @@ Text is compatible with String.
 ## WikiText
 
 Represents a large string with [Markdown](http://daringfireball.net/projects/markdown/syntax) syntax support and internal page links.
-Internal page links in WikiText can be created using [[ page(arg)|caption ]] (remove the spaces).
+Internal page links in WikiText can be created using `[[page(arg)|caption]]`.
 
 The page input for WikiText is a textarea. The page output for WikiText processes the Markdown and page links and produces html elements.
 
@@ -481,7 +481,7 @@ A String can also be cast to a WikiText:
 
 ### Functions
 
-**all [[page(String)|String]] functions**
+**all [String](#string) functions**
 
 WikiText is compatible with String.
 
@@ -510,7 +510,7 @@ A String can also be cast to a Patch:
 
 ### Functions
 
-**all [[page(String)|String]] functions**
+**all [String](#string) functions**
 
 Patch is compatible with String.
 
@@ -788,7 +788,7 @@ Example:
 
 ### Functions
 
-**all [[page(String)|String]] functions**
+**all [String](#string) functions**
 
 URL is compatible with String.
 

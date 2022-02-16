@@ -103,7 +103,7 @@ service documentJson(doc : Document) {
 }
 ```
 
-## Integration with Mobl
+<!-- ## Integration with Mobl
 
 The following zip file contains a WebDSL and a [Mobl](http://mobl-lang.org/) project, the WebDSL application provides data through a web service to the Mobl application:
 
@@ -124,4 +124,4 @@ This simply copies the content of the Mobl project www directory to the WebConte
 
 4 Go to the browser and click the link 'show mobile page'.
 
-Note that you will need to update the project names in 'import-mobl.xml' when copying it to another project, and you should copy the 'projectname import-mobl.xml.launch' file as well.
+Note that you will need to update the project names in 'import-mobl.xml' when copying it to another project, and you should copy the 'projectname import-mobl.xml.launch' file as well. -->

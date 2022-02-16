@@ -74,7 +74,10 @@ These variables are necessary when constructing a page that creates a new entity
       var c := Cat { name := "Dexter" }
       form{
         label("Cat's name:"){ input(c.name) }
-        action("save",action{ c.save(); return showCat(c); })
+        submit action {
+          c.save();
+          return showCat(c);
+        } { "save" }
       }
     }
 
@@ -88,7 +91,10 @@ It is possible to initialize such a page/template variable with arbitrary statme
       }
       form{
         label("Cat's name:"){ input(c.name) }
-        action("save",action{ c.save(); return showCat(c); })
+        submit action {
+           c.save();
+           return showCat(c);
+        } { "save" }
       }
     }
 
@@ -124,7 +130,7 @@ ok:
 
 ## input for Entity
 
-`input(x, y)` can be used as input for an entity variable or for a collection of entities variable, where `x` is the variable or fieldaccess and `y` is the collection of options. It will create a dropdown box/select or a multi-select respectively. The `name` property of an entity is used to describe the entity in a select, see [[singlepage(nameproperty)| name property]].
+`input(x, y)` can be used as input for an entity variable or for a collection of entities variable, where `x` is the variable or fieldaccess and `y` is the collection of options. It will create a dropdown box/select or a multi-select respectively. The `name` property of an entity is used to describe the entity in a select, see [Name Property](../entities#name-property).
 
 `input(x)` for an entity reference property or a collection property is the same as `select`, with as options all entities of its type that are in the database.
 

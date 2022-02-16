@@ -7,39 +7,39 @@ This section describes the expressions and statements available in WebDSL.
 **literals**  
 A number of literals are supported:
 
-* Strings: <tt>"This is a string"</tt>
-* Ints: <tt>22</tt>
-* Float: <tt>8.3</tt>
-* Boolean: <tt>true</tt>/<tt>false</tt>
-* List: <tt>[<expression>, <expression>, ...]</tt>
-* Empty list: <tt>List<Int>()</tt>
-* Set: <tt>{<expression>, <expression>, ...}</tt>
-* Empty set: <tt>Set<Int>()</tt>
-* Null: <tt>null</tt>
+* Strings: `"This is a string"`
+* Ints: `22`
+* Float: `8.3`
+* Boolean: `true`/`false`
+* List: `[<expression>, <expression>, ...]`
+* Empty list: `List<Int>()`
+* Set: `{<expression>, <expression>, ...}`
+* Empty set: `Set<Int>()`
+* Null: `null`
 
 **operators**  
 The following operators are supported:
 
-* Addition (numeric types) and string concatenation: <tt>+</tt>
-* Subtraction (numeric types): <tt>-</tt>
-* Multiplication (numeric types): <tt>*</tt>
-* Division (numeric types): <tt>/</tt>
-* Modulus (integer type): <tt>%</tt>
-* Casting (casts a variable as one of another type): <tt>as</tt> (example: <tt>8 as Float</tt>)
+* Addition (numeric types) and string concatenation: `+`
+* Subtraction (numeric types): `-`
+* Multiplication (numeric types): `*`
+* Division (numeric types): `/`
+* Modulus (integer type): `%`
+* Casting (casts a variable as one of another type): `as` (example: `8 as Float`)
 
 **binary operators**  
 
-* Equality: <tt>==</tt>
-* Inequality: <tt>!=</tt>
-* Bigger than: <tt>></tt>
-* Bigger than or equal to: <tt>>=</tt>
-* Smaller than: <tt><</tt>
-* Smaller than or equal to: <tt><=</tt>
-* Instance of: <tt>is a</tt> (checks if a certain expression is of a certain runtime type)
-* Contained in collection: <tt>in</tt> (checks if a certain expression is contained in a collection)
-* and: <tt>&&</tt>
-* or: <tt>||</tt>
-* not: <tt>!</tt>
+* Equality: `==`
+* Inequality: `!=`
+* Bigger than: `>`
+* Bigger than or equal to: `>=`
+* Smaller than: `<`
+* Smaller than or equal to: `<=`
+* Instance of: `is a` (checks if a certain expression is of a certain runtime type)
+* Contained in collection: `in` (checks if a certain expression is contained in a collection)
+* and: `&&`
+* or: `||`
+* not: `!`
 
 Example:
 
@@ -50,14 +50,15 @@ if(!(b is a String) && (b in [8, 5] || b + 3 = 7)) {
 ```
 
 **variables**  
-Variables can be accessed by use of their identifiers and their properties using the . notation. Example: <tt>person.lastName</tt>
+Variables can be accessed by use of their identifiers and their properties using the . notation. Example: `person.lastName`
 
 **indexed access**
 List elements can be retrieved and assigned using index access syntax: 
 
-<tt>var a := list[0]; 
-list[2] := "test";</tt>
-
+```
+var a := list[0]; 
+list[2] := "test";
+```
 
 
 ## Functions
@@ -93,7 +94,7 @@ entity SubForum {
 
 ## Variable Declaration
 
-Variables can be defined globally, in pages (see [[page(PageVariables)]]), and in code blocks.
+Variables can be defined globally, in pages (see [Page Variables](../forms#page-variables), and in code blocks.
 
 Syntax:
 
@@ -112,15 +113,15 @@ Global variables always need an expression for initialization, they are added to
 
 Global variables can be further initialized using a global init{} block, e.g.
 
-    var defaultUser := User{name:="default"}
-    init{
+    var defaultUser := User{ name := "default" }
+    init {
       defaultUser.someInitializeFunction();
     }
-    page root(){
+    page root {
       output(defaultUser.name)
     }
 
-Global inits are also performed only once after database creation (if the dbmode is create-drop each new deploy will recreate the globals and execute inits, see [[page(ApplicationConfiguration)]]).
+Global inits are also performed only once after database creation (if the dbmode is create-drop each new deploy will recreate the globals and execute inits, see [App Configuration](../app-configuration).
 
 The ; is optional for global and page variable declarations.
 
@@ -144,7 +145,7 @@ Syntax:
 
 Example:
     
-    function test():String{
+    function test() : String{
       return p.lastName;
     }
 
@@ -154,7 +155,7 @@ expression.
 
 Example:
     
-    action done(){ return root(); }
+    action done() { return root(); }
 
 ## For-loop
 
@@ -166,21 +167,21 @@ This type of for loop iterates the collection produced by expression e, which mu
 
 The collection can be filtered:
 
-        for(id:t in e){ stat* }
-        for(id:t in e filter){ stat* }
+        for (id:t in e) { stat* }
+        for (id:t in e filter) { stat* }
 
 **ForAll**
 
 This for loop iterates all the entities in the database of type t. These can also be filtered. Note that it is more efficient to retrieve the objects using a filtering query and use the regular for loop above for iteration. 
 
-        for(id:t){ stat* }
-        for(id:t filter){ stat* }
+        for (id:t) { stat* }
+        for (id:t filter) { stat* }
 
 **For Count**
 
 This for loop iterates the numbers from e1 to e2-1.
 
-        for(id:Int from e1 to e2){ stat* }
+        for (id:Int from e1 to e2) { stat* }
 
 **For-loop Filter**
 
@@ -251,7 +252,7 @@ If e1 produces a boolean, the list comprehension can be preceded by "Or" to crea
 
 Besides for loops, iteration can also be performed using the while statement.
 
-        while(e){ stat* }
+        while (e) { stat* }
 
 This will repeat stat* while e evaluates to true.
     
@@ -261,7 +262,7 @@ This will repeat stat* while e evaluates to true.
 
 The case-statement has the following syntax:
 
-    case(<expression>) {
+    case (<expression>) {
       [case <expr-1> {
         <block executed if true>
       }] *
@@ -274,7 +275,7 @@ Any number of cases and optionally one default case can be specified.
 
 Example:
 
-    case(formatNumber) {
+    case (formatNumber) {
       1 {
         // format is one
       }

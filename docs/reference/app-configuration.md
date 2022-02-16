@@ -29,7 +29,7 @@ Required Configuration
 Database Configuration MySQL
 ----
 
-**dbmode** This field indicates if the application should try to create tables in a database, or try to sync it with the existing schema to avoid loss of data. Valid values are **create-drop**, **update**, and **false**. Update can lead to unpredictable results if data model is changed too much, if data needs to be properly migrated, use [[page(Acoda)|Acoda]] instead. For production deployment use 'export DBMODE=false'.
+**dbmode** This field indicates if the application should try to create tables in a database, or try to sync it with the existing schema to avoid loss of data. Valid values are **create-drop**, **update**, and **false**. Update can lead to unpredictable results if data model is changed too much. For production deployment use 'export DBMODE=false'.
 
 **dbserver** Location of the Mysql server, which will be used in the connection URL, e.g. 'localhost'.
 

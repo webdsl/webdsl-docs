@@ -1,6 +1,6 @@
 # Send Email
 
-This page describes how to create an email template and send email from your application. Make sure the email settings are configured in application.ini, see [[selectpage(Manual/ApplicationConfiguration)|Application Configuration]]. If you are interested in storing email addresses in an entity, have a look at the [Email](https://webdsl.org/selectpage/Manual/Types#Email) type page.
+This page describes how to create an email template and send email from your application. Make sure the email settings are configured in application.ini, see [Application Configuration](../app-configuration). If you are interested in storing email addresses in an entity, have a look at the [Email](../types#email) type.
 
 Defining an email template:
 

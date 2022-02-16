@@ -2,7 +2,7 @@
 
 ## Native Classes
 
-Native Java classes can be declared in a WebDSL application in order to interface with existing libraries and code. If you want to use just one native function, _see [[page(NativeFunctionInterface)|native function interface]]._
+Native Java classes can be declared in a WebDSL application in order to interface with existing libraries and code.
 
 The supported elements are properties, (static) methods, and constructors. The supported types are
 

@@ -28,7 +28,7 @@ Example:
 
 ## Input Forms
 
-The `form` element in combination with `submit` is used for submitting data. `input` elements perform automatic data binding upon submit. For more information about forms, go to the [[page(form)|Form page]].
+The `form` element in combination with `submit` is used for submitting data. `input` elements perform automatic data binding upon submit. For more information about forms, go to the [Forms](../forms) page.
 
 Example:
 
@@ -161,7 +161,7 @@ Like pages, templates can be parameterized.
     template edit(g:Group){
       form {
         input(g.members)
-        action("save",action{})
+        submit action {} { "save" }
       } 
     }
 

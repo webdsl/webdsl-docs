@@ -20,7 +20,7 @@ A property consists of 3 parts:
 
 * a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, {Person} (set), and [Person] (list).
 
-For a complete overview of the available types, see [[page(Types)|Types]].
+For a complete overview of the available types, see [Types](../types).
 
 * a set of annotations, for instance declaring inverse properties, lengths, validation.
 
