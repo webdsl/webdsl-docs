@@ -28,15 +28,15 @@ Authentication can be added manually, instead of using the generated authenticat
 
      principal is User with credentials name, password
   
-    entity User{
+    entity User {
       name : String
       password : Secret
     }
   
-    template login(){
+    template login {
       var username := ""
       var password : Secret := ""
-      form{ 
+      form { 
         label("Name: "){ input(username) }
         label("Password: "){ input(password) }
         captcha()
@@ -49,7 +49,7 @@ Authentication can be added manually, instead of using the generated authenticat
       }
     }
   
-    template logout(){
+    template logout {
       "Logged in as " output(securityContext.principal)
       form{
         submitlink logout() {"Log Out"}
@@ -59,13 +59,13 @@ Authentication can be added manually, instead of using the generated authenticat
       }
     }
       
-    page root(){
+    page root {
       login()
       " "
       logout()
     }
     
-    init{
+    init {
       var u1 : User := 
         User{ name := "test" password := ("test" as Secret).digest() };
       u1.save();
@@ -182,33 +182,6 @@ better structure to the policy implementation. An example of a predicate:
   }
 ```
 
-Pointcuts are groups of resources to which conditions can be specified at once.
-Especially the open parts of the web application are easy to handle with
-pointcuts, an example:
-```
-  pointcut openSections(){
-    page home(),
-    page createDocument(),
-    page createUser(),
-    page viewUser(*)
-  }
-  rule pointcut openSections(){
-    true
-  }
-```
-Pointcuts can also be used with parameters:
-```
-  pointcut ownUserSections(u:User){
-    page showUser(u),
-    page viewUser(u),
-    page someUserTask(u,*)
-  }
-  rule pointcut ownUserSections(u:User){
-    u == principal
-  }
-```
-Note that each parameter must be used in each pointcut element, this indicates the value to be used as argument for the pointcut check. A wildcard * can follow to indicate that there may be additional arguments.
-
 ## Inferring Visibility
 
 A disabled page or action redirects to a very simple page stating access denied.
@@ -231,7 +204,7 @@ An example of extending an entity is adding a set of users property to a documen
 the users allowed access to that document:
 ```
   extend entity Document{
-    allowedUsers : Set<User>
+    allowedUsers : {User}
   }
 ```
 
@@ -267,18 +240,18 @@ including the access control definitions and the template. The unresolved templa
 	  	password : Secret
 	  }
 	  
-	  init{
+	  init {
 	  	var u := User{ name := "1" password := ("1" as Secret).digest()  };
 	  	u.save();
 	  }
 	  
-	  page root(){
+	  page root {
 	  	authentication()
 	  	" "
 	  	navigate protectedPage() { "go" }
 	  }
 	  
-	  page protectedPage(){ "access granted" }
+	  page protectedPage { "access granted" }
 	  
 	  principal is User with credentials name, password
 	  

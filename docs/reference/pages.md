@@ -8,7 +8,7 @@ There are basic output elements for structure and layout of the page, such as `t
 
 Example:
 
-    page root() {
+    page root {
       title { "Page title" }
       section {
         header{ "Hello world." }  

@@ -7,19 +7,18 @@ Data models in WebDSL are defined using *entity* definitions. An entity definiti
       email    : Email
       password : Secret
       homepage : URL
-      pages    : Set<Page>
-      function checkPassword(s : String) : Bool { 
-        return password.check(s);
+      pages    : {Page}
+      function checkPassword( s: String ): Bool { 
+        return password.check( s );
       }
-      predicate sameUser(u:User){ this == u } 
+      predicate sameUser( u: User ){ this == u } 
     }
 
 A property consists of 3 parts:
 
 * a name
 
-* a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, Set<Person>, and List<Person>. 
-
+* a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, {Person} (set), and [Person] (list).
 
 For a complete overview of the available types, see [[page(Types)|Types]].
 
@@ -34,14 +33,14 @@ An example data model for a blogging site:
       name     : String
       email    : Email
       password : Secret
-      posts    : Set<Post> (inverse=Post.author)
+      posts    : {Post} (inverse = author)
     }
 
     entity Post {
       author   : Author
       title    : String
       text     : Text
-      comments : Set<Comment> (inverse=Comment.post)
+      comments : {Comment} (inverse = post)
     }
 
     entity Comment {
@@ -115,17 +114,17 @@ The name property is used in `input` and `select` template elements to refer to 
     }
     entity User{} 
     entity UserList{
-      users : List<User>
+      users : [User]
     }
     var globalList := UserList{}
     
-    page root(){
-      for(u:User in globalList.users){
+    page root {
+      for( u in globalList.users ){
         output(u.name) //there is always a name property
       }
       form{ 
-        input(globalList.users) //this will show three UUIDs as options
-        submit("save",action{})
+        input( globalList.users ) //this will show three UUIDs as options
+        submit action{ }{ "save" }
       }
     }
   
@@ -136,13 +135,13 @@ If the name is not a real property, you cannot create an input for it or assign 
 The `allowed` annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:
 
     entity Person{
-      friends : Set<Person> (allowed=from Person as p where p != this)
+      friends : {Person} (allowed = from Person as p where p != this)
     }
     var p1 := Person{}
-    page root(){
-      form{
-        input(p1.friends)
-        submit action{} {"save"}
+    page root {
+      form {
+        input( p1.friends )
+        submit action{ }{"save"}
       } 
     }
 
@@ -296,11 +295,11 @@ A typical scenario where these functions come in handy is a create/edit page for
     entity Page {
       identifier : String  (id, validate(isUniquePage(this), "Identifier is taken")
     }
-    page createPage(){ 
+    page createPage { 
       var p := Page{}
-      form{
+      form {
         label("Identifier"){input(p.identifier)}
-        action("save",save())
+        submit save() { "save" }
         action save(){
           p.save();
           message("New page created.");
@@ -318,7 +317,7 @@ Example:
     application test
 
     entity User {
-      username    : String
+      username : String
     }
 
     derive CRUD User
@@ -326,7 +325,7 @@ Example:
     //application global var
     var u_1 := User{username:= "test"}
  
-    page root(){
+    page root {
       navigate(createUser()){ "create" } " "
       navigate(user(u_1)){ "view" } " "
       navigate(editUser(u_1)){ "edit" } " "
