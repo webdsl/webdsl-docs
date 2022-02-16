@@ -119,7 +119,7 @@ The name property is used in `input` and `select` template elements to refer to 
     }
     var globalList := UserList{}
     
-    define page root(){
+    page root(){
       for(u:User in globalList.users){
         output(u.name) //there is always a name property
       }
@@ -139,7 +139,7 @@ The `allowed` annotation for entity properties provides a way to restrict the ch
       friends : Set<Person> (allowed=from Person as p where p != this)
     }
     var p1 := Person{}
-    define page root(){
+    page root(){
       form{
         input(p1.friends)
         submit action{} {"save"}
@@ -296,7 +296,7 @@ A typical scenario where these functions come in handy is a create/edit page for
     entity Page {
       identifier : String  (id, validate(isUniquePage(this), "Identifier is taken")
     }
-    define page createPage(){ 
+    page createPage(){ 
       var p := Page{}
       form{
         label("Identifier"){input(p.identifier)}
@@ -326,7 +326,7 @@ Example:
     //application global var
     var u_1 := User{username:= "test"}
  
-    define page root(){
+    page root(){
       navigate(createUser()){ "create" } " "
       navigate(user(u_1)){ "view" } " "
       navigate(editUser(u_1)){ "edit" } " "
@@ -337,18 +337,18 @@ As the navigates indicate, the pages that are created are:
 
 view: 
     
-    define page entity(arg:Entity){...}
+    page entity(arg:Entity){...}
 
 create: 
 
-    define page createEntity(){...}
+    page createEntity(){...}
 
 edit: 
  
-    define page editEntity(arg:Entity){...}
+    page editEntity(arg:Entity){...}
 
 manage (delete): 
 
-    define page manageEntity(){...}
+    page manageEntity(){...}
 
 These pages are particularly useful when you're just constructing the domain model, because the generated pages are usually too generic for a real application.

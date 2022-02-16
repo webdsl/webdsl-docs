@@ -21,7 +21,7 @@ function searchMessage(query : String, limit : Int,
 Which can be used from anywhere. For instance on a search page:
 
 ```
-define page search(query : String) {
+page search(query : String) {
   var newQuery : String := query;
   action doSearch() {
     return search(newQuery);

@@ -303,7 +303,7 @@ When using search namespaces, restricting a search to a single namespace is done
 
 The searcher class that is created for the example `Message` entity is `MessageSearcher`. The first advantage of using this searcher instead of the generated functions is the ability to interact with the searcher, for further refinements to the search query, or to get information like the total number of results, or time that was needed to perform the search.
 ```
-define page searchPage(query : String) {
+page searchPage(query : String) {
   var searcher := MessageSearcher().query(query);
   var results := searcher.results();
   var searchTime := searcher.searchTime(); //String
@@ -525,7 +525,7 @@ define searchbar(){
   }
 }
 
-define page search(searcher : ProductSearcher){
+page search(searcher : ProductSearcher){
     var results : List<Product> := results from searcher;
     var facets  : List<Facet>   := categories.name facets from searcher;
 

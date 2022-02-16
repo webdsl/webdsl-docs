@@ -2,13 +2,13 @@
 
 Pages in WebDSL can be defined using the following construct:  
   
-     define page [pagename]( [page-arguments]* ){ [page-elements]* }
+     page [pagename]( [page-arguments]* ){ [page-elements]* }
 
 There are basic output elements for structure and layout of the page, such as `title` and `header`. 
 
 Example:
 
-    define page root() {
+    page root() {
       title { "Page title" }
       section {
         header{ "Hello world." }  
@@ -22,7 +22,7 @@ Pages can have parameters, and `output` is used for inserting data values.
 
 Example:
 
-    define page user(u : User) {
+    page user(u : User) {
       "The name of this user is " output(u.name)
     }
 
@@ -32,7 +32,7 @@ The `form` element in combination with `submit` is used for submitting data. `in
 
 Example:
 
-    define page editUser(u:User){
+    page editUser(u:User){
       form{
         input(u.name)
         submit action{} { "save" } 
@@ -48,7 +48,7 @@ Example:
     define common(){
       header{ "my page" }
     }
-    define page root(){
+    page root(){
       common()
     }
 
@@ -58,7 +58,7 @@ The `output(<expression>)` template call is used to display a value in a page. I
 
 Example:
 
-    define page user(u:User){
+    page user(u:User){
       output(u)
     }
 
@@ -109,7 +109,7 @@ Displays an image. Images placed in an "images" folder in the root directory of 
 
 Example:
 
-    define page root(){
+    page root(){
       image("https://webdsl.org/webdslorg/images/WebDSL-small.png") 
       image("/images/WebDSL-small.png") 
     }
@@ -152,7 +152,7 @@ Templates enable reuse of page elements. For example, a template for a footer co
 
 This template can be included in a page with a template call: 
 
-    define page example(){
+    page example(){
       footer
     }
 
@@ -165,7 +165,7 @@ Like pages, templates can be parameterized.
       } 
     }
 
-    define page editGroup(g:Group){
+    page editGroup(g:Group){
       edit(g)
     }
 
@@ -176,7 +176,7 @@ While pages must have unique names, templates can be overloaded. The overloading
     define edit(g:Group){...}
     define edit(u:User){...}
 
-    define page editGroup(g:Group){
+    page editGroup(g:Group){
       edit(g)
     }
 
@@ -190,7 +190,7 @@ Template definitions can be redefined locally in a page or template, to change t
     define body(){
       "default body"
     }
-    define page root(){
+    page root(){
       main
       define body(){
         "custom body"
@@ -288,7 +288,7 @@ The `includeCSS(String)` template call allows you to include a CSS file in the r
 
 Example 1:
 
-    define page root() {
+    page root() {
       includeCSS("dropdownmenu.css")
     }
 
@@ -296,7 +296,7 @@ It is also possible to include a CSS file using an absolute URL.
 
 Example 2:
 
-    define page root() {
+    page root() {
       includeCSS("https://webdsl.org/stylesheets/common_.css")
     }
 
@@ -304,7 +304,7 @@ The media attribute can be set by passing it as second argument in `includeCSS(S
 
 Example 3:
 
-    define page root(){
+    page root(){
       includeCSS("https://webdsl.org/stylesheets/common_.css","screen")
     }
 
@@ -315,7 +315,7 @@ The `includeJS(String)` template call allows you to include a javascript file in
 
 Example 1:
 
-    define page root() {
+    page root() {
       includeJS("sdmenu.js")
     }
 
@@ -323,7 +323,7 @@ It is also possible to include a Javascript file using an absolute URL.
 
 Example 2:
 
-    define page root() {
+    page root() {
       includeJS("http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js")
     }
 
@@ -333,7 +333,7 @@ When an invalid URL is being requested from a WebDSL application, the default re
 
 Example:
 
-    define page pagenotfound() {
+    page pagenotfound() {
       title{ "myapp / page not found (404)" }
       main()
       define body() {
@@ -361,7 +361,7 @@ Setting HTML element attributes is supported for calls to built-in templates, th
 
 Example:
 
-    define page root(){ 
+    page root(){ 
       var somevalue := "lo"
       image("/images/logosmall.png")[alt = somevalue+"go", longdesc = "blablabla"]
       navigate root()[title = "root page"]{ "root" }

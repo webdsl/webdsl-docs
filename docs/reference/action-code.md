@@ -116,7 +116,7 @@ Global variables can be further initialized using a global init{} block, e.g.
     init{
       defaultUser.someInitializeFunction();
     }
-    define page root(){
+    page root(){
       output(defaultUser.name)
     }
 

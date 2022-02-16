@@ -20,7 +20,7 @@ A very simple application might look like:
 
     section pages
 
-    define page root () { 
+    page root () { 
         "hello world" 
         IAmImported() 
     }

@@ -59,7 +59,7 @@ or:
 
 Page and template definitions can contain variables. This example displays "Dexter":
 
-    define page cat() {
+    page cat() {
       var c := Cat { name := "Dexter" }
       output(c.name)
     }
@@ -70,7 +70,7 @@ Page and template definitions can contain variables. This example displays "Dext
 
 These variables are necessary when constructing a page that creates a new entity instance. The instance can be created in the variable and data binding can be used for the input page elements. The next example allows new cat entity instances to be created, and the default name in the input form is "Dexter":
 
-    define page newCat() {
+    page newCat() {
       var c := Cat { name := "Dexter" }
       form{
         label("Cat's name:"){ input(c.name) }
@@ -80,7 +80,7 @@ These variables are necessary when constructing a page that creates a new entity
 
 It is possible to initialize such a page/template variable with arbitrary statments using an 'init' action:
 
-    define page newCat() {
+    page newCat() {
       var c
       init {
         c := Cat{};
@@ -96,7 +96,7 @@ Be aware that these type of variables (and the init blocks) are handled separate
 
 error:
 
-    define page bad() {
+    page bad() {
       if(someConditionFunction()){
         var c := Cat{}
       }
@@ -108,7 +108,7 @@ error:
 
 ok:
 
-    define page good() {
+    page good() {
       var c
       init{ 
         if(someConditionFunction()){
@@ -148,7 +148,7 @@ Example:
       g := Group { groupname := "group 2" };
       g.save();
     }
-    define page root(){
+    page root(){
       form{
         table{
           for(u:User){
@@ -165,7 +165,7 @@ Example:
 
 Example 2:
 
-    define page root(){
+    page root(){
       var teammates := from User
       var groups := from Group
       form{
@@ -187,7 +187,7 @@ Example 3:
     var u3 := User { username:="Dave" }
     var g3 := Group { groupname:="group 3" }
 
-    define page root(){
+    page root(){
       var teammates := [u3]
       var groups := {g3}
       form{
@@ -232,7 +232,7 @@ Radio buttons can be used as an alternative to `select` for selecting an entity 
       parent : Person
     }
 
-    define page editPerson(p:Person){
+    page editPerson(p:Person){
       radio(p.parent, getPersonList())
     } 
 
@@ -242,7 +242,7 @@ The `captcha` element creates a fully automatic [CAPTCHA](http://en.wikipedia.or
 
 Example:
 
-    define page root(){
+    page root(){
       var i : Int
       form{
         input(i)

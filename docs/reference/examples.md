@@ -16,13 +16,13 @@ Below are larger examples of WebDSL applications than those found on the other m
 	  	u.save();
 	  }
 	  
-	  define page root(){
+	  page root(){
 	  	authentication()
 	  	" "
 	  	navigate protectedPage() { "go" }
 	  }
 	  
-	  define page protectedPage(){ "access granted" }
+	  page protectedPage(){ "access granted" }
 	  
 	  principal is User with credentials name, password
 	  
@@ -49,7 +49,7 @@ WebDSL application with native class interface declaration:
 
 	application exampleapp
 	
-	define page root() {
+	page root() {
 	  output(TwitterReader.read(null,null))
 	}
 	
@@ -121,7 +121,7 @@ The name annotation indicates that the `username` is used to refer to the Person
 
 The `root` page includes a `personedit` template and passes it a new `Person` object.
 
-	define page root() {
+	page root() {
 	  main()
 	  define body() {
 	    personedit(Person{})
@@ -264,7 +264,7 @@ Since the example used a new Person entity, the `save` controls whether the obje
 	
 The editpage, in this case a global entity var is passed in, to demonstrate changing an entity that is persisted.
 
-	define page edit(){
+	page edit(){
 	  main()
 	  define body() {
 	    personedit(pAlice)

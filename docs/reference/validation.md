@@ -26,7 +26,7 @@ Validation can be specified on entities in property annotations:
 
 Validation can be specified directly in pages:
 
-    define page editUser(u:User) { 
+    page editUser(u:User) { 
       var p: Secret; 
       form { 
         group("User") { 
@@ -47,7 +47,7 @@ Validation can be specified directly in pages:
 
 Validation can be specified in actions:
 
-    define page createGroup() { 
+    page createGroup() { 
       var ug := UserGroup {} 
       form { 
         group("User Group") { 

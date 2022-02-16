@@ -38,7 +38,7 @@ entity User {
   gender : Gender
 }
 
-define page somePage() {
+page somePage() {
   var u : User;
   input(u.gender) // shows a drop-down
   output(u.gender.name) // shows either Male or Female

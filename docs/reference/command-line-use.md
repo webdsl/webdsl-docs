@@ -67,7 +67,7 @@ hello.app:
 
     application test
 
-    define page root(){
+    page root(){
       "Hello world"
     }
 

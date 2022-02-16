@@ -31,7 +31,7 @@ Example:
       returnList(): List<SubClass>
     }
 
-    define page root() {
+    page root() {
       var d : SuperClass := SubClass()  
       output(d.getProp())
      

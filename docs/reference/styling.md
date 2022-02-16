@@ -36,7 +36,7 @@ Classes for styling can also be added to a template call (separate from the regu
 
 If you want to define your own template that takes such extra arguments, use `all attributes`:
 
-    define page root(){
+    page root(){
       someOtherTemplate[class="importantdiv"]{ "content" }
     }
 

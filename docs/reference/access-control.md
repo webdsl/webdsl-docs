@@ -59,7 +59,7 @@ Authentication can be added manually, instead of using the generated authenticat
       }
     }
       
-    define page root(){
+    page root(){
       login()
       " "
       logout()
@@ -272,13 +272,13 @@ including the access control definitions and the template. The unresolved templa
 	  	u.save();
 	  }
 	  
-	  define page root(){
+	  page root(){
 	  	authentication()
 	  	" "
 	  	navigate protectedPage() { "go" }
 	  }
 	  
-	  define page protectedPage(){ "access granted" }
+	  page protectedPage(){ "access granted" }
 	  
 	  principal is User with credentials name, password
 	  
