@@ -4,7 +4,7 @@ This page describes how to create an email template and send email from your app
 
 Defining an email template:
 
-    define email testemail(us : User) {
+    email testemail(us : User) {
       to(us.mail)
       from("webdslorg@gmail.com")
       subject("Test Email")

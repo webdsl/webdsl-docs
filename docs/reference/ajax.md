@@ -60,14 +60,14 @@ When a template is used as target in an ajax operation, it must be declared with
 
 Example:
 
-    define testtemplate(p:Person){
+    template testtemplate(p:Person){
       placeholder testph{ "no details shown" }
       submit("show details",show())[ajax]
       action show(){
         replace(testph,showDetails(p));
       }
     }
-    define ajax showDetails(person:Person){
+    ajax template showDetails(person:Person){
       " name: " output(person.name)
     }
 
@@ -97,21 +97,21 @@ Typically you should not make a form cross an ajax placeholder. The server consi
 
 Example of proper usage:
 
-    define demo(){
+    template demo(){
       placeholder test()
     }
-    define ajax test(){
+    ajax template test(){
       form{ input(someGlobal.name) submit action{} {"save"} }
     }
 
 Example of incorrect usage (the submit will be contained in a form on the client but not on the server):
 
-    define demo(){
+    template demo(){
       form{
         placeholder test()
       }
     }
-    define ajax test(){
+    ajax template test(){
       input(someGlobal.name) submit action{} {"save"}
     }
 
@@ -123,7 +123,7 @@ There are prebuild library components for creating inputs with ajax validation r
 
 A simple example:
 
-    define demo(){  
+    template demo(){  
       var s := "test"
       form{    
         inputajax(s)

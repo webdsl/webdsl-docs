@@ -298,7 +298,7 @@ The `rendertemplate` function can be used to render template contents to a Strin
 
 Example:
 
-    define test(a:Int){ output(a) "!" }
+    template test(a:Int){ output(a) "!" }
     function showContent(i:Int){
       log(rendertemplate(test(i)));
     } 

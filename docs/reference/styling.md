@@ -20,7 +20,7 @@ The Firebug add-on for Firefox can be very helpful in figuring out the page stru
 
 Explicit hooks for CSS can be added using the XML embedding:
 
-    define someTemplate(){ 
+    template someTemplate(){ 
       <div class="mydiv">
         "content of mydiv"
       </div>
@@ -40,7 +40,7 @@ If you want to define your own template that takes such extra arguments, use `al
       someOtherTemplate[class="importantdiv"]{ "content" }
     }
 
-    define someOtherTemplate(){ 
+    template someOtherTemplate(){ 
       <div all attributes>
         elements
       </div>
@@ -48,4 +48,4 @@ If you want to define your own template that takes such extra arguments, use `al
 
 The `span` template modifier adds a span around a template, which can then be used as a hook for CSS:
 
-    define span spanTemplate(){ "span around me" }
+    template span spanTemplate(){ "span around me" }

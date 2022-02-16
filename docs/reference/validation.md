@@ -64,19 +64,19 @@ Validation can be specified in actions:
 
 Validation output can be customized by overriding the templates used to display validation messages. Currently, there are 4 global validation templates:
 
-    define ignore-access-control errorTemplateInput(messages : List<String>)
+    ignore-access-control template errorTemplateInput(messages : List<String>)
 
 Displays validation message related to an input.  
 
-    define ignore-access-control errorTemplateForm(messages : List<String>)
+    ignore-access-control template errorTemplateForm(messages : List<String>)
 
 Displays validation message for validation in a form.
 
-    define ignore-access-control errorTemplateAction(messages : List<String>)
+    ignore-access-control template errorTemplateAction(messages : List<String>)
 
 Displays validation message for validation in an action.
 
-    define ignore-access-control templateSuccess(messages : List<String>)
+    ignore-access-control template templateSuccess(messages : List<String>)
 
 Displays validation message for success messages.
 
@@ -84,7 +84,7 @@ When overriding these validation templates, use an `elements` templatecall to re
 
 Example:
 
-    define ignore-access-control errorTemplateInput(messages : List<String>){
+    ignore-access-control template errorTemplateInput(messages : List<String>){
       elements
       for(ve: String in messages){
         output(ve)

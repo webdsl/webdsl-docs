@@ -35,7 +35,7 @@ a different type of input, to allow duplicates and control ordering)
 
 For example, to get a checkbox, use:
 
-    define root(){
+    page root(){
      var x : Bool := false
      form{
        input(x)
@@ -48,7 +48,7 @@ or:
     entity TestEntity {
      x : Bool
     }
-    define editTestEntity (e:TestEntity){
+    template editTestEntity (e:TestEntity){
      form{
        input(e.x)
        submit action{ } { "update entity" }

@@ -123,7 +123,7 @@ The `root` page includes a `personedit` template and passes it a new `Person` ob
 
 	page root() {
 	  main()
-	  define body() {
+	  template body() {
 	    personedit(Person{})
 	
 	  }
@@ -131,7 +131,7 @@ The `root` page includes a `personedit` template and passes it a new `Person` ob
 
 The `personedit` template provides the form that checks values whenever changes occur. The various `placeholder` elements provide a location to insert error messages. The actual checks are encapsulated in functions, this allows the save action to easily do a server-side check before saving the new Person object. 
 	
-	define personedit(p:Person){
+	template personedit(p:Person){
 	  form{
 	    par{
 	      label("username: "){ input(p.username)[onkeyup := action{ checkUsername(p); checkUsernameEmpty(p); checkFullname(p); }] }
@@ -214,15 +214,15 @@ The function definitions perform the check, and also update the placeholders (no
 The templates for the messages are shown below. An errorclass template is used to wrap all the errors in the same div tag with special error class, to provide a hook for CSS styling. Templates that are used in replace actions have to be declared as `ajax` template. When access control is enabled the ajax templates can be protected with the `ajaxtemplate` rule type.
 
 
-	define errorclass(){
+	template errorclass(){
 	  <div class="error"> elements() </div>
 	}
-	define ajax empty(){ "" }
-	define ajax mpusername(name: String){ errorclass{ "Username " output(name) " has been taken already" } }
-	define ajax mpusernameempty(){ errorclass{ "Username may not be empty" } }
-	define ajax mpfullname(){ errorclass{ "Username and fullname should not be the same" } }
-	define ajax mpfullnameempty(){ errorclass{ "Fullname may not be empty" } }
-	define ajax mpparents(pname:String,names : List<String>){ 
+	ajax template empty(){ "" }
+	ajax template mpusername(name: String){ errorclass{ "Username " output(name) " has been taken already" } }
+	ajax template mpusernameempty(){ errorclass{ "Username may not be empty" } }
+	ajax template mpfullname(){ errorclass{ "Username and fullname should not be the same" } }
+	ajax template mpfullnameempty(){ errorclass{ "Fullname may not be empty" } }
+	ajax template mpparents(pname:String,names : List<String>){ 
 	  errorclass{ 
 	    "Person" 
 	    if(names.length > 1){"s"}
@@ -266,7 +266,7 @@ The editpage, in this case a global entity var is passed in, to demonstrate chan
 
 	page edit(){
 	  main()
-	  define body() {
+	  template body() {
 	    personedit(pAlice)
 	  }
 	}
@@ -274,7 +274,7 @@ The editpage, in this case a global entity var is passed in, to demonstrate chan
 The template is shown below, unchanged parts are left out. A template var that copies the original values is used for data binding, in the save action the changes are placed in the real person object. The `save` call is not necessary for edits, but now the template works correctly for both edit and create actions.
 
 
-	define personedit(realp:Person){
+	template personedit(realp:Person){
 	  var p := Person{ username := realp.username fullname := realp.fullname children := realp.children parents := realp.parents};
 	  form{
 	    par{

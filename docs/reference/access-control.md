@@ -33,7 +33,7 @@ Authentication can be added manually, instead of using the generated authenticat
       password : Secret
     }
   
-    define login(){
+    template login(){
       var username := ""
       var password : Secret := ""
       form{ 
@@ -49,7 +49,7 @@ Authentication can be added manually, instead of using the generated authenticat
       }
     }
   
-    define logout(){
+    template logout(){
       "Logged in as " output(securityContext.principal)
       form{
         submitlink logout() {"Log Out"}
@@ -242,7 +242,7 @@ All the data of the Access Control policy is integrated into the WebDSL
 application. An option is to incorporate the administration into an existing page with a
 template. This example illustrates the use of a template for administration:
 ```
-  define allowedUsersRow(document:Document){
+  template allowedUsersRow(document:Document){
     row{ "Allowed Users:" input(document.allowedUsers) }
   }
 ```

@@ -29,7 +29,7 @@ A very simple application might look like:
 
     module MyFirstImport
   
-    define IAmImported() { 
+    template IAmImported() { 
         spacer 
         "I am imported from a module file" 
     }

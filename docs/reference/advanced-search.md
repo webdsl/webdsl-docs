@@ -314,7 +314,7 @@ page searchPage(query : String) {
 	showResults(results)
   }
 }
-define showResults(results : List<Message>) {
+template showResults(results : List<Message>) {
   //code to view results
 }	
 ```
@@ -513,7 +513,7 @@ A typical example is to display facets in the search results:
 
 (updated April 5th)
 ```
-define searchbar(){
+template searchbar(){
   var query := "";
   form {
     input(query)
@@ -536,7 +536,7 @@ page search(searcher : ProductSearcher){
 
     showResults(results)
 }
-define facetLink(facet: Facet, searcher: ProductSearcher){
+template facetLink(facet: Facet, searcher: ProductSearcher){
     submitlink narrow(facet){ if(facet.isSelected()){"+"} output(facet.getValue()) }"(" output(facet.getCount()) ")"
 
     action narrow(facet : Facet){

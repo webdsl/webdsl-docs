@@ -45,7 +45,7 @@ Pages can be made reusable by declaring them as template, and calling them from 
 
 Example:
 
-    define common(){
+    template common(){
       header{ "my page" }
     }
     page root(){
@@ -66,7 +66,7 @@ The `output` template can be customized for each entity type.
 
 Example:
 
-    define output(u:User){
+    template output(u:User){
       "user with name: " output(u.name)
     }
 
@@ -148,7 +148,7 @@ Groups text; optionally defines a class for referencing in CSS. Results in a &lt
 
 Templates enable reuse of page elements. For example, a template for a footer could be:
 
-    define footer() { All your page are belong to us. }
+    template footer() { All your page are belong to us. }
 
 This template can be included in a page with a template call: 
 
@@ -158,7 +158,7 @@ This template can be included in a page with a template call:
 
 Like pages, templates can be parameterized.
 
-    define edit(g:Group){
+    template edit(g:Group){
       form {
         input(g.members)
         action("save",action{})
@@ -173,8 +173,8 @@ Like pages, templates can be parameterized.
 
 While pages must have unique names, templates can be overloaded. The overloading is resolved compile-time, based on the static types of the arguments.
 
-    define edit(g:Group){...}
-    define edit(u:User){...}
+    template edit(g:Group){...}
+    template edit(u:User){...}
 
     page editGroup(g:Group){
       edit(g)
@@ -184,15 +184,15 @@ While pages must have unique names, templates can be overloaded. The overloading
 
 Template definitions can be redefined locally in a page or template, to change their meaning in that specific context. All uses are replaced in templates called from the redefining template.
 
-    define main{
+    template main{
       body()
     }
-    define body(){
+    template body(){
       "default body"
     }
     page root(){
       main
-      define body(){
+      template body(){
         "custom body"
       }
     }
@@ -264,7 +264,7 @@ Each of the four parts is optional, but they have to be specified in this order.
 
 XML fragments can be embedded directly in templates. This allows easy reuse of existing XHTML fragments and CSS. For example: 
 
-    define main() {
+    template main() {
       <div id="pagewrapper">
         <div id="header">
           header()
@@ -278,7 +278,7 @@ XML fragments can be embedded directly in templates. This allows easy reuse of e
 
 While the name and attribute names are fixed, the attribute values can be any WebDSL expression that produces a string:
 
-    define test(i : Int) {
+    template test(i : Int) {
       <div id="page" + "wrapper" + i />
     }
 
@@ -336,7 +336,7 @@ Example:
     page pagenotfound() {
       title{ "myapp / page not found (404)" }
       main()
-      define body() {
+      template body() {
         par{ "That page does not exist!" }
         par{ "Maybe you can find what you are looking for using the search page." }
       }
@@ -371,7 +371,7 @@ Example:
 
 Template and page definitions can be overridden using the `override` modifier, e.g. to override a built-in page such as `pagenotfound`:
 
-    define override page pagenotfound(){
+    override page pagenotfound(){
       "page does not exist!"
     }
 
