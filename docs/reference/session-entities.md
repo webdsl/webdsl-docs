@@ -3,7 +3,7 @@
 Storing data in the session context on the server is done using session entities. Example:
 
     session shoppingcart {
-      products -> List<Product>
+      products : List<Product>
     }
 
 A session entity name is a globally visible variable in the application code. The entity object is automatically instantiated and saved, one for each browser session accessing the application.
@@ -15,7 +15,7 @@ Declaring an access control principle, e.g. `principal is User with credentials 
 Session entities can also be extended with extra properties. Example:
 
     extend session shoppingcart{
-      lastSearchQuery :: String
+      lastSearchQuery : String
     }
 
 Session data times out by default, this timeout length can be adjusted in the `application.ini` file, e.g. `sessiontimeout=10080`. This time is specified in minutes. More information about application settings is shown on [[selectpage(Manual/ApplicationConfiguration)|the Application Configuration page]].

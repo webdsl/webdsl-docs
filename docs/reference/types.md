@@ -35,7 +35,7 @@ enum Gender {
 You can use them as follows:
 ```
 entity User {
-  gender -> Gender
+  gender : Gender
 }
 
 define page somePage() {

@@ -37,7 +37,7 @@ The following settings can be configured:
 The data synchronization requires a Toplevel Entity to enable the data partitioning. This is simple a flag that specifies that objects of this type represent a data partition. Additionally, this setting requires a String property that can be used to represent this object. 
 
     entity Car{
-        registrationIdentifier :: String
+        registrationIdentifier : String
         
         synchronization configuration{
             toplevel name property : registrationIdentifier
@@ -49,7 +49,7 @@ The data synchronization requires a Toplevel Entity to enable the data partition
 The data synchronization framework enable external sources to read and modify data on the server with the web application. The framework allows control over which data can be accessed by who. This can only be specified when the a principal is defined in the web application. There are three different levels that can be specified for each entity: read, write and create. It is recommended to specify those rules for each entity.
 
     entity Dummy{
-        name :: String
+        name : String
         
         synchronization configuration{
             access read: true
@@ -65,9 +65,9 @@ The last setting that can be configured is that of restricted properties. It all
 
 
     entity Person{
-        surName :: String
-        firstName :: String
-        fullName :: String
+        surName : String
+        firstName : String
+        fullName : String
         
         synchronization configuration{
             restricted properties : surName, firstName

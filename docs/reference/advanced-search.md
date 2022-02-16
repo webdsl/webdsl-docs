@@ -60,10 +60,10 @@ Search mappings belong to an entity and can be placed inside an entity declarati
 ```
 //Embedded search mapping
 entity Message {
-  subject :: String
-  text    :: Text
-  category:: String
-  sender  -> User
+  subject  : String
+  text     : Text
+  category : String
+  sender   : User
 
   search mapping {
     +subject
@@ -78,9 +78,9 @@ entity Message {
 ```
 //External search mapping
 entity ForumUser : User {
-  forumName :: String
-  forumPwd :: Secret
-  messages -> Set<Message> (inverse=Message.sender)
+  forumName : String
+  forumPwd  : Secret
+  messages  : Set<Message> (inverse=Message.sender)
 }
 ...
 search mapping ForumUser {
@@ -94,10 +94,10 @@ Search fields can also be specified using property annotations:
 ```
 //Using searchable annotations
 entity Message {
-  subject :: String (searchable)
-  text    :: Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)
-  category:: String (searchable)
-  sender  -> ForumUser (searchable())
+  subject  : String (searchable)
+  text     : Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)
+  category : String (searchable)
+  sender   : ForumUser (searchable())
 }
 ```
 
@@ -489,8 +489,8 @@ Any searchable property can be used for faceting. The values, as they appear in 
 
 ```
 entity Product{
-  name :: String
-  categories -> Set<Category> (inverse=Category.products)
+  name       : String
+  categories : Set<Category> (inverse=Category.products)
 
   search mapping{
     name
@@ -498,8 +498,8 @@ entity Product{
   }
 }
 entity Category {
-  name::String
-  products -> Set<Product>
+  name     : String
+  products : Set<Product>
 
   search mapping{
     name using none //or 'name using no' in v1.2.9.0

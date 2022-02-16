@@ -10,7 +10,7 @@ Example:
       assert(u.name == "Alice");
     }
     entity User {
-      name :: String
+      name : String
       function capitalizeName(){
         var temp := name.explodeString();
         temp.set(0,temp.get(0).toUpperCase());

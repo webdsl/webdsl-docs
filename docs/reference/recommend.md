@@ -10,20 +10,20 @@ One example is a book store where consumers buy books, so in this case the consu
 
 ```
 entity Customer {
-	name :: String(id)	
-	books -> List<BookPurchase>
+	name : String(id)	
+	books : List<BookPurchase>
 }
 
 entity Book {
-	isbn :: String(id)
-	author :: String
-	title :: String
+	isbn : String(id)
+	author : String
+	title : String
 }
 
 entity BookPurchase {
-	by -> Customer
-	book -> Book
-	pref :: Int
+	by : Customer
+	book : Book
+	pref : Int
 }
 
 recommend BookPurchase {

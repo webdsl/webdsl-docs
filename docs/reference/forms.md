@@ -46,7 +46,7 @@ For example, to get a checkbox, use:
 or:
 
     entity TestEntity {
-     x :: Bool
+     x : Bool
     }
     define editTestEntity (e:TestEntity){
      form{
@@ -65,7 +65,7 @@ Page and template definitions can contain variables. This example displays "Dext
     }
 
     entity Cat {
-      name :: String
+      name : String
     }
 
 These variables are necessary when constructing a page that creates a new entity instance. The instance can be created in the variable and data binding can be used for the input page elements. The next example allows new cat entity instances to be created, and the default name in the input form is "Dexter":
@@ -131,12 +131,12 @@ ok:
 Example:
 
     entity User {
-      username :: String (name)
-      teammate -> User
-      group -> Set<Group>
+      username : String (name)
+      teammate : User
+      group : Set<Group>
     }
     entity Group {
-      groupname :: String (name)
+      groupname : String (name)
     }
     init{ //application init
       var u := User { username := "Alice" };
@@ -208,7 +208,7 @@ Options are restricted in this example, `null` and "Dave" for `select(u.teammate
 
 The `null` option for a select can be removed either by a `not null` annotation on the property:
 
-    teammate -> User (not null)
+    teammate : User (not null)
 
 Or by setting `[not null]` on the `input` or `select` itself:
 
@@ -219,7 +219,7 @@ Or by setting `[not null]` on the `input` or `select` itself:
 
 The possible options can also be determined using an annotation on the property:
 
-    group -> Set<Group> (allowed = {g3})
+    group : Set<Group> (allowed = {g3})
 
 In this case just using `input(u.group)` will only show "group 3"
 
@@ -228,8 +228,8 @@ In this case just using `input(u.group)` will only show "group 3"
 Radio buttons can be used as an alternative to `select` for selecting an entity from a list of entities. The `name` property, or the property with `name` annotation, will be used as a label for the corresponding radio button.
 
     entity Person{
-      name :: String
-      parent -> Person
+      name : String
+      parent : Person
     }
 
     define page editPerson(p:Person){

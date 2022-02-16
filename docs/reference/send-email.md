@@ -24,13 +24,13 @@ Sending email:
 The actual sending happens asynchronously, if there are issues while the application is trying to send an email, it will retry that email after 3 hours. If necessary, you can inspect and influence this email queue through the `QueuedEmail` entity:
 
     entity QueuedEmail {
-      body :: String (length=1000000) 
+      body : String (length=1000000) 
         //Note: default length for string is currently 255
-      to :: String (length=1000000)
-      cc :: String (length=1000000)
-      bcc :: String (length=1000000)
-      replyTo :: String (length=1000000)
-      from :: String (length=1000000)
-      subject :: String (length=1000000)
-      lastTry :: DateTime 
+      to : String (length=1000000)
+      cc : String (length=1000000)
+      bcc : String (length=1000000)
+      replyTo : String (length=1000000)
+      from : String (length=1000000)
+      subject : String (length=1000000)
+      lastTry : DateTime 
     }

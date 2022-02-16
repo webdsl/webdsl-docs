@@ -3,9 +3,9 @@
 WebDSL supports simple search capabilities through [Lucene](http://lucene.apache.org). Entity properties can be marked as "searchable" to subsequently be indexed:
 ```
 entity Message {
-  subject :: String (searchable)
-  text    :: Text   (searchable)
-  sender  -> ForumUser
+  subject : String (searchable)
+  text    : Text   (searchable)
+  sender  : ForumUser
 }
 ```
 The searchable can be applied to the following built-in WebDSL types: String, Text, WikiText, Int, Long, Float and date types. Properties of user defined entity types are currently not supported to be searchable (i.e. sender in the previous example).

@@ -14,8 +14,8 @@ login template). The resulting generated session entity will be:
 
     session securityContext
     {
-      principal -> User
-      loggedIn :: Bool := this.principal != null
+      principal : User
+      loggedIn : Bool := this.principal != null
     }
 
 Note that this principal declaration is used to enable access control in the application.
@@ -29,8 +29,8 @@ Authentication can be added manually, instead of using the generated authenticat
      principal is User with credentials name, password
   
     entity User{
-      name :: String
-      password :: Secret
+      name : String
+      password : Secret
     }
   
     define login(){
@@ -231,7 +231,7 @@ An example of extending an entity is adding a set of users property to a documen
 the users allowed access to that document:
 ```
   extend entity Document{
-    allowedUsers -> Set<User>
+    allowedUsers : Set<User>
   }
 ```
 
@@ -263,8 +263,8 @@ including the access control definitions and the template. The unresolved templa
 	application minimalac
 	
 	  entity User {
-	  	name :: String
-	  	password :: Secret
+	  	name : String
+	  	password : Secret
 	  }
 	  
 	  init{

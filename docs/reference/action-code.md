@@ -69,7 +69,7 @@ Functions can be defined globally and as methods in entities:
     }
 
     entity User {
-      name :: String
+      name : String
 
       function showName() : String {
         return sayHello(name + "!");

@@ -3,24 +3,20 @@
 Data models in WebDSL are defined using *entity* definitions. An entity definition consists of the entity's name, possibly a super-entity from which it inherits, 0 or more properties and 0 or more entity functions:
 
     entity User {
-      name     :: String (length = 25)
-      email    :: Email
-      password :: Secret
-      homepage :: URL
-      pages    -> Set<Page>
+      name     : String (length = 25)
+      email    : Email
+      password : Secret
+      homepage : URL
+      pages    : Set<Page>
       function checkPassword(s : String) : Bool { 
         return password.check(s);
       }
       predicate sameUser(u:User){ this == u } 
     }
 
-A property consists of 4 parts:
+A property consists of 3 parts:
 
 * a name
-* a property kind, which can either be value (::), reference (->) or composite (<>)
-
-The difference between reference and composite property kinds is that 
-composite indicates that the referred entity is part of the one referring to it. The only effect this currently has is that composite cascades delete (deleting the entity will also delete the referred entity). 
 
 * a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, Set<Person>, and List<Person>. 
 
@@ -35,23 +31,23 @@ For a complete overview of the available types, see [[page(Types)|Types]].
 An example data model for a blogging site:
 
     entity Author {
-      name     :: String
-      email    :: Email
-      password :: Secret
-      posts    -> Set<Post> (inverse=Post.author)
+      name     : String
+      email    : Email
+      password : Secret
+      posts    : Set<Post> (inverse=Post.author)
     }
 
     entity Post {
-      author   -> Author
-      title    :: String
-      text     :: Text
-      comments -> Set<Comment> (inverse=Comment.post)
+      author   : Author
+      title    : String
+      text     : Text
+      comments : Set<Comment> (inverse=Comment.post)
     }
 
     entity Comment {
-      post     -> Post
-      author   :: String
-      text     :: Text
+      post     : Post
+      author   : String
+      text     : Text
     }
 
 ## Instantiating Entity Objects
@@ -96,15 +92,15 @@ Creating an empty entity which doesn't call the constructor extensions can be do
 The 'name' property is special, it is declared for each entity. By default it is a derived property that simply returns the id of the entity (which is also a special property declared for each entity, id:UUID is set automatically). 
 The name can be customized by declaring a real name property:
 
-    name :: String
+    name : String
 
 Or derived name property:
 
-    name :: String := firstname + lastname
+    name : String := firstname + lastname
 
 Or by declaring a property as the name using an annotation:
 
-    someproperty :: String (name)
+    someproperty : String (name)
 
 The name property is used in `input` and `select` template elements to refer to an entity. Example:
 
@@ -119,7 +115,7 @@ The name property is used in `input` and `select` template elements to refer to 
     }
     entity User{} 
     entity UserList{
-      users -> List<User>
+      users : List<User>
     }
     var globalList := UserList{}
     
@@ -140,7 +136,7 @@ If the name is not a real property, you cannot create an input for it or assign 
 The `allowed` annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:
 
     entity Person{
-      friends -> Set<Person> (allowed=from Person as p where p != this)
+      friends : Set<Person> (allowed=from Person as p where p != this)
     }
     var p1 := Person{}
     define page root(){
@@ -159,10 +155,10 @@ Entities can inherit properties and functions from other entities, like subclass
 Example:
 
     entity Sub : Super {
-      str :: String
+      str : String
     }
     entity Super {
-      i :: Int
+      i : Int
     }
     function test(){
       var e1 := Sub{ i := 1 str := "sdf" };
@@ -212,25 +208,25 @@ For defined entities, a number of properties are automatically generated.
 
 ### ID
 
-    id :: UUID
+    id : UUID
 
 The id property is used in the database as key for the objects. The property is can only be read. 
 
 ### Version
 
-    version :: Int
+    version : Int
 
 The version property is a hibernate property which auto-increases for an object that is dirty when it is written to the database. 
 
 ### Created
 
-    created :: DateTime
+    created : DateTime
 
 The created property is a generated property which is set on the save of an object also with cascaded saves.
 
 ### Modified
 
-    modified :: DateTime
+    modified : DateTime
 
 The modified property is a generated property which is automatically set on flush of an dirty object.
 
@@ -298,7 +294,7 @@ The name of an entity is determined as follows:
 A typical scenario where these functions come in handy is a create/edit page for an entity. In the following example the isUniquePage function is used to verify that the new page has a unique identifier property:
 
     entity Page {
-      identifier :: String  (id, validate(isUniquePage(this), "Identifier is taken")
+      identifier : String  (id, validate(isUniquePage(this), "Identifier is taken")
     }
     define page createPage(){ 
       var p := Page{}
@@ -322,7 +318,7 @@ Example:
     application test
 
     entity User {
-      username    :: String
+      username    : String
     }
 
     derive CRUD User

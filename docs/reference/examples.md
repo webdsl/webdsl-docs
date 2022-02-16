@@ -7,8 +7,8 @@ Below are larger examples of WebDSL applications than those found on the other m
 	application minimalac
 	
 	  entity User {
-	  	name :: String
-	  	password :: Secret
+	  	name : String
+	  	password : Secret
 	  }
 	  
 	  init{
@@ -111,10 +111,10 @@ Don't use WebDSL's data validation described on the [[selectpage(Manual/Validati
 We're going to create an edit page for a `Person` entity:
 
 	entity Person {
-	  fullname :: String
-	  username    :: String (name)
-	  parents     -> Set<Person>
-	  children    -> Set<Person>
+	  fullname : String
+	  username    : String (name)
+	  parents     : Set<Person>
+	  children    : Set<Person>
 	}
 
 The name annotation indicates that the `username` is used to refer to the Person entity in select inputs, such as those for the `parents` and `children` property, see [[selectpage(Entities/nameproperty)|name property page]].

@@ -61,8 +61,8 @@ A service is simply a WebDSL function that uses the `service` keyword instead of
 
 ```
 entity Document {
-  title :: String (id, name)
-  text  :: Text
+  title : String (id, name)
+  text  : Text
 }
 
 service document(id : String) {

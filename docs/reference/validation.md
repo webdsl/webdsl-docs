@@ -9,12 +9,12 @@ Value well-formedness checks (e.g. whether the user enters a valid integer in an
 Validation can be specified on entities in property annotations:
 
     entity User { 
-      username :: String (id, validate(isUniqueUser(this), "Username is taken")) 
-      password :: Secret (validate(password.length() >= 8, "Password needs to be at least 8 characters") 
+      username : String (id, validate(isUniqueUser(this), "Username is taken")) 
+      password : Secret (validate(password.length() >= 8, "Password needs to be at least 8 characters") 
       , validate(/[a-z]/.find(password), "Password must contain a lower-case character") 
       , validate(/[A-Z]/.find(password), "Password must contain an upper-case character") 
-      , validate(/[0-9]/.find(password), "Password must contain a digit")
-      email :: Email)) 
+      , validate(/[0-9]/.find(password), "Password must contain a digit"))
+      email : Email
     } 
     extend entity User { 
       username(validate(isUniqueUser(this),"Username is taken")) 
@@ -116,5 +116,5 @@ Selection options can also be provided using the `allowed` annotation on an enti
 Example:
 
     entity Person{
-      parent -> Person (allowed=from Person as p where p != this)
+      parent : Person (allowed=from Person as p where p != this)
     } 
