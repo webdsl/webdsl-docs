@@ -1809,7 +1809,7 @@
 </code></pre></div>
 
 <h2 id="input-forms">Input Forms<a class="headerlink" href="#input-forms" title="Permanent link">&para;</a></h2>
-<p>The <code>form</code> element in combination with <code>submit</code> is used for submitting data. <code>input</code> elements perform automatic data binding upon submit. For more information about forms, go to the [[page(form)|Form page]].</p>
+<p>The <code>form</code> element in combination with <code>submit</code> is used for submitting data. <code>input</code> elements perform automatic data binding upon submit. For more information about forms, go to the <a href="../forms">Forms</a> page.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>page editUser(u:User){
   form{
@@ -1924,7 +1924,7 @@ block(String){ &lt;page element*&gt; }
 <div class="codehilite"><pre><span></span><code>template edit(g:Group){
   form {
     input(g.members)
-    action(&quot;save&quot;,action{})
+    submit action {} { &quot;save&quot; }
   } 
 }
 

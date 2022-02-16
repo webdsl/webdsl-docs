@@ -1148,13 +1148,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#integration-with-mobl" class="md-nav__link">
-    Integration with Mobl
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1454,13 +1447,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#integration-with-mobl" class="md-nav__link">
-    Integration with Mobl
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1564,19 +1550,28 @@ $ curl http://localhost:8080/hellojson/document/my-first-doc
    return obj;
 }
 </code></pre></div>
-<h2 id="integration-with-mobl">Integration with Mobl<a class="headerlink" href="#integration-with-mobl" title="Permanent link">&para;</a></h2>
-<p>The following zip file contains a WebDSL and a <a href="http://mobl-lang.org/">Mobl</a> project, the WebDSL application provides data through a web service to the Mobl application:</p>
-<p><a href="https://webdsl.org/examples/mobl-webdsl-example.zip">https://webdsl.org/examples/mobl-webdsl-example.zip</a></p>
-<p>How to use this example:</p>
-<p>0 Get the Eclipse zip from the WebDSL site ([[selectpage(Download/WebDSLplugin)|WebDSL in Eclipse]]), which contains the WebDSL and Mobl plugins.</p>
-<p>1 Import both projects using:
-'file -&gt; import -&gt; exising projects into workspace'
-(the testapp WebDSL project will automatically compile and deploy)</p>
-<p>2 Open testmobl.mobl, add a space somewhere and save the file to trigger a compilation of the Mobl project.</p>
-<p>3 In the WebDSL project, right-click import-mobl.xml and select 'run as-&gt;ant build'.
-This simply copies the content of the Mobl project www directory to the WebContent directory of the WebDSL project, which contains the deployed application.</p>
-<p>4 Go to the browser and click the link 'show mobile page'.</p>
-<p>Note that you will need to update the project names in 'import-mobl.xml' when copying it to another project, and you should copy the 'projectname import-mobl.xml.launch' file as well.</p>
+<!-- ## Integration with Mobl
+
+The following zip file contains a WebDSL and a [Mobl](http://mobl-lang.org/) project, the WebDSL application provides data through a web service to the Mobl application:
+
+[https://webdsl.org/examples/mobl-webdsl-example.zip](https://webdsl.org/examples/mobl-webdsl-example.zip)
+
+How to use this example:
+
+0 Get the Eclipse zip from the WebDSL site ([[selectpage(Download/WebDSLplugin)|WebDSL in Eclipse]]), which contains the WebDSL and Mobl plugins.
+
+1 Import both projects using:
+'file -> import -> exising projects into workspace'
+(the testapp WebDSL project will automatically compile and deploy)
+
+2 Open testmobl.mobl, add a space somewhere and save the file to trigger a compilation of the Mobl project.
+
+3 In the WebDSL project, right-click import-mobl.xml and select 'run as->ant build'.
+This simply copies the content of the Mobl project www directory to the WebContent directory of the WebDSL project, which contains the deployed application.
+
+4 Go to the browser and click the link 'show mobile page'.
+
+Note that you will need to update the project names in 'import-mobl.xml' when copying it to another project, and you should copy the 'projectname import-mobl.xml.launch' file as well. -->
                 
               
               

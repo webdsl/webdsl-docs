@@ -2248,7 +2248,7 @@ Current implementation supports:</p>
 <h5 id="mapping-specification">+ <code>mapping specification</code><a class="headerlink" href="#mapping-specification" title="Permanent link">&para;</a></h5>
 <p>Prefix a <code>mapping specification</code> with the plus sign if you want this search field to be used by default at query time. <u>If no default search field is specified, all search fields are used by default</u>.</p>
 <p>Search mappings belong to an entity and can be placed inside an entity declaration, or somewhere else by adding the entity name. Names of the search fields are scoped to entities, so different entities may share the same names for search fields.</p>
-<div class="highlight"><pre><span></span><code>//Embedded search mapping
+<div class="highlight"><pre><span></span><code>// Embedded search mapping
 entity Message {
   subject  : String
   text     : Text
@@ -2264,7 +2264,7 @@ entity Message {
   }
 }
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>//External search mapping
+<div class="highlight"><pre><span></span><code>// External search mapping
 entity ForumUser : User {
   forumName : String
   forumPwd  : Secret
@@ -2277,7 +2277,7 @@ search mapping ForumUser {
 </code></pre></div>
 <h2 id="using-annotations">Using annotations<a class="headerlink" href="#using-annotations" title="Permanent link">&para;</a></h2>
 <p>Search fields can also be specified using property annotations:
-<div class="highlight"><pre><span></span><code>//Using searchable annotations
+<div class="highlight"><pre><span></span><code>// Using searchable annotations
 entity Message {
   subject  : String (searchable)
   text     : Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)

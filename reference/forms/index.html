@@ -1617,7 +1617,10 @@ entity Cat {
   var c := Cat { name := &quot;Dexter&quot; }
   form{
     label(&quot;Cat&#39;s name:&quot;){ input(c.name) }
-    action(&quot;save&quot;,action{ c.save(); return showCat(c); })
+    submit action {
+      c.save();
+      return showCat(c);
+    } { &quot;save&quot; }
   }
 }
 </code></pre></div>
@@ -1631,7 +1634,10 @@ entity Cat {
   }
   form{
     label(&quot;Cat&#39;s name:&quot;){ input(c.name) }
-    action(&quot;save&quot;,action{ c.save(); return showCat(c); })
+    submit action {
+       c.save();
+       return showCat(c);
+    } { &quot;save&quot; }
   }
 }
 </code></pre></div>
@@ -1665,7 +1671,7 @@ entity Cat {
 </code></pre></div>
 
 <h2 id="input-for-entity">input for Entity<a class="headerlink" href="#input-for-entity" title="Permanent link">&para;</a></h2>
-<p><code>input(x, y)</code> can be used as input for an entity variable or for a collection of entities variable, where <code>x</code> is the variable or fieldaccess and <code>y</code> is the collection of options. It will create a dropdown box/select or a multi-select respectively. The <code>name</code> property of an entity is used to describe the entity in a select, see [[singlepage(nameproperty)| name property]].</p>
+<p><code>input(x, y)</code> can be used as input for an entity variable or for a collection of entities variable, where <code>x</code> is the variable or fieldaccess and <code>y</code> is the collection of options. It will create a dropdown box/select or a multi-select respectively. The <code>name</code> property of an entity is used to describe the entity in a select, see <a href="../entities#name-property">Name Property</a>.</p>
 <p><code>input(x)</code> for an entity reference property or a collection property is the same as <code>select</code>, with as options all entities of its type that are in the database.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>entity User {

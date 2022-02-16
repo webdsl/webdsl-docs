@@ -1501,7 +1501,7 @@ extend entity User {
           validate(u.password == p, &quot;Password does not match&quot;) 
         } 
       } 
-      action(&quot;Save&quot;, action{ } ) 
+      submit action {} { &quot;Save&quot; }
     } 
   }
 }
@@ -1514,7 +1514,8 @@ extend entity User {
     group(&quot;User Group&quot;) { 
     label(&quot;Name&quot;) { input(ug.name) } 
     label(&quot;Owner&quot;) { input(ug.owner) } 
-    action(&quot;Save&quot;, save()) } } 
+    submit save() { &quot;Save&quot; }
+
     action save() { 
       validate(email(newGroupNotify(ug)),&quot;Owner could not be notified by email&quot;); 
       return userGroup(ug); 

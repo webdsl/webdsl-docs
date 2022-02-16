@@ -2341,7 +2341,7 @@ Or, in action code:
 <p><strong>split(separator:String):List<String></strong></p>
 <p>Returns a list of strings produced by splitting this string around matches of <strong>separator</strong>.</p>
 <p><strong>makePatch(new : String):Patch</strong></p>
-<p>Creates a Patch from this String to the <strong>new</strong> String, see [[page(Patch)|Patch type]].</p>
+<p>Creates a Patch from this String to the <strong>new</strong> String, see <a href="#patch">Patch</a>.</p>
 <p><strong>diff(new : String):List<String></strong></p>
 <p>Creates a List<String> describing the differences between this String and the <strong>new</strong> String.</p>
 <p><strong>trim(): String</strong></p>
@@ -2500,7 +2500,7 @@ function test2(pass:Secret){
 </code></pre></div>
 
 <h3 id="functions_6">Functions<a class="headerlink" href="#functions_6" title="Permanent link">&para;</a></h3>
-<p><strong>all [[page(String)|String]] functions</strong></p>
+<p><strong>all <a href="#string">String</a> functions</strong></p>
 <p>Secret is compatible with String.</p>
 <p><strong>check(input:Secret):Bool</strong></p>
 <p>Checks the <strong>input</strong> Secret (not digested) against the digest version contained in this Secret.</p>
@@ -2520,7 +2520,7 @@ assert(s.check(&quot;123&quot; as Secret));
 </code></pre></div>
 
 <h2 id="email">Email<a class="headerlink" href="#email" title="Permanent link">&para;</a></h2>
-<p>Represents an e-mail address as a string. If you are interested in sending email from your application, have a look at the <a href="https://webdsl.org/selectpage/Manual/SendEmail">SendEmail</a> page. The page input for an Email is a textfield with the following validation: </p>
+<p>Represents an e-mail address as a string. If you are interested in sending email from your application, have a look at the <a href="../send-email">Send Email</a> page. The page input for an Email is a textfield with the following validation: </p>
 <div class="codehilite"><pre><span></span><code>validate(/[a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?/.match(this), &quot;Not a valid email address&quot;)
 </code></pre></div>
 
@@ -2542,7 +2542,7 @@ function test2(address:Email){
 </code></pre></div>
 
 <h3 id="functions_7">Functions<a class="headerlink" href="#functions_7" title="Permanent link">&para;</a></h3>
-<p><strong>all [[page(String)|String]] functions</strong></p>
+<p><strong>all <a href="#string">String</a> functions</strong></p>
 <p>Email is compatible with String.</p>
 <h2 id="text">Text<a class="headerlink" href="#text" title="Permanent link">&para;</a></h2>
 <p>Represents a large string. The page input for a Text is a textarea. The page output for Text is the same as String output.</p>
@@ -2563,11 +2563,11 @@ function test2(t:Text){
 </code></pre></div>
 
 <h3 id="functions_8">Functions<a class="headerlink" href="#functions_8" title="Permanent link">&para;</a></h3>
-<p><strong>all [[page(String)|String]] functions</strong></p>
+<p><strong>all <a href="#string">String</a> functions</strong></p>
 <p>Text is compatible with String.</p>
 <h2 id="wikitext">WikiText<a class="headerlink" href="#wikitext" title="Permanent link">&para;</a></h2>
 <p>Represents a large string with <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a> syntax support and internal page links.
-Internal page links in WikiText can be created using [[ page(arg)|caption ]] (remove the spaces).</p>
+Internal page links in WikiText can be created using <code>[[page(arg)|caption]]</code>.</p>
 <p>The page input for WikiText is a textarea. The page output for WikiText processes the Markdown and page links and produces html elements.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>var t : WikiText := &quot;123&quot;;
@@ -2586,7 +2586,7 @@ function test2(t: WikiText){
 </code></pre></div>
 
 <h3 id="functions_9">Functions<a class="headerlink" href="#functions_9" title="Permanent link">&para;</a></h3>
-<p><strong>all [[page(String)|String]] functions</strong></p>
+<p><strong>all <a href="#string">String</a> functions</strong></p>
 <p>WikiText is compatible with String.</p>
 <h2 id="patch">Patch<a class="headerlink" href="#patch" title="Permanent link">&para;</a></h2>
 <p>Represents a patch. The page input for a Patch is the same as for Text. The page output for Patch is the same as for Text.</p>
@@ -2607,7 +2607,7 @@ function test2(p:Patch){
 </code></pre></div>
 
 <h3 id="functions_10">Functions<a class="headerlink" href="#functions_10" title="Permanent link">&para;</a></h3>
-<p><strong>all [[page(String)|String]] functions</strong></p>
+<p><strong>all <a href="#string">String</a> functions</strong></p>
 <p>Patch is compatible with String.</p>
 <p><strong>applyPatch(arg: String):String</strong></p>
 <p>Applies this patch to the <strong>arg</strong> String.</p>
@@ -2765,7 +2765,7 @@ function test2(t: URL){
 </code></pre></div>
 
 <h3 id="functions_14">Functions<a class="headerlink" href="#functions_14" title="Permanent link">&para;</a></h3>
-<p><strong>all [[page(String)|String]] functions</strong></p>
+<p><strong>all <a href="#string">String</a> functions</strong></p>
 <p>URL is compatible with String.</p>
 <h2 id="file">File<a class="headerlink" href="#file" title="Permanent link">&para;</a></h2>
 <p>Represents an (uploaded) file. The page input for a File is a file upload component. The page output is a file download link.</p>
