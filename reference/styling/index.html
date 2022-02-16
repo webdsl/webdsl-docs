@@ -1424,7 +1424,7 @@
 
 <p>The Firebug add-on for Firefox can be very helpful in figuring out the page structure, other browsers have similar development tools.</p>
 <p>Explicit hooks for CSS can be added using the XML embedding:</p>
-<div class="codehilite"><pre><span></span><code>define someTemplate(){ 
+<div class="codehilite"><pre><span></span><code>template someTemplate(){ 
   &lt;div class=&quot;mydiv&quot;&gt;
     &quot;content of mydiv&quot;
   &lt;/div&gt;
@@ -1440,11 +1440,11 @@
 </code></pre></div>
 
 <p>If you want to define your own template that takes such extra arguments, use <code>all attributes</code>:</p>
-<div class="codehilite"><pre><span></span><code>define page root(){
+<div class="codehilite"><pre><span></span><code>page root(){
   someOtherTemplate[class=&quot;importantdiv&quot;]{ &quot;content&quot; }
 }
 
-define someOtherTemplate(){ 
+template someOtherTemplate(){ 
   &lt;div all attributes&gt;
     elements
   &lt;/div&gt;
@@ -1452,7 +1452,7 @@ define someOtherTemplate(){
 </code></pre></div>
 
 <p>The <code>span</code> template modifier adds a span around a template, which can then be used as a hook for CSS:</p>
-<div class="codehilite"><pre><span></span><code>define span spanTemplate(){ &quot;span around me&quot; }
+<div class="codehilite"><pre><span></span><code>template span spanTemplate(){ &quot;span around me&quot; }
 </code></pre></div>
                 
               

@@ -1503,7 +1503,7 @@ native class  nativejava.TestSuper as SuperClass  {
   returnList(): List&lt;SubClass&gt;
 }
 
-define page root() {
+page root() {
   var d : SuperClass := SubClass()  
   output(d.getProp())
 

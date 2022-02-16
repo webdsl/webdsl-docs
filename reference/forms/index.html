@@ -1592,7 +1592,7 @@ a different type of input, to allow duplicates and control ordering)</li>
 <div class="codehilite"><pre><span></span><code>entity TestEntity {
   x : Bool
 }
-define editTestEntity (e:TestEntity){
+template editTestEntity (e:TestEntity){
  form{
    input(e.x)
    submit action{ } { &quot;update entity&quot; }

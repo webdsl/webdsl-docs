@@ -1557,14 +1557,14 @@ runscript(String);
 
 <p>When a template is used as target in an ajax operation, it must be declared with the <code>ajax</code> modifier.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define testtemplate(p:Person){
+<div class="codehilite"><pre><span></span><code>template testtemplate(p:Person){
   placeholder testph{ &quot;no details shown&quot; }
   submit(&quot;show details&quot;,show())[ajax]
   action show(){
     replace(testph,showDetails(p));
   }
 }
-define ajax showDetails(person:Person){
+ajax template showDetails(person:Person){
   &quot; name: &quot; output(person.name)
 }
 </code></pre></div>
@@ -1586,21 +1586,21 @@ input(search)[onkeyup := updatesearch(search)]
 <h2 id="forms-and-ajax">Forms and Ajax<a class="headerlink" href="#forms-and-ajax" title="Permanent link">&para;</a></h2>
 <p>Typically you should not make a form cross an ajax placeholder. The server considers ajax templates as self-contained components similar to pages.</p>
 <p>Example of proper usage:</p>
-<div class="codehilite"><pre><span></span><code>define demo(){
+<div class="codehilite"><pre><span></span><code>template demo(){
   placeholder test()
 }
-define ajax test(){
+ajax template test(){
   form{ input(someGlobal.name) submit action{} {&quot;save&quot;} }
 }
 </code></pre></div>
 
 <p>Example of incorrect usage (the submit will be contained in a form on the client but not on the server):</p>
-<div class="codehilite"><pre><span></span><code>define demo(){
+<div class="codehilite"><pre><span></span><code>template demo(){
   form{
     placeholder test()
   }
 }
-define ajax test(){
+ajax template test(){
   input(someGlobal.name) submit action{} {&quot;save&quot;}
 }
 </code></pre></div>
@@ -1609,7 +1609,7 @@ define ajax test(){
 <h2 id="ajax-input-validation">Ajax Input Validation<a class="headerlink" href="#ajax-input-validation" title="Permanent link">&para;</a></h2>
 <p>There are prebuild library components for creating inputs with ajax validation responses.</p>
 <p>A simple example:</p>
-<div class="codehilite"><pre><span></span><code>define demo(){  
+<div class="codehilite"><pre><span></span><code>template demo(){  
   var s := &quot;test&quot;
   form{    
     inputajax(s)

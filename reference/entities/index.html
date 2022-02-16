@@ -1685,15 +1685,14 @@
 }
 </code></pre></div>
 
-<p>A property consists of 4 parts:</p>
+<p>A property consists of 3 parts:</p>
 <ul>
-<li>a name</li>
-<li>a property kind, which can either be a primitive value, reference to an entity, or collection of an entity</li>
-</ul>
-<p>The difference between reference and composite property kinds is that 
-composite indicates that the referred entity is part of the one referring to it. The only effect this currently has is that composite cascades delete (deleting the entity will also delete the referred entity). </p>
-<ul>
-<li>a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, {Person} (set), and [Person] (list). </li>
+<li>
+<p>a name</p>
+</li>
+<li>
+<p>a property type, e.g. value types String, Int, Long, Text or reference/composite types which refer to other entities, such as Person, {Person} (set), and [Person] (list).</p>
+</li>
 </ul>
 <p>For a complete overview of the available types, see [[page(Types)|Types]].</p>
 <ul>

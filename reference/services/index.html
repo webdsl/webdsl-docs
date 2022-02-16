@@ -1529,8 +1529,8 @@
 <h2 id="defining-services">Defining services<a class="headerlink" href="#defining-services" title="Permanent link">&para;</a></h2>
 <p>A service is simply a WebDSL function that uses the <code>service</code> keyword instead of <code>function</code>, you don't have to specify a return type, it will convert anything you return to a string (using <code>.toString()</code>):</p>
 <div class="highlight"><pre><span></span><code>entity Document {
-  title :: String (id, name)
-  text  :: Text
+  title : String (id, name)
+  text  : Text
 }
 
 service document(id : String) {

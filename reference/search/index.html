@@ -1467,9 +1467,9 @@
                 <h1 id="search">Search<a class="headerlink" href="#search" title="Permanent link">&para;</a></h1>
 <p>WebDSL supports simple search capabilities through <a href="http://lucene.apache.org">Lucene</a>. Entity properties can be marked as "searchable" to subsequently be indexed:
 <div class="highlight"><pre><span></span><code>entity Message {
-  subject :: String (searchable)
-  text    :: Text   (searchable)
-  sender  -&gt; ForumUser
+  subject : String (searchable)
+  text    : Text   (searchable)
+  sender  : ForumUser
 }
 </code></pre></div>
 The searchable can be applied to the following built-in WebDSL types: String, Text, WikiText, Int, Long, Float and date types. Properties of user defined entity types are currently not supported to be searchable (i.e. sender in the previous example).</p>
@@ -1481,7 +1481,7 @@ function searchMessage(query : String, limit : Int,
                        offset : Int) : List&lt;Message&gt;
 </code></pre></div>
 Which can be used from anywhere. For instance on a search page:</p>
-<div class="highlight"><pre><span></span><code>define page search(query : String) {
+<div class="highlight"><pre><span></span><code>page search(query : String) {
   var newQuery : String := query;
   action doSearch() {
     return search(newQuery);

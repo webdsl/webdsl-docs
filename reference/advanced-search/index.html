@@ -2250,10 +2250,10 @@ Current implementation supports:</p>
 <p>Search mappings belong to an entity and can be placed inside an entity declaration, or somewhere else by adding the entity name. Names of the search fields are scoped to entities, so different entities may share the same names for search fields.</p>
 <div class="highlight"><pre><span></span><code>//Embedded search mapping
 entity Message {
-  subject :: String
-  text    :: Text
-  category:: String
-  sender  -&gt; User
+  subject  : String
+  text     : Text
+  category : String
+  sender   : User
 
   search mapping {
     +subject
@@ -2266,9 +2266,9 @@ entity Message {
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>//External search mapping
 entity ForumUser : User {
-  forumName :: String
-  forumPwd :: Secret
-  messages -&gt; Set&lt;Message&gt; (inverse=Message.sender)
+  forumName : String
+  forumPwd  : Secret
+  messages  : Set&lt;Message&gt; (inverse=Message.sender)
 }
 ...
 search mapping ForumUser {
@@ -2279,10 +2279,10 @@ search mapping ForumUser {
 <p>Search fields can also be specified using property annotations:
 <div class="highlight"><pre><span></span><code>//Using searchable annotations
 entity Message {
-  subject :: String (searchable)
-  text    :: Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)
-  category:: String (searchable)
-  sender  -&gt; ForumUser (searchable())
+  subject  : String (searchable)
+  text     : Text (searchable, searchable(name=textSnowBall, analyzer=snowballporter)
+  category : String (searchable)
+  sender   : ForumUser (searchable())
 }
 </code></pre></div></p>
 <p>The above code marks the entity <code>Message</code> searchable, and it has 3 search fields: <code>subject</code>, <code>text</code> using the default analyzer, and <code>textSnowball</code>, which uses the snowball porter analyzer. Searchable annotations have no restriction w.r.t. search mappings, and both can be used interchangeably (not recommended since it's less transparent). The following table shows the annotation equivalent of specifications in search mappings.</p>
@@ -2451,7 +2451,7 @@ Previously returned facets can be used to narrow the search results. The behavio
 When using search namespaces, restricting a search to a single namespace is done using the <em>in namespace</em> construct followed by a String-compatible expression.</p>
 <h2 id="search-data-using-native-java-instead-of-search-language-some-expert-features">Search data using native java instead of search language (some expert features)<a class="headerlink" href="#search-data-using-native-java-instead-of-search-language-some-expert-features" title="Permanent link">&para;</a></h2>
 <p>The searcher class that is created for the example <code>Message</code> entity is <code>MessageSearcher</code>. The first advantage of using this searcher instead of the generated functions is the ability to interact with the searcher, for further refinements to the search query, or to get information like the total number of results, or time that was needed to perform the search.
-<div class="highlight"><pre><span></span><code>define page searchPage(query : String) {
+<div class="highlight"><pre><span></span><code>page searchPage(query : String) {
   var searcher := MessageSearcher().query(query);
   var results := searcher.results();
   var searchTime := searcher.searchTime(); //String
@@ -2462,7 +2462,7 @@ When using search namespaces, restricting a search to a single namespace is done
     showResults(results)
   }
 }
-define showResults(results : List&lt;Message&gt;) {
+template showResults(results : List&lt;Message&gt;) {
   //code to view results
 }   
 </code></pre></div></p>
@@ -2583,8 +2583,8 @@ Namespaces have some advantages over using field filters. An index is created fo
 <p>Facets can be displayed in many contexts. For example, when displaying a list of products, you want the product categories to be displayed as facets.
 Any searchable property can be used for faceting. The values, as they appear in the search index, are used for faceting. So if you use the default analyzer for the category property of Product, categories containing white spaces are not treated as single facet value. For this to work you need to define an additional field which doesn't tokenize the value of the property, for example by indexing this property untokenized:</p>
 <div class="highlight"><pre><span></span><code>entity Product{
-  name :: String
-  categories -&gt; Set&lt;Category&gt; (inverse=Category.products)
+  name       : String
+  categories : Set&lt;Category&gt; (inverse=Category.products)
 
   search mapping{
     name
@@ -2592,8 +2592,8 @@ Any searchable property can be used for faceting. The values, as they appear in 
   }
 }
 entity Category {
-  name::String
-  products -&gt; Set&lt;Product&gt;
+  name     : String
+  products : Set&lt;Product&gt;
 
   search mapping{
     name using none //or &#39;name using no&#39; in v1.2.9.0
@@ -2604,7 +2604,7 @@ entity Category {
 You first need to specify the facets you want to use by enabling them in the searcher. 
 A typical example is to display facets in the search results:</p>
 <p>(updated April 5<sup>th</sup>)
-<div class="highlight"><pre><span></span><code>define searchbar(){
+<div class="highlight"><pre><span></span><code>template searchbar(){
   var query := &quot;&quot;;
   form {
     input(query)
@@ -2616,7 +2616,7 @@ A typical example is to display facets in the search results:</p>
   }
 }
 
-define page search(searcher : ProductSearcher){
+page search(searcher : ProductSearcher){
     var results : List&lt;Product&gt; := results from searcher;
     var facets  : List&lt;Facet&gt;   := categories.name facets from searcher;
 
@@ -2627,7 +2627,7 @@ define page search(searcher : ProductSearcher){
 
     showResults(results)
 }
-define facetLink(facet: Facet, searcher: ProductSearcher){
+template facetLink(facet: Facet, searcher: ProductSearcher){
     submitlink narrow(facet){ if(facet.isSelected()){&quot;+&quot;} output(facet.getValue()) }&quot;(&quot; output(facet.getCount()) &quot;)&quot;
 
     action narrow(facet : Facet){

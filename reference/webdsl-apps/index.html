@@ -1464,7 +1464,7 @@ imports MyFirstImport
 
 section pages
 
-define page root () { 
+page root () { 
     &quot;hello world&quot; 
     IAmImported() 
 }
@@ -1473,7 +1473,7 @@ define page root () {
 <p><strong>MyFirstImport.app:</strong></p>
 <div class="codehilite"><pre><span></span><code>module MyFirstImport
 
-define IAmImported() { 
+template IAmImported() { 
     spacer 
     &quot;I am imported from a module file&quot; 
 }

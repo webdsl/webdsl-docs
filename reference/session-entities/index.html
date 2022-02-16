@@ -1408,7 +1408,7 @@
                 <h1 id="session-entities">Session Entities<a class="headerlink" href="#session-entities" title="Permanent link">&para;</a></h1>
 <p>Storing data in the session context on the server is done using session entities. Example:</p>
 <div class="codehilite"><pre><span></span><code>session shoppingcart {
-  products -&gt; List&lt;Product&gt;
+  products : List&lt;Product&gt;
 }
 </code></pre></div>
 
@@ -1417,7 +1417,7 @@
 <p>Declaring an access control principle, e.g. <code>principal is User with credentials name,password</code>, automatically creates a <code>securityContext</code> session entity. For more information about access control see [[selectpage(manual/accesscontrol)|the Access Control section]].</p>
 <p>Session entities can also be extended with extra properties. Example:</p>
 <div class="codehilite"><pre><span></span><code>extend session shoppingcart{
-  lastSearchQuery :: String
+  lastSearchQuery : String
 }
 </code></pre></div>
 

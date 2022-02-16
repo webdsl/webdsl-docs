@@ -1470,12 +1470,12 @@
 <p>Value well-formedness checks (e.g. whether the user enters a valid integer in an Int input) are added automatically to each input field.</p>
 <p>Validation can be specified on entities in property annotations:</p>
 <div class="codehilite"><pre><span></span><code>entity User { 
-  username :: String (id, validate(isUniqueUser(this), &quot;Username is taken&quot;)) 
-  password :: Secret (validate(password.length() &gt;= 8, &quot;Password needs to be at least 8 characters&quot;) 
+  username : String (id, validate(isUniqueUser(this), &quot;Username is taken&quot;)) 
+  password : Secret (validate(password.length() &gt;= 8, &quot;Password needs to be at least 8 characters&quot;) 
   , validate(/[a-z]/.find(password), &quot;Password must contain a lower-case character&quot;) 
   , validate(/[A-Z]/.find(password), &quot;Password must contain an upper-case character&quot;) 
-  , validate(/[0-9]/.find(password), &quot;Password must contain a digit&quot;)
-  email :: Email)) 
+  , validate(/[0-9]/.find(password), &quot;Password must contain a digit&quot;))
+  email : Email
 } 
 extend entity User { 
   username(validate(isUniqueUser(this),&quot;Username is taken&quot;)) 
@@ -1487,7 +1487,7 @@ extend entity User {
 </code></pre></div>
 
 <p>Validation can be specified directly in pages:</p>
-<div class="codehilite"><pre><span></span><code>define page editUser(u:User) { 
+<div class="codehilite"><pre><span></span><code>page editUser(u:User) { 
   var p: Secret; 
   form { 
     group(&quot;User&quot;) { 
@@ -1508,7 +1508,7 @@ extend entity User {
 </code></pre></div>
 
 <p>Validation can be specified in actions:</p>
-<div class="codehilite"><pre><span></span><code>define page createGroup() { 
+<div class="codehilite"><pre><span></span><code>page createGroup() { 
   var ug := UserGroup {} 
   form { 
     group(&quot;User Group&quot;) { 
@@ -1524,25 +1524,25 @@ extend entity User {
 
 <h2 id="customizing-validation-output">Customizing Validation Output<a class="headerlink" href="#customizing-validation-output" title="Permanent link">&para;</a></h2>
 <p>Validation output can be customized by overriding the templates used to display validation messages. Currently, there are 4 global validation templates:</p>
-<div class="codehilite"><pre><span></span><code>define ignore-access-control errorTemplateInput(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateInput(messages : List&lt;String&gt;)
 </code></pre></div>
 
 <p>Displays validation message related to an input.  </p>
-<div class="codehilite"><pre><span></span><code>define ignore-access-control errorTemplateForm(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateForm(messages : List&lt;String&gt;)
 </code></pre></div>
 
 <p>Displays validation message for validation in a form.</p>
-<div class="codehilite"><pre><span></span><code>define ignore-access-control errorTemplateAction(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateAction(messages : List&lt;String&gt;)
 </code></pre></div>
 
 <p>Displays validation message for validation in an action.</p>
-<div class="codehilite"><pre><span></span><code>define ignore-access-control templateSuccess(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template templateSuccess(messages : List&lt;String&gt;)
 </code></pre></div>
 
 <p>Displays validation message for success messages.</p>
 <p>When overriding these validation templates, use an <code>elements</code> templatecall to refer to the element being validated.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define ignore-access-control errorTemplateInput(messages : List&lt;String&gt;){
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateInput(messages : List&lt;String&gt;){
   elements
   for(ve: String in messages){
     output(ve)
@@ -1572,7 +1572,7 @@ radioajax(Entity,List&lt;Entity&gt;)
 <p>Selection options can also be provided using the <code>allowed</code> annotation on an entity property.
 Example:</p>
 <div class="codehilite"><pre><span></span><code>entity Person{
-  parent -&gt; Person (allowed=from Person as p where p != this)
+  parent : Person (allowed=from Person as p where p != this)
 }
 </code></pre></div>
                 

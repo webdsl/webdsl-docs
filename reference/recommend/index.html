@@ -1607,20 +1607,20 @@
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <p>One example is a book store where consumers buy books, so in this case the consumer is the user and the book is the item. Users have preferences for items, but its up to you whether you take those into account. The preference value can be expressed on a scale that matches your needs, for example 0 to 1 or 1 to 5, as long as it’s a number.</p>
 <div class="highlight"><pre><span></span><code>entity Customer {
-    name :: String(id)  
-    books -&gt; List&lt;BookPurchase&gt;
+    name : String(id)   
+    books : List&lt;BookPurchase&gt;
 }
 
 entity Book {
-    isbn :: String(id)
-    author :: String
-    title :: String
+    isbn : String(id)
+    author : String
+    title : String
 }
 
 entity BookPurchase {
-    by -&gt; Customer
-    book -&gt; Book
-    pref :: Int
+    by : Customer
+    book : Book
+    pref : Int
 }
 
 recommend BookPurchase {

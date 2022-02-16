@@ -1953,7 +1953,7 @@ template body(){
 }
 page root(){
   main
-  define body(){
+  template body(){
     &quot;custom body&quot;
   }
 }
@@ -2073,7 +2073,7 @@ page root(){
 <div class="codehilite"><pre><span></span><code>page pagenotfound() {
   title{ &quot;myapp / page not found (404)&quot; }
   main()
-  define body() {
+  template body() {
     par{ &quot;That page does not exist!&quot; }
     par{ &quot;Maybe you can find what you are looking for using the search page.&quot; }
   }

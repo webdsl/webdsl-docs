@@ -1932,7 +1932,7 @@
 <h3 id="toplevel-entity">TopLevel Entity<a class="headerlink" href="#toplevel-entity" title="Permanent link">&para;</a></h3>
 <p>The data synchronization requires a Toplevel Entity to enable the data partitioning. This is simple a flag that specifies that objects of this type represent a data partition. Additionally, this setting requires a String property that can be used to represent this object. </p>
 <div class="codehilite"><pre><span></span><code>entity Car{
-    registrationIdentifier :: String
+    registrationIdentifier : String
 
     synchronization configuration{
         toplevel name property : registrationIdentifier
@@ -1943,7 +1943,7 @@
 <h3 id="access-control">Access Control<a class="headerlink" href="#access-control" title="Permanent link">&para;</a></h3>
 <p>The data synchronization framework enable external sources to read and modify data on the server with the web application. The framework allows control over which data can be accessed by who. This can only be specified when the a principal is defined in the web application. There are three different levels that can be specified for each entity: read, write and create. It is recommended to specify those rules for each entity.</p>
 <div class="codehilite"><pre><span></span><code>entity Dummy{
-    name :: String
+    name : String
 
     synchronization configuration{
         access read: true
@@ -1956,9 +1956,9 @@
 <h3 id="restricted-properties">Restricted Properties<a class="headerlink" href="#restricted-properties" title="Permanent link">&para;</a></h3>
 <p>The last setting that can be configured is that of restricted properties. It allows to simplify the data model that you want to use on synchronization. The properties that are specified in this configuration are removed from the shared data and also for the calculation of data partitioning.</p>
 <div class="codehilite"><pre><span></span><code>entity Person{
-    surName :: String
-    firstName :: String
-    fullName :: String
+    surName : String
+    firstName : String
+    fullName : String
 
     synchronization configuration{
         restricted properties : surName, firstName

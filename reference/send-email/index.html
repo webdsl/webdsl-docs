@@ -1408,7 +1408,7 @@
                 <h1 id="send-email">Send Email<a class="headerlink" href="#send-email" title="Permanent link">&para;</a></h1>
 <p>This page describes how to create an email template and send email from your application. Make sure the email settings are configured in application.ini, see [[selectpage(Manual/ApplicationConfiguration)|Application Configuration]]. If you are interested in storing email addresses in an entity, have a look at the <a href="https://webdsl.org/selectpage/Manual/Types#Email">Email</a> type page.</p>
 <p>Defining an email template:</p>
-<div class="codehilite"><pre><span></span><code>define email testemail(us : User) {
+<div class="codehilite"><pre><span></span><code>email testemail(us : User) {
   to(us.mail)
   from(&quot;webdslorg@gmail.com&quot;)
   subject(&quot;Test Email&quot;)
@@ -1428,15 +1428,15 @@
 
 <p>The actual sending happens asynchronously, if there are issues while the application is trying to send an email, it will retry that email after 3 hours. If necessary, you can inspect and influence this email queue through the <code>QueuedEmail</code> entity:</p>
 <div class="codehilite"><pre><span></span><code>entity QueuedEmail {
-  body :: String (length=1000000) 
+  body : String (length=1000000) 
     //Note: default length for string is currently 255
-  to :: String (length=1000000)
-  cc :: String (length=1000000)
-  bcc :: String (length=1000000)
-  replyTo :: String (length=1000000)
-  from :: String (length=1000000)
-  subject :: String (length=1000000)
-  lastTry :: DateTime 
+  to : String (length=1000000)
+  cc : String (length=1000000)
+  bcc : String (length=1000000)
+  replyTo : String (length=1000000)
+  from : String (length=1000000)
+  subject : String (length=1000000)
+  lastTry : DateTime 
 }
 </code></pre></div>
                 

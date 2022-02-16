@@ -1648,7 +1648,7 @@ list[2] := "test";</tt></p>
 }
 
 entity User {
-  name :: String
+  name : String
 
   function showName() : String {
     return sayHello(name + &quot;!&quot;);
@@ -1687,7 +1687,7 @@ type <em>Sort</em>.</p>
 init{
   defaultUser.someInitializeFunction();
 }
-define page root(){
+page root(){
   output(defaultUser.name)
 }
 </code></pre></div>
@@ -1832,7 +1832,7 @@ expression.</p>
 </code></pre></div>
 
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>define test(a:Int){ output(a) &quot;!&quot; }
+<div class="codehilite"><pre><span></span><code>template test(a:Int){ output(a) &quot;!&quot; }
 function showContent(i:Int){
   log(rendertemplate(test(i)));
 }
