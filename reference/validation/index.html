@@ -1525,25 +1525,25 @@ extend entity User {
 
 <h2 id="customizing-validation-output">Customizing Validation Output<a class="headerlink" href="#customizing-validation-output" title="Permanent link">&para;</a></h2>
 <p>Validation output can be customized by overriding the templates used to display validation messages. Currently, there are 4 global validation templates:</p>
-<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateInput(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateInput(messages : [String])
 </code></pre></div>
 
 <p>Displays validation message related to an input.  </p>
-<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateForm(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateForm(messages : [String])
 </code></pre></div>
 
 <p>Displays validation message for validation in a form.</p>
-<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateAction(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateAction(messages : [String])
 </code></pre></div>
 
 <p>Displays validation message for validation in an action.</p>
-<div class="codehilite"><pre><span></span><code>ignore-access-control template templateSuccess(messages : List&lt;String&gt;)
+<div class="codehilite"><pre><span></span><code>ignore-access-control template templateSuccess(messages : [String])
 </code></pre></div>
 
 <p>Displays validation message for success messages.</p>
 <p>When overriding these validation templates, use an <code>elements</code> templatecall to refer to the element being validated.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateInput(messages : List&lt;String&gt;){
+<div class="codehilite"><pre><span></span><code>ignore-access-control template errorTemplateInput(messages : [String]){
   elements
   for(ve: String in messages){
     output(ve)
@@ -1559,15 +1559,15 @@ inputajax(Int/Bool/Float/Long)
 </code></pre></div>
 
 <p>reference types:</p>
-<div class="codehilite"><pre><span></span><code>inputajax(Entity/List&lt;Entity&gt;/Set&lt;Entity&gt;)
-selectajax(Entity/Set&lt;Entity&gt;)
+<div class="codehilite"><pre><span></span><code>inputajax(Entity / [Entity] / {Entity})
+selectajax(Entity / {Entity})
 radioajax(Entity)
 </code></pre></div>
 
 <p>provide selection options:</p>
-<div class="codehilite"><pre><span></span><code>inputajax(Entity/List&lt;Entity&gt;/Set&lt;Entity&gt;,List&lt;Entity&gt;)
-selectajax(Entity/Set&lt;Entity&gt;,List&lt;Entity&gt;)
-radioajax(Entity,List&lt;Entity&gt;)
+<div class="codehilite"><pre><span></span><code>inputajax(Entity / [Entity] / {Entity}  , [Entity])
+selectajax(Entity / {Entity}            , [Entity])
+radioajax(Entity                        , [Entity])
 </code></pre></div>
 
 <p>Selection options can also be provided using the <code>allowed</code> annotation on an entity property.

@@ -1608,7 +1608,7 @@
 <p>One example is a book store where consumers buy books, so in this case the consumer is the user and the book is the item. Users have preferences for items, but its up to you whether you take those into account. The preference value can be expressed on a scale that matches your needs, for example 0 to 1 or 1 to 5, as long as it’s a number.</p>
 <div class="highlight"><pre><span></span><code>entity Customer {
     name : String(id)   
-    books : List&lt;BookPurchase&gt;
+    books : [BookPurchase]
 }
 
 entity Book {
@@ -1702,16 +1702,16 @@ The default value is: 1 weeks  </p>
 <p>There are two ways to get recommendations, which method you need depends on the situation you are in. In the most common situation you know who the user is, and you want to get recommendations based on the items he / she already likes. In this case we talk about the user-to-item recommendations. In case you do not know the user, but you know which item they are interested in you could generate a list of recommendations too. The latter case is called item-to-item recommendation. These two methods require a different function call to the Recommendations system.  </p>
 <h3 id="user-to-item-recommendations">User-to-item recommendations<a class="headerlink" href="#user-to-item-recommendations" title="Permanent link">&para;</a></h3>
 <p>The user-to-item recommendations are accessible by calling to the method:
-<div class="highlight"><pre><span></span><code>RelationEntity.getUserRecommendations(user : UserType, maxNum : Int) : List&lt;ItemType&gt;
-RelationEntity.getUserRecommendations(user : UserType) : List&lt;ItemType&gt;
+<div class="highlight"><pre><span></span><code>RelationEntity.getUserRecommendations(user : UserType, maxNum : Int) : [ItemType]
+RelationEntity.getUserRecommendations(user : UserType) : [ItemType]
 </code></pre></div>
-This method returns a <code>List&lt;ItemType&gt;</code> as its result and could be filtered further or simply looped through as any normal list. The user argument refers to the user for which you want to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.</p>
+This method returns a list of <code>ItemType</code>s as its result and could be filtered further or simply looped through as any normal list. The user argument refers to the user for which you want to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.</p>
 <h3 id="item-to-item-recommendations">Item-to-item recommendations<a class="headerlink" href="#item-to-item-recommendations" title="Permanent link">&para;</a></h3>
 <p>The item-to-item recommendations are very similar to the user-to-user recommendation methods. The major difference between these function calls is the fact that you supply an item to the function so you could get a list of recommendations based on that single item. The item-to-item methods are:
-<div class="highlight"><pre><span></span><code>RelationEntity.getItemRecommendations(item : ItemType, maxNum : Int) : List&lt;ItemType&gt;
-RelationEntity.getItemRecommendations(item : ItemType) : List&lt;ItemType&gt;
+<div class="highlight"><pre><span></span><code>RelationEntity.getItemRecommendations(item : ItemType, maxNum : Int) : [ItemType]
+RelationEntity.getItemRecommendations(item : ItemType) : [ItemType]
 </code></pre></div>
-Just like the user-to-item recommendations these functions result in a <code>List&lt;ItemType&gt;</code>. The item argument refers to the item that you want to use as a reference to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.</p>
+Just like the user-to-item recommendations these functions result in a list of <code>ItemType</code>s. The item argument refers to the item that you want to use as a reference to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.</p>
 <h2 id="testing-the-speed">Testing the speed<a class="headerlink" href="#testing-the-speed" title="Permanent link">&para;</a></h2>
 <p>Determining the recommendations takes a while to compute, this is dependent on several factors including the size of the data set, the type of relations (binary or value based), if there are duplicate relations possible, and several configuration options. The configuration options that play a major role here are the algorithm type, the neighborhood size, and its related neighborhood algorithm. With the following function call you can determine how long the last operation of the recommendation system took in milliseconds:
 <div class="highlight"><pre><span></span><code>RelationEntity.getLastExecutionTime() : Int

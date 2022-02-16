@@ -1454,11 +1454,11 @@
 <p>WebDSL supports a subset of <a href="http://docs.jboss.org/hibernate/core/3.3/reference/en/html/queryhql.html">HQL</a>. To escape to WebDSL inside a query, prefix the expression with ~.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>// select all updates
-var allUpdates : List&lt;Update&gt; := from Update;
+var allUpdates : [Update] := from Update;
 
 // Select all users whose username is &quot;zef&quot;
 var username : String := &quot;zef&quot;;
-var users : List&lt;User&gt; := from User as u where u.username = ~username;
+var users : [User] := from User as u where u.username = ~username;
 
 // A paginated for, showing 10 items per page and prefetch the &quot;user&quot; column (in a template)
 var page : Int := 0;

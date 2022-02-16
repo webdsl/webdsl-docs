@@ -1914,12 +1914,12 @@ entity Super {
 <h3 id="string-property">String property<a class="headerlink" href="#string-property" title="Permanent link">&para;</a></h3>
 <p>For each String property in an Entity, a find function is generated (repace Property with the property name):</p>
 <p><strong>findEntityByProperty</strong></p>
-<div class="codehilite"><pre><span></span><code>findEntityByProperty(val : String) : List&lt;Entity&gt;
+<div class="codehilite"><pre><span></span><code>findEntityByProperty(val : String) : [Entity]
 </code></pre></div>
 
 <p>This function returns a list of all Entitys with the exact given Property value, an empty list if there are none.</p>
 <p><strong>findEntityByPropertyLike</strong></p>
-<div class="codehilite"><pre><span></span><code>findEntityByPropertyLike(val : String) : List&lt;Entity&gt;
+<div class="codehilite"><pre><span></span><code>findEntityByPropertyLike(val : String) : [Entity]
 </code></pre></div>
 
 <p>This function returns a list of all Entitys with the given Property value as substring, an empty list if there are none.</p>

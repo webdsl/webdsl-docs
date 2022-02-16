@@ -1582,7 +1582,7 @@ page root() {
 }
 
 native class nativejava.TwitterReader as TwitterReader {
-  static read(String,String):List&lt;String&gt;
+  static read(String,String) : [String]
 }
 </code></pre></div>
 
@@ -1633,8 +1633,8 @@ public class TwitterReader{
 <div class="codehilite"><pre><span></span><code>entity Person {
   fullname : String
   username    : String (name)
-  parents     : Set&lt;Person&gt;
-  children    : Set&lt;Person&gt;
+  parents     : {Person}
+  children    : {Person}
 }
 </code></pre></div>
 
@@ -1734,12 +1734,12 @@ function checkFullname(p:Person) :Bool{
 <div class="codehilite"><pre><span></span><code>template errorclass(){
   &lt;div class=&quot;error&quot;&gt; elements() &lt;/div&gt;
 }
-ajax template empty(){ &quot;&quot; }
-ajax template mpusername(name: String){ errorclass{ &quot;Username &quot; output(name) &quot; has been taken already&quot; } }
-ajax template mpusernameempty(){ errorclass{ &quot;Username may not be empty&quot; } }
-ajax template mpfullname(){ errorclass{ &quot;Username and fullname should not be the same&quot; } }
-ajax template mpfullnameempty(){ errorclass{ &quot;Fullname may not be empty&quot; } }
-ajax template mpparents(pname:String,names : List&lt;String&gt;){ 
+ajax template empty { &quot;&quot; }
+ajax template mpusername(name: String) { errorclass{ &quot;Username &quot; output(name) &quot; has been taken already&quot; } }
+ajax template mpusernameempty { errorclass{ &quot;Username may not be empty&quot; } }
+ajax template mpfullname { errorclass{ &quot;Username and fullname should not be the same&quot; } }
+ajax template mpfullnameempty { errorclass{ &quot;Fullname may not be empty&quot; } }
+ajax template mpparents(pname : String, names : [String]){ 
   errorclass{ 
     &quot;Person&quot; 
     if(names.length &gt; 1){&quot;s&quot;}

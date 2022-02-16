@@ -2268,7 +2268,7 @@ entity Message {
 entity ForumUser : User {
   forumName : String
   forumPwd  : Secret
-  messages  : Set&lt;Message&gt; (inverse=Message.sender)
+  messages  : {Message} (inverse=Message.sender)
 }
 ...
 search mapping ForumUser {
@@ -2371,11 +2371,9 @@ More advanced analysis may require different behavior at search and query time. 
 <p>For each indexed entity, search functions and a searcher class are automatically generated. For simple searches, the generated functions will suffice. For more advanced searches, the magic is in the generated entity searcher(s).</p>
 <h3 id="search-data-using-generated-search-functions">Search data using generated search functions<a class="headerlink" href="#search-data-using-generated-search-functions" title="Permanent link">&para;</a></h3>
 <p>For the example entity <code>Message</code>, the following search functions are generated.
-<div class="highlight"><pre><span></span><code>function searchMessage(query : String) : List&lt;Message&gt;
-function searchMessage(query : String, limit : Int)
-                             : List&lt;Message&gt;
-function searchMessage(query : String, limit : Int,
-                       offset : Int) : List&lt;Message&gt;
+<div class="highlight"><pre><span></span><code>function searchMessage(query : String) : [Message]
+function searchMessage(query : String, limit : Int) : [Message]
+function searchMessage(query : String, limit : Int, offset : Int) : [Message]
 </code></pre></div>
 The limit and offset parameters can be used for paginated results. It only loads at most the <code>limit</code> number of results from the database (for efficiency/faster pageloading). These functions use the default search fields when searching, and the specified analyzers are applied for each search field.</p>
 <h3 id="search-data-using-webdsl-search-language-for-full-text-search">Search data using WebDSL search language for full text search<a class="headerlink" href="#search-data-using-webdsl-search-language-for-full-text-search" title="Permanent link">&para;</a></h3>
@@ -2389,7 +2387,7 @@ msgSearcher := ~msgSearcher with facets sender.forumName(20), category(10)
 <p>List of search language constructs:</p>
 <h2 id="retrieving-search-results">Retrieving search results<a class="headerlink" href="#retrieving-search-results" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code>var searcher := search Book matching author: &quot;dahl&quot;;
-var results := searcher.results(); //returns List&lt;Book&gt;;
+var results := searcher.results(); //returns [Book];
 </code></pre></div>
 Calling .results() on a searcher returns the search results.
 Calling .count() on a searcher returns the total number of results.</p>
@@ -2436,7 +2434,7 @@ Specify enabled facets. These can be discrete or range facets</p>
 <h2 id="retrieving-facets-field-facets-from-searcherexp">Retrieving facets: 'field facets from searcherExp'<a class="headerlink" href="#retrieving-facets-field-facets-from-searcherexp" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code>facets := author facets from s;
 </code></pre></div>
-Returns a list: List<Facet> with the facets for the specified field. Facet objects have the following boolean functions available, for example to apply different styling on the variety of facet states:</p>
+Returns a list: <code>[Facet]</code> with the facets for the specified field. Facet objects have the following boolean functions available, for example to apply different styling on the variety of facet states:</p>
 <ul>
 <li><em>f.isSelected()</em>: is this facet selected, i.e. filtered?</li>
 <li><em>f.isMust(), f.isShould(), f.isMustNot()</em>: check the filter behaviour of this facet.</li>
@@ -2462,7 +2460,7 @@ When using search namespaces, restricting a search to a single namespace is done
     showResults(results)
   }
 }
-template showResults(results : List&lt;Message&gt;) {
+template showResults(results : [Message]) {
   //code to view results
 }   
 </code></pre></div></p>
@@ -2479,20 +2477,20 @@ defaultOr() : EntitySearcher
 <h2 id="filter-results-by-field-value-get-filter-value">Filter results by field value, get filter value<a class="headerlink" href="#filter-results-by-field-value-get-filter-value" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>addFieldFilter(field : String, value : String) : EntitySearcher
 getFieldFilterValue(field : String) : String
-getFilteredFields() : List&lt;String&gt;
+getFilteredFields() : [String]
 removeFieldFilter(field : String)
 clearFieldFilters()
 </code></pre></div>
 <h2 id="get-spellautocomplete-suggestions">Get spell/autocomplete suggestions<a class="headerlink" href="#get-spellautocomplete-suggestions" title="Permanent link">&para;</a></h2>
 <p>The field(s) parameters specify which search field(s) to use for suggestions. 'limit' controls the max number of suggestions to retrieve. Additionally the namespace can be specified, if used. For spell suggestions the accuracy [0..1] can be set
-<div class="highlight"><pre><span></span><code>static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : List&lt;String&gt;
-static autoCompleteSuggest(toComplete : String, namespace : String, field : String, limit : Int) : List&lt;String&gt;
-static autoCompleteSuggest(toComplete : String, fields : List&lt;String&gt;, limit : Int) : List&lt;String&gt;
-static autoCompleteSuggest(toComplete : String, namespace : String, fields : List&lt;String&gt;, limit : Int) : List&lt;String&gt;
-static spellSuggest(toCorrect : String, fields : List&lt;String&gt;, accuracy : Float, limit : Int) : List&lt;String&gt;
-static spellSuggest(toCorrect : String, namespace : String, fields : List&lt;String&gt;, accuracy : Float, limit : Int) : List&lt;String&gt;
-static spellSuggest(toCorrect : String, field : String, accuracy : Float, limit : Int) : List&lt;String&gt;
-static spellSuggest(toCorrect : String, namespace : String, field : String, accuracy : Float, limit : Int) : List&lt;String&gt;
+<div class="highlight"><pre><span></span><code>static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : [String]
+static autoCompleteSuggest(toComplete : String, namespace : String, field : String, limit : Int) : [String]
+static autoCompleteSuggest(toComplete : String, fields : [String], limit : Int) : [String]
+static autoCompleteSuggest(toComplete : String, namespace : String, fields : [String], limit : Int) : [String]
+static spellSuggest(toCorrect : String, fields : [String], accuracy : Float, limit : Int) : [String]
+static spellSuggest(toCorrect : String, namespace : String, fields : [String], accuracy : Float, limit : Int) : [String]
+static spellSuggest(toCorrect : String, field : String, accuracy : Float, limit : Int) : [String]
+static spellSuggest(toCorrect : String, namespace : String, field : String, accuracy : Float, limit : Int) : [String]
 </code></pre></div></p>
 <h2 id="indecrease-the-impact-of-a-search-field-in-ranking-of-results-by-boosting-at-query-time">In/Decrease the impact of a search field in ranking of results by boosting at query-time<a class="headerlink" href="#indecrease-the-impact-of-a-search-field-in-ranking-of-results-by-boosting-at-query-time" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>boost(field : String, boost : Float) : EntitySearcher
@@ -2501,18 +2499,18 @@ static spellSuggest(toCorrect : String, namespace : String, field : String, accu
 <p>The <code>max</code> parameter defines the maximum facets to collect for that field. For range facets, the ranges are encoded as String in the same format as range queries. Multiple ranges can be specified concatenated, optionally seperated with a symbol like white space or comma but that's not required."</code></p>
 <div class="highlight"><pre><span></span><code>enableFaceting(field : String, max : Int) : EntitySearcher
 enableFaceting(field : String, rangesAsString : String) : EntitySearcher
-getFacets(field : String) : List&lt;Facet&gt;
+getFacets(field : String) : [Facet]
 addFacetSelection(facet : Facet) : EntitySearcher
-addFacetSelection(facets : List&lt;Facet&gt;) : EntitySearcher
-getFacetSelection() : List&lt;Facet&gt;
-getFacetSelection(field : String) : List&lt;Facet&gt;
+addFacetSelection(facets : [Facet]) : EntitySearcher
+getFacetSelection() : [Facet]
+getFacetSelection(field : String) : [Facet]
 removeFacetSelection(facet : Facet) : EntitySearcher
 clearFacetSelection() : EntitySearcher
 clearFacetSelection(field : String) : EntitySearcher
 </code></pre></div>
 <h2 id="specify-search-fields-to-use-for-query-or-range">Specify search field(s) to use for query or range<a class="headerlink" href="#specify-search-fields-to-use-for-query-or-range" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>field(field : String) : EntitySearcher
-fields(fields : List&lt;String&gt;)] : EntitySearcher
+fields(fields : [String]) : EntitySearcher
 </code></pre></div>
 <h2 id="specify-offset-and-number-of-results-for-pagination">Specify offset and number of results (for pagination)<a class="headerlink" href="#specify-offset-and-number-of-results-for-pagination" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>setOffset(offset : Int) : EntitySearcher
@@ -2555,7 +2553,7 @@ getNamespace() : String
 removeNamespace() : EntitySearcher
 </code></pre></div>
 <h2 id="get-the-list-of-results">Get the list of results<a class="headerlink" href="#get-the-list-of-results" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>results() : List&lt;Entity&gt;
+<div class="highlight"><pre><span></span><code>results() : [Entity]
 </code></pre></div>
 <h2 id="get-the-number-of-results">Get the number of results<a class="headerlink" href="#get-the-number-of-results" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>count() : Int
@@ -2584,7 +2582,7 @@ Namespaces have some advantages over using field filters. An index is created fo
 Any searchable property can be used for faceting. The values, as they appear in the search index, are used for faceting. So if you use the default analyzer for the category property of Product, categories containing white spaces are not treated as single facet value. For this to work you need to define an additional field which doesn't tokenize the value of the property, for example by indexing this property untokenized:</p>
 <div class="highlight"><pre><span></span><code>entity Product{
   name       : String
-  categories : Set&lt;Category&gt; (inverse=Category.products)
+  categories : {Category} (inverse=Category.products)
 
   search mapping{
     name
@@ -2593,7 +2591,7 @@ Any searchable property can be used for faceting. The values, as they appear in 
 }
 entity Category {
   name     : String
-  products : Set&lt;Product&gt;
+  products : {Product}
 
   search mapping{
     name using none //or &#39;name using no&#39; in v1.2.9.0
@@ -2617,8 +2615,8 @@ A typical example is to display facets in the search results:</p>
 }
 
 page search(searcher : ProductSearcher){
-    var results : List&lt;Product&gt; := results from searcher;
-    var facets  : List&lt;Facet&gt;   := categories.name facets from searcher;
+    var results : [Product] := results from searcher;
+    var facets  : [Facet]   := categories.name facets from searcher;
 
     header{&quot;Filter by product category:&quot;}
     for(f : Facet in facets){

@@ -2336,14 +2336,14 @@ Or, in action code:
 <p>Returns this string in uppercase.</p>
 <p><strong>toLowerCase():String</strong></p>
 <p>Returns this string in lowercase.</p>
-<p><strong>split():List<String></strong></p>
+<p><strong>split():[String]</strong></p>
 <p>Returns the characters in this string as separate strings in a list.</p>
-<p><strong>split(separator:String):List<String></strong></p>
+<p><strong>split(separator:String):[String]</strong></p>
 <p>Returns a list of strings produced by splitting this string around matches of <strong>separator</strong>.</p>
 <p><strong>makePatch(new : String):Patch</strong></p>
 <p>Creates a Patch from this String to the <strong>new</strong> String, see <a href="#patch">Patch</a>.</p>
-<p><strong>diff(new : String):List<String></strong></p>
-<p>Creates a List<String> describing the differences between this String and the <strong>new</strong> String.</p>
+<p><strong>diff(new : String):[String]</strong></p>
+<p>Creates a list of <code>String</code>s describing the differences between this String and the <strong>new</strong> String.</p>
 <p><strong>trim(): String</strong></p>
 <p>Returns this string, with leading and trailing whitespace omitted.</p>
 <h3 id="list-functions">List Functions<a class="headerlink" href="#list-functions" title="Permanent link">&para;</a></h3>
@@ -2381,7 +2381,7 @@ Or, in action code:
 <p><strong>random():Float</strong></p>
 <p>Produces a random Float between 0 and 1.</p>
 <h2 id="bool">Bool<a class="headerlink" href="#bool" title="Permanent link">&para;</a></h2>
-<p>Represents a truth value. Either <tt>true</tt> or <tt>false</tt>. Example:</p>
+<p>Represents a truth value. Either <code>true</code> or <code>false</code>. Example:</p>
 <div class="codehilite"><pre><span></span><code>var b : Bool := true;
 </code></pre></div>
 
@@ -2391,7 +2391,7 @@ Or, in action code:
 <p>Converts this value to a String.</p>
 <h2 id="list">List<a class="headerlink" href="#list" title="Permanent link">&para;</a></h2>
 <p>Represents an ordered list of items of a certain type. Example:</p>
-<div class="codehilite"><pre><span></span><code>var l : List&lt;Int&gt; := [1, 2, 3, 4];
+<div class="codehilite"><pre><span></span><code>var l : [Int] := [1, 2, 3, 4];
 </code></pre></div>
 
 <p>Sorted output of lists can be created using the <code>for</code> loop filter in <a href="https://webdsl.org/selectpage/Manual/Pages#ForLoopTemplate">templates</a> or <a href="https://webdsl.org/selectpage/Manual/ActionCode#ForLoopAction">actions</a>:</p>
@@ -2405,15 +2405,15 @@ Or, in action code:
 <p>Gives the number of items in the list.</p>
 <h3 id="list-creation-expressions">List Creation Expressions<a class="headerlink" href="#list-creation-expressions" title="Permanent link">&para;</a></h3>
 <p><strong>List<Entity>()</strong></p>
-<p>Creates an empty list of type Entity.</p>
+<p>Creates an empty list of type <code>Entity</code>.</p>
 <p><strong>List<Entity>(..., Entity, ...)</strong></p>
-<p>Creates a list of type Entity with the elements resulting from the comma separated argument expressions.</p>
+<p>Creates a list of type <code>Entity</code> with the elements resulting from the comma separated argument expressions.</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>var list := List&lt;User&gt;(User{},SubSubUser{},SubUser{})
 </code></pre></div>
 
 <p><strong>[Entity, ...]</strong></p>
-<p>Creates a list of type Entity (type of first element) with the elements resulting from the comma separated expressions between the [ ].</p>
+<p>Creates a list of type <code>Entity</code> (type of first element) with the elements resulting from the comma separated expressions between the [ ].</p>
 <p>Example:</p>
 <div class="codehilite"><pre><span></span><code>var list := [User{ name := &quot;test&quot; },SubUser{},uservar]
 </code></pre></div>
@@ -2427,7 +2427,7 @@ Or, in action code:
 <p>Removes all entities in this list.</p>
 <p><strong>addAll(List/Set)</strong></p>
 <p>Adds all entities of the List/Set to this list.</p>
-<p><strong>set() : Set<Entity></strong></p>
+<p><strong>set() : {Entity}</strong></p>
 <p>Creates a Set containing the unique elements in this list.</p>
 <p><strong>indexOf(Entity) : Int</strong></p>
 <p>Returns the index of the first occurence of Entity in this list. Returns -1 if the Entity is not in this list.</p>
@@ -2439,7 +2439,7 @@ Or, in action code:
 <p>Inserts the Entity at location Int in this list. If the Int is not within bounds, nothing is set, and a warning is shown in the log.</p>
 <p><strong>removeAt(Int)</strong></p>
 <p>Removes the element at location Int in this list. If the Int is not within bounds, nothing is set, and a warning is shown in the log.</p>
-<p><strong>subList(from:Int,to:Int):List<Entity></strong></p>
+<p><strong>subList(from:Int,to:Int):[Entity]</strong></p>
 <p>Returns a portion of this list between the specified from, inclusive, and to, exclusive.</p>
 <h2 id="set">Set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h2>
 <p>Represents an unordered collection of unique items of a certain type. Example</p>
@@ -2467,7 +2467,7 @@ Or, in action code:
 <p><strong>{Entity, ...}</strong></p>
 <p>Creates a set of type Entity (type of first element) with the elements resulting from the comma separated expressions.</p>
 <p>Example:</p>
-<div class="codehilite"><pre><span></span><code>var set : Set&lt;Person&gt; := {Person{ name := &quot;test&quot; },personvar}
+<div class="codehilite"><pre><span></span><code>var set : {Person} := {Person{ name := &quot;test&quot; },personvar}
 </code></pre></div>
 
 <h3 id="functions_5">Functions<a class="headerlink" href="#functions_5" title="Permanent link">&para;</a></h3>
@@ -2479,7 +2479,7 @@ Or, in action code:
 <p>Removes all entities in this set.</p>
 <p><strong>addAll(List/Set)</strong></p>
 <p>Adds all entities of the List/Set to this set.</p>
-<p><strong>list() : List<Entity></strong></p>
+<p><strong>list() : [Entity]</strong></p>
 <p>Creates a List containing the elements in this set.</p>
 <h2 id="secret">Secret<a class="headerlink" href="#secret" title="Permanent link">&para;</a></h2>
 <p>Represents a secret string (usually a password). The page input for a Secret is a masked textfield. The page output for a Secret is "********".</p>

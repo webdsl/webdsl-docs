@@ -1503,7 +1503,7 @@ entity User {
   d.get(navigate(root()));
   assert(!d.getPageSource().contains(&quot;404&quot;), &quot;root page may not produce a 404 error&quot;);
 
-  var elist : List&lt;WebElement&gt; := d.findElements(SelectBy.tagName(&quot;input&quot;));
+  var elist : [WebElement] := d.findElements(SelectBy.tagName(&quot;input&quot;));
   assert(elist.length == 4, &quot;expected 4 &lt;input&gt; elements&quot;);
 
   elist[1].sendKeys(&quot;123&quot;);

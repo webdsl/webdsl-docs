@@ -1474,11 +1474,9 @@
 </code></pre></div>
 The searchable can be applied to the following built-in WebDSL types: String, Text, WikiText, Int, Long, Float and date types. Properties of user defined entity types are currently not supported to be searchable (i.e. sender in the previous example).</p>
 <p>If one or more properties of an entity are marked as searchable, a set of <code>searchEntity</code> functions are generated, in this case:
-<div class="highlight"><pre><span></span><code>function searchMessage(query : String) : List&lt;Message&gt;
-function searchMessage(query : String, limit : Int)
-                             : List&lt;Message&gt;
-function searchMessage(query : String, limit : Int,
-                       offset : Int) : List&lt;Message&gt;
+<div class="highlight"><pre><span></span><code>function searchMessage(query : String) : [Message]
+function searchMessage(query : String, limit : Int) : [Message]
+function searchMessage(query : String, limit : Int, offset : Int) : [Message]
 </code></pre></div>
 Which can be used from anywhere. For instance on a search page:</p>
 <div class="highlight"><pre><span></span><code>page search(query : String) {
