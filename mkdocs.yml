@@ -74,16 +74,16 @@ theme:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue
-      accent: orange
+      primary: orange
+      accent: cyan
       toggle:
         icon: material/toggle-switch-off-outline
         name: Switch to dark mode
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue
-      accent: orange
+      primary: indigo
+      accent: red
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
