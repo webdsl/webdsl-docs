@@ -268,12 +268,12 @@ For each String property in an Entity, a find function is generated (repace Prop
 
 **findEntityByProperty**
 
-    findEntityByProperty(val : String) : List<Entity>
+    findEntityByProperty(val : String) : [Entity]
 This function returns a list of all Entitys with the exact given Property value, an empty list if there are none.
 
 **findEntityByPropertyLike**
 
-    findEntityByPropertyLike(val : String) : List<Entity>
+    findEntityByPropertyLike(val : String) : [Entity]
 This function returns a list of all Entitys with the given Property value as substring, an empty list if there are none.
 
 ### Entity Name

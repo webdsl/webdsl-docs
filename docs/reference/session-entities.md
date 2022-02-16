@@ -3,7 +3,7 @@
 Storing data in the session context on the server is done using session entities. Example:
 
     session shoppingcart {
-      products : List<Product>
+      products : [Product]
     }
 
 A session entity name is a globally visible variable in the application code. The entity object is automatically instantiated and saved, one for each browser session accessing the application.

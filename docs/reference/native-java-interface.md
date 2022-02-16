@@ -25,7 +25,7 @@ Example:
       constructor()
     }
   
-    native class  nativejava.TestSuper as SuperClass  {
+    native class nativejava.TestSuper as SuperClass  {
       getProp():String
       static getStatic(): String
       returnList(): List<SubClass>

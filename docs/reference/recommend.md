@@ -11,7 +11,7 @@ One example is a book store where consumers buy books, so in this case the consu
 ```
 entity Customer {
 	name : String(id)	
-	books : List<BookPurchase>
+	books : [BookPurchase]
 }
 
 entity Book {
@@ -128,18 +128,18 @@ There are two ways to get recommendations, which method you need depends on the 
 ### User-to-item recommendations
 The user-to-item recommendations are accessible by calling to the method:
 ```
-RelationEntity.getUserRecommendations(user : UserType, maxNum : Int) : List<ItemType>
-RelationEntity.getUserRecommendations(user : UserType) : List<ItemType>
+RelationEntity.getUserRecommendations(user : UserType, maxNum : Int) : [ItemType]
+RelationEntity.getUserRecommendations(user : UserType) : [ItemType]
 ```
-This method returns a `List<ItemType>` as its result and could be filtered further or simply looped through as any normal list. The user argument refers to the user for which you want to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
+This method returns a list of `ItemType`s as its result and could be filtered further or simply looped through as any normal list. The user argument refers to the user for which you want to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
 
 ### Item-to-item recommendations
 The item-to-item recommendations are very similar to the user-to-user recommendation methods. The major difference between these function calls is the fact that you supply an item to the function so you could get a list of recommendations based on that single item. The item-to-item methods are:
 ```
-RelationEntity.getItemRecommendations(item : ItemType, maxNum : Int) : List<ItemType>
-RelationEntity.getItemRecommendations(item : ItemType) : List<ItemType>
+RelationEntity.getItemRecommendations(item : ItemType, maxNum : Int) : [ItemType]
+RelationEntity.getItemRecommendations(item : ItemType) : [ItemType]
 ```
-Just like the user-to-item recommendations these functions result in a `List<ItemType>`. The item argument refers to the item that you want to use as a reference to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
+Just like the user-to-item recommendations these functions result in a list of `ItemType`s. The item argument refers to the item that you want to use as a reference to obtain recommendations. The maxNum argument is the maximum number of recommendations that you want to obtain, this argument is optional and by default set to 10.
 
 ## Testing the speed
 Determining the recommendations takes a while to compute, this is dependent on several factors including the size of the data set, the type of relations (binary or value based), if there are duplicate relations possible, and several configuration options. The configuration options that play a major role here are the algorithm type, the neighborhood size, and its related neighborhood algorithm. With the following function call you can determine how long the last operation of the recommendation system took in milliseconds:

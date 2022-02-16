@@ -6,11 +6,11 @@ WebDSL supports a subset of [HQL](http://docs.jboss.org/hibernate/core/3.3/refer
 
 ```
 // select all updates
-var allUpdates : List<Update> := from Update;
+var allUpdates : [Update] := from Update;
 
 // Select all users whose username is "zef"
 var username : String := "zef";
-var users : List<User> := from User as u where u.username = ~username;
+var users : [User] := from User as u where u.username = ~username;
 
 // A paginated for, showing 10 items per page and prefetch the "user" column (in a template)
 var page : Int := 0;

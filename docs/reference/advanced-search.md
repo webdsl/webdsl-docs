@@ -80,7 +80,7 @@ entity Message {
 entity ForumUser : User {
   forumName : String
   forumPwd  : Secret
-  messages  : Set<Message> (inverse=Message.sender)
+  messages  : {Message} (inverse=Message.sender)
 }
 ...
 search mapping ForumUser {
@@ -194,11 +194,9 @@ For each indexed entity, search functions and a searcher class are automatically
 ### Search data using generated search functions
 For the example entity `Message`, the following search functions are generated.
 ```
-function searchMessage(query : String) : List<Message>
-function searchMessage(query : String, limit : Int)
-                             : List<Message>
-function searchMessage(query : String, limit : Int,
-                       offset : Int) : List<Message>
+function searchMessage(query : String) : [Message]
+function searchMessage(query : String, limit : Int) : [Message]
+function searchMessage(query : String, limit : Int, offset : Int) : [Message]
 ```
 The limit and offset parameters can be used for paginated results. It only loads at most the `limit` number of results from the database (for efficiency/faster pageloading). These functions use the default search fields when searching, and the specified analyzers are applied for each search field.
 
@@ -220,7 +218,7 @@ List of search language constructs:
 ## Retrieving search results
 ```
 var searcher := search Book matching author: "dahl";
-var results := searcher.results(); //returns List<Book>;
+var results := searcher.results(); //returns [Book];
 ```
 Calling .results() on a searcher returns the search results.
 Calling .count() on a searcher returns the total number of results.
@@ -281,7 +279,7 @@ Specify enabled facets. These can be discrete or range facets
 ```
 facets := author facets from s;
 ```
-Returns a list: List<Facet> with the facets for the specified field. Facet objects have the following boolean functions available, for example to apply different styling on the variety of facet states:
+Returns a list: `[Facet]` with the facets for the specified field. Facet objects have the following boolean functions available, for example to apply different styling on the variety of facet states:
 
  *   _f.isSelected()_: is this facet selected, i.e. filtered?
  *   _f.isMust(), f.isShould(), f.isMustNot()_: check the filter behaviour of this facet.
@@ -314,7 +312,7 @@ page searchPage(query : String) {
 	showResults(results)
   }
 }
-template showResults(results : List<Message>) {
+template showResults(results : [Message]) {
   //code to view results
 }	
 ```
@@ -339,7 +337,7 @@ defaultOr() : EntitySearcher
 ```
 addFieldFilter(field : String, value : String) : EntitySearcher
 getFieldFilterValue(field : String) : String
-getFilteredFields() : List<String>
+getFilteredFields() : [String]
 removeFieldFilter(field : String)
 clearFieldFilters()
 ```
@@ -348,14 +346,14 @@ clearFieldFilters()
 
 The field(s) parameters specify which search field(s) to use for suggestions. 'limit' controls the max number of suggestions to retrieve. Additionally the namespace can be specified, if used. For spell suggestions the accuracy [0..1] can be set
 ```
-static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : List<String>
-static autoCompleteSuggest(toComplete : String, namespace : String, field : String, limit : Int) : List<String>
-static autoCompleteSuggest(toComplete : String, fields : List<String>, limit : Int) : List<String>
-static autoCompleteSuggest(toComplete : String, namespace : String, fields : List<String>, limit : Int) : List<String>
-static spellSuggest(toCorrect : String, fields : List<String>, accuracy : Float, limit : Int) : List<String>
-static spellSuggest(toCorrect : String, namespace : String, fields : List<String>, accuracy : Float, limit : Int) : List<String>
-static spellSuggest(toCorrect : String, field : String, accuracy : Float, limit : Int) : List<String>
-static spellSuggest(toCorrect : String, namespace : String, field : String, accuracy : Float, limit : Int) : List<String>
+static autoCompleteSuggest(toComplete : String, field : String, limit : Int) : [String]
+static autoCompleteSuggest(toComplete : String, namespace : String, field : String, limit : Int) : [String]
+static autoCompleteSuggest(toComplete : String, fields : [String], limit : Int) : [String]
+static autoCompleteSuggest(toComplete : String, namespace : String, fields : [String], limit : Int) : [String]
+static spellSuggest(toCorrect : String, fields : [String], accuracy : Float, limit : Int) : [String]
+static spellSuggest(toCorrect : String, namespace : String, fields : [String], accuracy : Float, limit : Int) : [String]
+static spellSuggest(toCorrect : String, field : String, accuracy : Float, limit : Int) : [String]
+static spellSuggest(toCorrect : String, namespace : String, field : String, accuracy : Float, limit : Int) : [String]
 ```
 
 ## In/Decrease the impact of a search field in ranking of results by boosting at query-time
@@ -370,11 +368,11 @@ The <code>max</code> parameter defines the maximum facets to collect for that fi
 ```
 enableFaceting(field : String, max : Int) : EntitySearcher
 enableFaceting(field : String, rangesAsString : String) : EntitySearcher
-getFacets(field : String) : List<Facet>
+getFacets(field : String) : [Facet]
 addFacetSelection(facet : Facet) : EntitySearcher
-addFacetSelection(facets : List<Facet>) : EntitySearcher
-getFacetSelection() : List<Facet>
-getFacetSelection(field : String) : List<Facet>
+addFacetSelection(facets : [Facet]) : EntitySearcher
+getFacetSelection() : [Facet]
+getFacetSelection(field : String) : [Facet]
 removeFacetSelection(facet : Facet) : EntitySearcher
 clearFacetSelection() : EntitySearcher
 clearFacetSelection(field : String) : EntitySearcher
@@ -383,7 +381,7 @@ clearFacetSelection(field : String) : EntitySearcher
 ## Specify search field(s) to use for query or range
 ```
 field(field : String) : EntitySearcher
-fields(fields : List<String>)] : EntitySearcher
+fields(fields : [String]) : EntitySearcher
 ```
 
 ## Specify offset and number of results (for pagination)
@@ -443,7 +441,7 @@ removeNamespace() : EntitySearcher
 
 ## Get the list of results
 ```
-results() : List<Entity>
+results() : [Entity]
 ```
 
 ## Get the number of results
@@ -490,7 +488,7 @@ Any searchable property can be used for faceting. The values, as they appear in 
 ```
 entity Product{
   name       : String
-  categories : Set<Category> (inverse=Category.products)
+  categories : {Category} (inverse=Category.products)
 
   search mapping{
     name
@@ -499,7 +497,7 @@ entity Product{
 }
 entity Category {
   name     : String
-  products : Set<Product>
+  products : {Product}
 
   search mapping{
     name using none //or 'name using no' in v1.2.9.0
@@ -526,8 +524,8 @@ template searchbar(){
 }
 
 page search(searcher : ProductSearcher){
-    var results : List<Product> := results from searcher;
-    var facets  : List<Facet>   := categories.name facets from searcher;
+    var results : [Product] := results from searcher;
+    var facets  : [Facet]   := categories.name facets from searcher;
 
     header{"Filter by product category:"}
     for(f : Facet in facets){

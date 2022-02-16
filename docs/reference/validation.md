@@ -65,19 +65,19 @@ Validation can be specified in actions:
 
 Validation output can be customized by overriding the templates used to display validation messages. Currently, there are 4 global validation templates:
 
-    ignore-access-control template errorTemplateInput(messages : List<String>)
+    ignore-access-control template errorTemplateInput(messages : [String])
 
 Displays validation message related to an input.  
 
-    ignore-access-control template errorTemplateForm(messages : List<String>)
+    ignore-access-control template errorTemplateForm(messages : [String])
 
 Displays validation message for validation in a form.
 
-    ignore-access-control template errorTemplateAction(messages : List<String>)
+    ignore-access-control template errorTemplateAction(messages : [String])
 
 Displays validation message for validation in an action.
 
-    ignore-access-control template templateSuccess(messages : List<String>)
+    ignore-access-control template templateSuccess(messages : [String])
 
 Displays validation message for success messages.
 
@@ -85,7 +85,7 @@ When overriding these validation templates, use an `elements` templatecall to re
 
 Example:
 
-    ignore-access-control template errorTemplateInput(messages : List<String>){
+    ignore-access-control template errorTemplateInput(messages : [String]){
       elements
       for(ve: String in messages){
         output(ve)
@@ -103,15 +103,15 @@ built-in value types:
 
 reference types:
 
-    inputajax(Entity/List<Entity>/Set<Entity>)
-    selectajax(Entity/Set<Entity>)
+    inputajax(Entity / [Entity] / {Entity})
+    selectajax(Entity / {Entity})
     radioajax(Entity)
 
 provide selection options:
 
-    inputajax(Entity/List<Entity>/Set<Entity>,List<Entity>)
-    selectajax(Entity/Set<Entity>,List<Entity>)
-    radioajax(Entity,List<Entity>)
+    inputajax(Entity / [Entity] / {Entity}  , [Entity])
+    selectajax(Entity / {Entity}            , [Entity])
+    radioajax(Entity                        , [Entity])
 
 Selection options can also be provided using the `allowed` annotation on an entity property.
 Example:

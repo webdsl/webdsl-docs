@@ -12,11 +12,9 @@ The searchable can be applied to the following built-in WebDSL types: String, Te
 
 If one or more properties of an entity are marked as searchable, a set of `searchEntity` functions are generated, in this case:
 ```
-function searchMessage(query : String) : List<Message>
-function searchMessage(query : String, limit : Int)
-                             : List<Message>
-function searchMessage(query : String, limit : Int,
-                       offset : Int) : List<Message>
+function searchMessage(query : String) : [Message]
+function searchMessage(query : String, limit : Int) : [Message]
+function searchMessage(query : String, limit : Int, offset : Int) : [Message]
 ```
 Which can be used from anywhere. For instance on a search page:
 

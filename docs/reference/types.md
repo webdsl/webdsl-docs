@@ -87,11 +87,11 @@ Returns this string in uppercase.
 
 Returns this string in lowercase.
 
-**split():List<String>**
+**split():\[String\]**
 
 Returns the characters in this string as separate strings in a list.
 
-**split(separator:String):List<String>**
+**split(separator:String):\[String\]**
 
 Returns a list of strings produced by splitting this string around matches of **separator**.
 
@@ -99,9 +99,9 @@ Returns a list of strings produced by splitting this string around matches of **
 
 Creates a Patch from this String to the **new** String, see [Patch](#patch).
 
-**diff(new : String):List<String>**
+**diff(new : String):\[String\]**
 
-Creates a List<String> describing the differences between this String and the **new** String.
+Creates a list of `String`s describing the differences between this String and the **new** String.
 
 
 **trim(): String**
@@ -177,7 +177,7 @@ Produces a random Float between 0 and 1.
 
 ## Bool
 
-Represents a truth value. Either <tt>true</tt> or <tt>false</tt>. Example:
+Represents a truth value. Either `true` or `false`. Example:
 
     var b : Bool := true;
 
@@ -195,7 +195,7 @@ Converts this value to a String.
 
 Represents an ordered list of items of a certain type. Example:
 
-    var l : List<Int> := [1, 2, 3, 4];
+    var l : [Int] := [1, 2, 3, 4];
 
 Sorted output of lists can be created using the `for` loop filter in [templates](https://webdsl.org/selectpage/Manual/Pages#ForLoopTemplate) or [actions](https://webdsl.org/selectpage/Manual/ActionCode#ForLoopAction):
 
@@ -213,11 +213,11 @@ Gives the number of items in the list.
 
 **List<Entity>()**
 
-Creates an empty list of type Entity.
+Creates an empty list of type `Entity`.
 
 **List<Entity>(..., Entity, ...)**
 
-Creates a list of type Entity with the elements resulting from the comma separated argument expressions.
+Creates a list of type `Entity` with the elements resulting from the comma separated argument expressions.
 
 Example:
 
@@ -225,7 +225,7 @@ Example:
 
 **[Entity, ...]**
 
-Creates a list of type Entity (type of first element) with the elements resulting from the comma separated expressions between the [ ].
+Creates a list of type `Entity` (type of first element) with the elements resulting from the comma separated expressions between the [ ].
 
 Example:
 
@@ -249,7 +249,7 @@ Removes all entities in this list.
 
 Adds all entities of the List/Set to this list.
 
-**set() : Set<Entity>**
+**set() : {Entity}**
 
 Creates a Set containing the unique elements in this list.
 
@@ -273,7 +273,7 @@ Inserts the Entity at location Int in this list. If the Int is not within bounds
 
 Removes the element at location Int in this list. If the Int is not within bounds, nothing is set, and a warning is shown in the log.
 
-**subList(from:Int,to:Int):List<Entity>**
+**subList(from:Int,to:Int):\[Entity\]**
 
 Returns a portion of this list between the specified from, inclusive, and to, exclusive.
 
@@ -317,7 +317,7 @@ Creates a set of type Entity (type of first element) with the elements resulting
 
 Example:
 
-    var set : Set<Person> := {Person{ name := "test" },personvar}
+    var set : {Person} := {Person{ name := "test" },personvar}
 
 ### Functions
 
@@ -337,7 +337,7 @@ Removes all entities in this set.
 
 Adds all entities of the List/Set to this set.
 
-**list() : List<Entity>**
+**list() : \[Entity\]**
 
 Creates a List containing the elements in this set.
 

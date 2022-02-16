@@ -54,7 +54,7 @@ WebDSL application with native class interface declaration:
 	}
 	
 	native class nativejava.TwitterReader as TwitterReader {
-	  static read(String,String):List<String>
+	  static read(String,String) : [String]
 	}
 
 Implementation of TwitterReader.java:
@@ -113,8 +113,8 @@ We're going to create an edit page for a `Person` entity:
 	entity Person {
 	  fullname : String
 	  username    : String (name)
-	  parents     : Set<Person>
-	  children    : Set<Person>
+	  parents     : {Person}
+	  children    : {Person}
 	}
 
 The name annotation indicates that the `username` is used to refer to the Person entity in select inputs, such as those for the `parents` and `children` property, see the [Name Property](../entities#name-property) page.
@@ -217,12 +217,12 @@ The templates for the messages are shown below. An errorclass template is used t
 	template errorclass(){
 	  <div class="error"> elements() </div>
 	}
-	ajax template empty(){ "" }
-	ajax template mpusername(name: String){ errorclass{ "Username " output(name) " has been taken already" } }
-	ajax template mpusernameempty(){ errorclass{ "Username may not be empty" } }
-	ajax template mpfullname(){ errorclass{ "Username and fullname should not be the same" } }
-	ajax template mpfullnameempty(){ errorclass{ "Fullname may not be empty" } }
-	ajax template mpparents(pname:String,names : List<String>){ 
+	ajax template empty { "" }
+	ajax template mpusername(name: String) { errorclass{ "Username " output(name) " has been taken already" } }
+	ajax template mpusernameempty { errorclass{ "Username may not be empty" } }
+	ajax template mpfullname { errorclass{ "Username and fullname should not be the same" } }
+	ajax template mpfullnameempty { errorclass{ "Fullname may not be empty" } }
+	ajax template mpparents(pname : String, names : [String]){ 
 	  errorclass{ 
 	    "Person" 
 	    if(names.length > 1){"s"}

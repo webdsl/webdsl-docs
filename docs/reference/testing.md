@@ -62,7 +62,7 @@ Example:
       d.get(navigate(root()));
       assert(!d.getPageSource().contains("404"), "root page may not produce a 404 error");
     
-      var elist : List<WebElement> := d.findElements(SelectBy.tagName("input"));
+      var elist : [WebElement] := d.findElements(SelectBy.tagName("input"));
       assert(elist.length == 4, "expected 4 <input> elements");
     
       elist[1].sendKeys("123");
