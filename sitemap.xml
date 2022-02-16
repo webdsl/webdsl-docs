@@ -141,11 +141,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://webdsl.github.io/webdsl-docs/reference/recommend/</loc>
-         <lastmod>2022-02-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://webdsl.github.io/webdsl-docs/reference/recurring-tasks/</loc>
          <lastmod>2022-02-16</lastmod>
          <changefreq>daily</changefreq>
