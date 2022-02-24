@@ -1398,6 +1398,13 @@
 
 <p>A session entity name is a globally visible variable in the application code. The entity object is automatically instantiated and saved, one for each browser session accessing the application.</p>
 <p>Typically, session data is used for keeping track of authentication state, but it can also be used for temporarily storing data for anonymous users. A common oversight with session data is that it is shared between tabs in a browser.</p>
+<p>To initialize session data to default values, remember that using <code>:=</code> after a field means that that field is a derived property. 
+That also means you can't assign to this field. To set defaults use <code>(default = value)</code>. Example:</p>
+<div class="codehilite"><pre><span></span><code>session history {
+  number_of_entries : Int (default = 10)
+}
+</code></pre></div>
+
 <p>Declaring an access control principle, e.g. <code>principal is User with credentials name,password</code>, automatically creates a <code>securityContext</code> session entity. For more information about access control see the <a href="../access-control">Access Control</a> page.</p>
 <p>Session entities can also be extended with extra properties. Example:</p>
 <div class="codehilite"><pre><span></span><code>extend session shoppingcart{
