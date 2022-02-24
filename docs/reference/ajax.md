@@ -81,7 +81,7 @@ To invoke actions when an HTML event is fired, for example when pressing a key, 
 ```
 <event name> := <action call>
 ```
-<a href="http://w3schools.com/tags/ref_eventattributes.asp">W3schools.com</a> provides an overview of all available events. 
+[W3schools.com](http://w3schools.com/tags/ref_eventattributes.asp) provides an overview of many available events. Note that `onmouseenter` and `onmouseleave` are also available, but not documented by W3Schools.
 
 Example:
 ```
