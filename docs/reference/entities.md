@@ -93,7 +93,7 @@ The name can be customized by declaring a real name property:
 
     name : String
 
-Or derived name property:
+Or [derived name property](#derived-properties):
 
     name : String := firstname + lastname
 
@@ -130,7 +130,27 @@ The name property is used in `input` and `select` template elements to refer to 
   
 If the name is not a real property, you cannot create an input for it or assign to it.
 
-## Allowed Property Annotation
+Note that because 'name' is a derived property, by default you can't assign to it. To make 'name' mutable, you need to explicitly add it to the entity in one of the ways described above.
+
+## Derived Properties
+
+A derived property is a property of an entity (or [session entity](./session-entities/)) which is always equal to the result of an expression. The expression may reference other fields in the entity, but doesn't need to. Derived properties are always read-only. An example:
+
+```
+entity User {
+  firstname: String
+  lastname: String
+  name : String := firstname + lastname
+}
+```
+
+## List of field properties for entities
+
+* `not null`. Makes sure a field isn't null
+* `default=<value>`. Sets a default value. Note that this is different from [derived properties](#derived-properties)
+* `allowed`. [See specific docs](#allowed-property-annotation) 
+
+### Allowed Property Annotation
 
 The `allowed` annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:
 
