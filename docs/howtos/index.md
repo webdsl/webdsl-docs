@@ -7,3 +7,4 @@ These are some How-To's that help you to get to a specific goal or result with W
 - [Install the WebDSL Eclipse Bundle](install-eclipse-bundle/)
 - [Install the WebDSL Eclipse Plugin Manually](install-eclipse-plugin-manually/)
 - [Install and Use the WebDSL CLI](install-cli/)
+- [Update WebDSL](update/)

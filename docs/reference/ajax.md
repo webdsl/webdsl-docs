@@ -32,7 +32,7 @@ Example: Moving a div around using JQuery animate:
 
     runscript("$('"+id+"').animate({left:'"+x+"', top:'"+y+"'},1000);");
 
-The *refresh* action is the default action; when no other interface changing operations are executed the browser will just refresh the current page. For example an input form which submits to a completely empty action results in the data being saved (default behavior) and the page being refreshed (default behavior). 
+The *refresh* action is the default action; when no other interface changing operations are executed the browser will just refresh the current page. For example an input form which submits to a completely empty action results in the data being saved (default behavior) and the page being refreshed (default behavior). If good way to avoid refreshing (if this is really what you want), is to use `runscript("")`. Note that it's good practice to return a confirmation message instead of doing nothing.
 
 ## Ajax Targets
 
@@ -81,7 +81,7 @@ To invoke actions when an HTML event is fired, for example when pressing a key, 
 ```
 <event name> := <action call>
 ```
-<a href="http://w3schools.com/tags/ref_eventattributes.asp">W3schools.com</a> provides an overview of all available events. 
+[W3schools.com](http://w3schools.com/tags/ref_eventattributes.asp) provides an overview of many available events. Note that `onmouseenter` and `onmouseleave` are also available, but not documented by W3Schools.
 
 Example:
 ```
