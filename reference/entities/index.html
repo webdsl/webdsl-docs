@@ -881,9 +881,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#derived-properties" class="md-nav__link">
+    Derived Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-field-properties-for-entities" class="md-nav__link">
+    List of field properties for entities
+  </a>
+  
+    <nav class="md-nav" aria-label="List of field properties for entities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#allowed-property-annotation" class="md-nav__link">
     Allowed Property Annotation
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1535,9 +1555,29 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#derived-properties" class="md-nav__link">
+    Derived Properties
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-of-field-properties-for-entities" class="md-nav__link">
+    List of field properties for entities
+  </a>
+  
+    <nav class="md-nav" aria-label="List of field properties for entities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#allowed-property-annotation" class="md-nav__link">
     Allowed Property Annotation
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1743,7 +1783,7 @@ The name can be customized by declaring a real name property:</p>
 <div class="codehilite"><pre><span></span><code>name : String
 </code></pre></div>
 
-<p>Or derived name property:</p>
+<p>Or <a href="#derived-properties">derived name property</a>:</p>
 <div class="codehilite"><pre><span></span><code>name : String := firstname + lastname
 </code></pre></div>
 
@@ -1779,7 +1819,22 @@ page root {
 </code></pre></div>
 
 <p>If the name is not a real property, you cannot create an input for it or assign to it.</p>
-<h2 id="allowed-property-annotation">Allowed Property Annotation<a class="headerlink" href="#allowed-property-annotation" title="Permanent link">&para;</a></h2>
+<p>Note that because 'name' is a derived property, by default you can't assign to it. To make 'name' mutable, you need to explicitly add it to the entity in one of the ways described above.</p>
+<h2 id="derived-properties">Derived Properties<a class="headerlink" href="#derived-properties" title="Permanent link">&para;</a></h2>
+<p>A derived property is a property of an entity (or <a href="./session-entities/">session entity</a>) which is always equal to the result of an expression. The expression may reference other fields in the entity, but doesn't need to. Derived properties are always read-only. An example:</p>
+<div class="highlight"><pre><span></span><code>entity User {
+  firstname: String
+  lastname: String
+  name : String := firstname + lastname
+}
+</code></pre></div>
+<h2 id="list-of-field-properties-for-entities">List of field properties for entities<a class="headerlink" href="#list-of-field-properties-for-entities" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>not null</code>. Makes sure a field isn't null</li>
+<li><code>default=&lt;value&gt;</code>. Sets a default value. Note that this is different from <a href="#derived-properties">derived properties</a></li>
+<li><code>allowed</code>. <a href="#allowed-property-annotation">See specific docs</a> </li>
+</ul>
+<h3 id="allowed-property-annotation">Allowed Property Annotation<a class="headerlink" href="#allowed-property-annotation" title="Permanent link">&para;</a></h3>
 <p>The <code>allowed</code> annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:</p>
 <div class="codehilite"><pre><span></span><code>entity Person{
   friends : {Person} (allowed = from Person as p where p != this)
