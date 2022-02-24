@@ -1517,7 +1517,7 @@ runscript(String);
 <div class="codehilite"><pre><span></span><code>runscript(&quot;$(&#39;&quot;+id+&quot;&#39;).animate({left:&#39;&quot;+x+&quot;&#39;, top:&#39;&quot;+y+&quot;&#39;},1000);&quot;);
 </code></pre></div>
 
-<p>The <em>refresh</em> action is the default action; when no other interface changing operations are executed the browser will just refresh the current page. For example an input form which submits to a completely empty action results in the data being saved (default behavior) and the page being refreshed (default behavior). </p>
+<p>The <em>refresh</em> action is the default action; when no other interface changing operations are executed the browser will just refresh the current page. For example an input form which submits to a completely empty action results in the data being saved (default behavior) and the page being refreshed (default behavior). If good way to avoid refreshing (if this is really what you want), is to use <code>runscript("")</code>. Note that it's good practice to return a confirmation message instead of doing nothing.</p>
 <h2 id="ajax-targets">Ajax Targets<a class="headerlink" href="#ajax-targets" title="Permanent link">&para;</a></h2>
 <p>There are three ways to target an ajax operation. 
 <em>target</em> can either be </p>
