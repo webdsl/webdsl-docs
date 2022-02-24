@@ -993,8 +993,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
+  <a href="#escaping" class="md-nav__link">
+    Escaping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-a-paginated-view" class="md-nav__link">
+    Example: a paginated view
   </a>
   
 </li>
@@ -1411,8 +1425,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
+  <a href="#escaping" class="md-nav__link">
+    Escaping
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-a-paginated-view" class="md-nav__link">
+    Example: a paginated view
   </a>
   
 </li>
@@ -1435,16 +1463,25 @@
                 
                 
                 <h1 id="queries">Queries<a class="headerlink" href="#queries" title="Permanent link">&para;</a></h1>
-<p>WebDSL supports a subset of <a href="http://docs.jboss.org/hibernate/core/3.3/reference/en/html/queryhql.html">HQL</a>. To escape to WebDSL inside a query, prefix the expression with ~.</p>
-<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>// select all updates
-var allUpdates : [Update] := from Update;
+<p>WebDSL supports a subset of <a href="http://docs.jboss.org/hibernate/core/3.3/reference/en/html/queryhql.html">HQL</a>. You can use these queries directly in your webdsl program, by for example assigning them to variables. An example:</p>
+<div class="codehilite"><pre><span></span><code>  // select all updates
+  var allUpdates : [Update] := from Update;
+</code></pre></div>
 
-// Select all users whose username is &quot;zef&quot;
-var username : String := &quot;zef&quot;;
-var users : [User] := from User as u where u.username = ~username;
+<h2 id="escaping">Escaping<a class="headerlink" href="#escaping" title="Permanent link">&para;</a></h2>
+<p>Often it is useful to use values from your WebDSL program inside a query. To do this you can escape WebDSL expressions by prefixing them with a tilde (<code>~</code>). </p>
+<p>To escape to WebDSL inside a query, prefix the expression with ~. For example:</p>
+<div class="codehilite"><pre><span></span><code>  // Select all users whose username is &quot;zef&quot;
+  var username : String := &quot;zef&quot;;
+  var users : [User] := from User as u where u.username = ~username;
+</code></pre></div>
 
-// A paginated for, showing 10 items per page and prefetch the &quot;user&quot; column (in a template)
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Limit accepts either one or two arguments. With one argument it just limits, but in the two argument form, the first argument describes the <code>offset</code>. Even though <code>offset</code> is valid SQL, it's not a valid keyword to use in WebDSL queries, even though it is a valid keyword in other places in WebDSL so will be highlighted in your editor.</li>
+</ul>
+<h2 id="example-a-paginated-view">Example: a paginated view<a class="headerlink" href="#example-a-paginated-view" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>// A paginated for, showing 10 items per page and prefetch the &quot;user&quot; column (in a template)
 var page : Int := 0;
 for(update : Update in from Update as u left join fetch u.user order by u.date desc limit 10*page, 10) {
    output(update.text)
