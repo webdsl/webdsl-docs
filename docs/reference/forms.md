@@ -163,7 +163,7 @@ Example:
             input(u.group)
           }
         }
-        submit("save",action{})
+        submit action{} { "save" }
       }
     }
 
@@ -182,7 +182,7 @@ Example 2:
             input(u.group, groups)
           }
         }
-        submit("save",action{})
+        submit action{} { "save" }
       }
     }
 
