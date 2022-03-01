@@ -134,7 +134,7 @@ Note that because 'name' is a derived property, by default you can't assign to i
 
 ## Derived Properties
 
-A derived property is a property of an entity (or [session entity](./session-entities/)) which is always equal to the result of an expression. The expression may reference other fields in the entity, but doesn't need to. Derived properties are always read-only. An example:
+A derived property is a property of an entity (or [session entity](../session-entities/)) which is always equal to the result of an expression. The expression may reference other fields in the entity, but doesn't need to. Derived properties are always read-only. An example:
 
 ```
 entity User {
