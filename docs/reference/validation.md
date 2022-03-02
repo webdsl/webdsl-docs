@@ -26,38 +26,38 @@ Validation can be specified on entities in property annotations:
 
 Validation can be specified directly in pages:
 
-    page editUser(u:User) { 
+    page editUser( u: User ){ 
       var p: Secret; 
       form { 
-        group("User") { 
-          label("Username") { input(u.username) } 
-          label("Email") { input(u.email) } 
-          label("New Password") { 
-            input(u.password) 
+        group( "User" ){ 
+          label( "Username" ){ input( u.username ) } 
+          label( "Email" ){ input( u.email ) } 
+          label( "New Password" ){ 
+            input( u.password )
           } 
-          label("Re-enter Password") { 
-            input(p) { 
-              validate(u.password == p, "Password does not match") 
+          label( "Re-enter Password" ){ 
+            input( p ){ 
+              validate( u.password == p, "Password does not match" ) 
             } 
           } 
-          submit action {} { "Save" }
+          submit action{} { "Save" }
         } 
       }
-    } 
+    }
 
 Validation can be specified in actions:
 
-    page createGroup() { 
-      var ug := UserGroup {} 
+    page createGroup { 
+      var ug := UserGroup{} 
       form { 
-        group("User Group") { 
-        label("Name") { input(ug.name) } 
-        label("Owner") { input(ug.owner) } 
+        group( "User Group" ){ 
+        label( "Name" ){ input( ug.name ) } 
+        label( "Owner" ){ input( ug.owner ) } 
         submit save() { "Save" }
 
         action save() { 
-          validate(email(newGroupNotify(ug)),"Owner could not be notified by email"); 
-          return userGroup(ug); 
+          validate( ug.owner != null, "A group must have an owner" ); 
+          return userGroup( ug ); 
        }
      } 
 
