@@ -1471,38 +1471,38 @@ extend entity User {
 </code></pre></div>
 
 <p>Validation can be specified directly in pages:</p>
-<div class="codehilite"><pre><span></span><code>page editUser(u:User) { 
+<div class="codehilite"><pre><span></span><code>page editUser( u: User ){ 
   var p: Secret; 
   form { 
-    group(&quot;User&quot;) { 
-      label(&quot;Username&quot;) { input(u.username) } 
-      label(&quot;Email&quot;) { input(u.email) } 
-      label(&quot;New Password&quot;) { 
-        input(u.password) 
+    group( &quot;User&quot; ){ 
+      label( &quot;Username&quot; ){ input( u.username ) } 
+      label( &quot;Email&quot; ){ input( u.email ) } 
+      label( &quot;New Password&quot; ){ 
+        input( u.password )
       } 
-      label(&quot;Re-enter Password&quot;) { 
-        input(p) { 
-          validate(u.password == p, &quot;Password does not match&quot;) 
+      label( &quot;Re-enter Password&quot; ){ 
+        input( p ){ 
+          validate( u.password == p, &quot;Password does not match&quot; ) 
         } 
       } 
-      submit action {} { &quot;Save&quot; }
+      submit action{} { &quot;Save&quot; }
     } 
   }
 }
 </code></pre></div>
 
 <p>Validation can be specified in actions:</p>
-<div class="codehilite"><pre><span></span><code>page createGroup() { 
-  var ug := UserGroup {} 
+<div class="codehilite"><pre><span></span><code>page createGroup { 
+  var ug := UserGroup{} 
   form { 
-    group(&quot;User Group&quot;) { 
-    label(&quot;Name&quot;) { input(ug.name) } 
-    label(&quot;Owner&quot;) { input(ug.owner) } 
+    group( &quot;User Group&quot; ){ 
+    label( &quot;Name&quot; ){ input( ug.name ) } 
+    label( &quot;Owner&quot; ){ input( ug.owner ) } 
     submit save() { &quot;Save&quot; }
 
     action save() { 
-      validate(email(newGroupNotify(ug)),&quot;Owner could not be notified by email&quot;); 
-      return userGroup(ug); 
+      validate( ug.owner != null, &quot;A group must have an owner&quot; ); 
+      return userGroup( ug ); 
    }
  }
 </code></pre></div>
