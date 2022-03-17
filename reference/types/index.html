@@ -2277,7 +2277,7 @@
 <li>DateTime</li>
 </ul>
 <h2 id="enums">Enums<a class="headerlink" href="#enums" title="Permanent link">&para;</a></h2>
-<p>Enumeration types are like <code>enum</code> in Java and other languages. You define them as follows:
+<p>Enumeration types consist of a list of options that contain both an identifier and a visible name. You define them as follows:
 <div class="highlight"><pre><span></span><code>enum Gender {
   maleGender(&quot;Male&quot;),
   femaleGender(&quot;Female&quot;),
@@ -2300,6 +2300,9 @@ Or, in action code:
   u.gender := maleGender;
 }
 </code></pre></div></p>
+<p>Note that internally an enumeration becomes an entity declaration with a name property for the visible name.
+The options become global variable declarations that get initialized once.
+Visible names can be updated using regular WebDSL forms.</p>
 <h2 id="string">String<a class="headerlink" href="#string" title="Permanent link">&para;</a></h2>
 <p>Represents a string of characters. Example:</p>
 <div class="codehilite"><pre><span></span><code>var s : String := &quot;Hello world&quot;;
