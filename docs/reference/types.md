@@ -24,7 +24,7 @@ Similarly, the Date times are equivalent as well:
 
 Enums
 -----
-Enumeration types are like `enum` in Java and other languages. You define them as follows:
+Enumeration types consist of a list of options that contain both an identifier and a visible name. You define them as follows:
 ```
 enum Gender {
   maleGender("Male"),
@@ -50,6 +50,11 @@ function setMale(u : User) {
   u.gender := maleGender;
 }
 ```
+
+Note that internally an enumeration becomes an entity declaration with a name property for the visible name.
+The options become global variable declarations that get initialized once.
+Visible names can be updated using regular WebDSL forms.
+
 
 ## String
 
