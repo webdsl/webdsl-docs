@@ -18,7 +18,7 @@
     
     
       
-        <title>Validation - WebDSL</title>
+        <title>Data Validation - WebDSL</title>
       
     
     
@@ -58,7 +58,7 @@
 
 <!-- Open graph meta tags -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="WebDSL - Validation" />
+<meta property="og:title" content="WebDSL - Data Validation" />
 <meta property="og:description" content="Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model." />
 <meta property="og:url" content="https://webdsl.github.io/webdsl-docs/reference/validation/" />
 <meta property="og:image" content="../../assets/screenshot.png" />
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#validation" class="md-skip">
+        <a href="#data-validation" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Validation
+              Data Validation
             
           </span>
         </div>
@@ -942,12 +942,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Validation
+          Data Validation
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Validation
+        Data Validation
       </a>
       
         
@@ -1448,7 +1448,7 @@
                   </a>
                 
                 
-                <h1 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h1>
+                <h1 id="data-validation">Data Validation<a class="headerlink" href="#data-validation" title="Permanent link">&para;</a></h1>
 <p>Checking user inputs and providing clear feedback is essential for the usability of web applications. WebDSL allows declarative specification of such input validation rules using the <em>validate</em> feature.</p>
 <p>Validation rules in WebDSL are of the form <em>validate(e,s)</em> and consist of a Boolean expression <em>e</em> to be validated, and a String expression <em>s</em> to be displayed as error message. Any globally visible functions or data can be accessed as well as any of the properties and functions in scope of the validation rule context. </p>
 <p>Value well-formedness checks (e.g. whether the user enters a valid integer in an Int input) are added automatically to each input field.</p>
@@ -1493,18 +1493,28 @@ extend entity User {
 
 <p>Validation can be specified in actions:</p>
 <div class="codehilite"><pre><span></span><code>page createGroup { 
-  var ug := UserGroup{} 
+  var ug := UserGroup{}
   form { 
     group( &quot;User Group&quot; ){ 
-    label( &quot;Name&quot; ){ input( ug.name ) } 
-    label( &quot;Owner&quot; ){ input( ug.owner ) } 
-    submit save() { &quot;Save&quot; }
-
-    action save() { 
-      validate( ug.owner != null, &quot;A group must have an owner&quot; ); 
-      return userGroup( ug ); 
-   }
- }
+      label( &quot;Name&quot; ){  input( ug.name ) } 
+      label( &quot;Owner&quot; ){ input( ug.owner ) } 
+      submit save() { &quot;Save&quot; }
+    }
+  }
+  action save() {
+    validate( ug.owner != null, &quot;A group must have an owner&quot; );
+    validate( ug.owner.email != &quot;&quot;, &quot;Owner has not provided an email address&quot; ); 
+    ug.save();
+    email newGroupNotify( ug );
+    return userGroup( ug );
+  }
+}
+email newGroupNotify( u: UserGroup ){
+  from( &quot;info@example.com&quot; )
+  to( u.owner.email )
+  subject( &quot;Usergroup created: ~u.name&quot; )
+  &quot;Your usergroup ~u.name has been created.&quot;
+}
 </code></pre></div>
 
 <h2 id="customizing-validation-output">Customizing Validation Output<a class="headerlink" href="#customizing-validation-output" title="Permanent link">&para;</a></h2>
