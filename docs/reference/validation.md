@@ -1,4 +1,4 @@
-# Validation
+# Data Validation
 
 Checking user inputs and providing clear feedback is essential for the usability of web applications. WebDSL allows declarative specification of such input validation rules using the *validate* feature.
 
@@ -48,18 +48,28 @@ Validation can be specified directly in pages:
 Validation can be specified in actions:
 
     page createGroup { 
-      var ug := UserGroup{} 
+      var ug := UserGroup{}
       form { 
         group( "User Group" ){ 
-        label( "Name" ){ input( ug.name ) } 
-        label( "Owner" ){ input( ug.owner ) } 
-        submit save() { "Save" }
-
-        action save() { 
-          validate( ug.owner != null, "A group must have an owner" ); 
-          return userGroup( ug ); 
-       }
-     } 
+          label( "Name" ){  input( ug.name ) } 
+          label( "Owner" ){ input( ug.owner ) } 
+          submit save() { "Save" }
+        }
+      }
+      action save() {
+        validate( ug.owner != null, "A group must have an owner" );
+        validate( ug.owner.email != "", "Owner has not provided an email address" ); 
+        ug.save();
+        email newGroupNotify( ug );
+        return userGroup( ug );
+      }
+    }
+    email newGroupNotify( u: UserGroup ){
+      from( "info@example.com" )
+      to( u.owner.email )
+      subject( "Usergroup created: ~u.name" )
+      "Your usergroup ~u.name has been created."
+    }
 
 ## Customizing Validation Output
 
