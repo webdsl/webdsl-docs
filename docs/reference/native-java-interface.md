@@ -66,4 +66,4 @@ If you want an instance of your defined native java class to be passed as page (
 
 _note_: The keys in the returned Map may only consist of character classes [A-Z][a-z][0-9], values may hold any value as they get filtered. On deserialization, the static `fromParamMap` method is invoked and its result is cast to the type as defined in the page/java template definition.
 
-Examples can be [found](https://webdsl.org/reposearch/doSearch/sl=100000&ns=WebDSL&op=AND&q=fromParamMap+toParamMap&lim=5&dff=repoPath%2CfileExt%2C&type=Entry&dfp=200%2C120%2C&pq=fromParamMap+toParamMap&allowlcn=false&/WebDSL/1) (notice the link ;)) in WebDSL's source code itself.
+Examples can be [found](https://codefinder.org/doSearch/sl=100000&ns=WebDSL&op=AND&q=fromParamMap+toParamMap&lim=5&dff=repoPath%2CfileExt%2C&type=Entry&dfp=200%2C120%2C&pq=fromParamMap+toParamMap&allowlcn=false&/WebDSL/1) (notice the link ;)) in WebDSL's source code itself.

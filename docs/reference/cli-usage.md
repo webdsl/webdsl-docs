@@ -1,19 +1,7 @@
-# Command Line Use
+# CLI Usage
 
-WebDSL can be invoked from the command-line by using the compiler supplied with the plugin ([https://webdsl.org/selectpage/Download/WebDSLplugin](https://webdsl.org/selectpage/Download/WebDSLplugin), recommended) or downloading the stand-alone compiler: [https://webdsl.org/selectpage/Download/WebDSLJava](https://webdsl.org/selectpage/Download/WebDSLJava). 
-
-Running plugin compiler on command-line
+Running an application using the command-line interface
 ----
-
-Mac/Linux users can start WebDSL using the `webdsl` script at: 
-
-    eclipse/plugins/webdsl.editor_[version]/webdsl-template/webdsl
-
-and Windows users can start WebDSL using the `webdsl.bat` script at:
-
-    eclipse/plugins/webdsl.editor_[version]/webdsl-template/webdsl.bat
-
-Where [version] is your installed version of the plugin. For convenience, you can add the directory to your path or make an alias for the script.
 
 The quickest way to get an application running is to execute:
 

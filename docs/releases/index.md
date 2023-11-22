@@ -14,7 +14,7 @@ Find older releases [on the buildfarm](https://buildfarm.metaborg.org/view/WebDS
 Or install the WebDSL plugin in an existing Eclipse 3.5+ installation using this update site:
 
 ```
-https://webdsl.org/update
+https://update.webdsl.org/update
 ```
 
 [Installation instructions](../howtos/install-eclipse-plugin-manually.md).

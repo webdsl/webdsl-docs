@@ -5,7 +5,7 @@ Perform a manual installation of the WebDSL plugin in [Eclipse 3.5][1] or newer.
 2.  In the _Work with:_ text area, type:
 
     ```
-    https://webdsl.org/update
+    https://update.webdsl.org/update
     ```
 
 3.  Uncheck _Group items by category_ to make the plugin visible.

@@ -202,7 +202,7 @@ Represents an ordered list of items of a certain type. Example:
 
     var l : [Int] := [1, 2, 3, 4];
 
-Sorted output of lists can be created using the `for` loop filter in [templates](https://webdsl.org/selectpage/Manual/Pages#ForLoopTemplate) or [actions](https://webdsl.org/selectpage/Manual/ActionCode#ForLoopAction):
+Sorted output of lists can be created using the `for` loop filter in [templates](./pages.md#for-loop) or [actions](./action-code.md#for-loop):
 
     for(u:User in [u1,u2,u3] order by u.name desc){
       output(u)
@@ -290,7 +290,7 @@ Represents an unordered collection of unique items of a certain type. Example
 
     var s : Set<Int> := {1, 2, 3, 4};
 
-Sorted output of sets can be created using the `for` loop filter in [templates](https://webdsl.org/selectpage/Manual/Pages#ForLoopTemplate) or [actions](https://webdsl.org/selectpage/Manual/ActionCode#ForLoopAction). 
+Sorted output of sets can be created using the `for` loop filter in [templates](./pages.md#for-loop) or [actions](./action-code.md#for-loop). 
 
     for(u:User in [u1,u2,u3] order by u.name desc){
       output(u)

@@ -22,7 +22,7 @@ nav:
   - Reference:
     - reference/index.md
     - reference/using-the-editor.md
-    - reference/command-line-use.md
+    - reference/cli-usage.md
     - reference/webdsl-apps.md
     - reference/app-configuration.md
     - reference/production-server.md

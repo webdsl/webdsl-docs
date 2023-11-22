@@ -15,7 +15,7 @@ We provide an [Eclipse][1] bundle in which you can create and edit WebDSL applic
     Perform a manual installation of the WebDSL plugin in [Eclipse 3.5][1] or newer through the update site:
 
     ```
-    https://webdsl.org/update
+    https://update.webdsl.org/update
     ```
 
     [Installation instructions](../install-eclipse-plugin-manually/).

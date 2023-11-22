@@ -110,7 +110,7 @@ Displays an image. Images placed in an "images" folder in the root directory of 
 Example:
 
     page root(){
-      image("https://webdsl.org/webdslorg/images/WebDSL-small.png") 
+      image("https://update.webdsl.org/images/WebDSL-small.png") 
       image("/images/WebDSL-small.png") 
     }
 

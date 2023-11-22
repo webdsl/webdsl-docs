@@ -79,4 +79,4 @@ before 1.3.0:
 
 Note: Don't start your application during reindexing, it will crash because it can't initialize the directory provider. So reindexing should be done before starting or when already running your application.
 
-A demo of the search functionality can be seen on [Reposearch](http://www.webdsl.org/reposearch).
+A demo of the search functionality can be seen on [Reposearch](http://www.codefinder.org).

@@ -4,10 +4,10 @@
 [![Docs](https://img.shields.io/badge/docs-latest-brightgreen)](https://webdsl.org/)
 [![GitHub](https://img.shields.io/github/license/webdsl/webdsl-docs)](https://github.com/webdsl/webdsl-docs/blob/main/LICENSE)
 
-This is the repository for the new [WebDSL](https://webdsl.org/) documentation.
+This is the repository for the [WebDSL](https://webdsl.org) documentation.
 This documentation uses [MkDocs Material][1].
 
-The result is currently available at https://webdsl.github.io/webdsl-docs/.
+The result is currently available at https://webdsl.org.
 
 To build the pages and see edits live using Docker:
 

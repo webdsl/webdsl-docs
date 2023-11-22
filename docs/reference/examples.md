@@ -33,7 +33,7 @@ Below are larger examples of WebDSL applications than those found on the other m
 
 ## Example Native Interface
 
-A simple application that shows the public timeline of Twitter using [Twitter4J](http://twitter4j.org/). Example project code is available [here](https://webdsl.org/twitterapp.zip)
+A simple application that shows the public timeline of Twitter using [Twitter4J](http://twitter4j.org/). Example project code is available [here](https://update.webdsl.org/twitterapp.zip)
 
 
 Screenshot of result:
