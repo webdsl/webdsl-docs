@@ -1,5 +1,8 @@
 FROM python:3.9.2-alpine3.13
 
+ARG TOOLS=tools/
+
+COPY ${TOOLS} tools/
 COPY mkdocs_requirements.txt requirements.txt
 RUN apk upgrade --update-cache -a \
  && apk add --no-cache \
