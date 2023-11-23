@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://webdsl.github.io/webdsl-docs/reference/app-configuration/">
+        <link rel="canonical" href="https://webdsl.github.io/webdsl-docs/reference/cli-usage/">
       
       
-        <link rel="prev" href="../webdsl-apps/">
+        <link rel="prev" href="../using-the-editor/">
       
       
-        <link rel="next" href="../production-server/">
+        <link rel="next" href="../webdsl-apps/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>App Configuration - WebDSL</title>
+        <title>CLI Usage - WebDSL</title>
       
     
     
@@ -69,9 +69,9 @@
 
 <!-- Open graph meta tags -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="WebDSL - App Configuration" />
+<meta property="og:title" content="WebDSL - CLI Usage" />
 <meta property="og:description" content="Documentation of the WebDSL domain-specific language for modeling web applications with a rich data model." />
-<meta property="og:url" content="https://webdsl.github.io/webdsl-docs/reference/app-configuration/" />
+<meta property="og:url" content="https://webdsl.github.io/webdsl-docs/reference/cli-usage/" />
 <meta property="og:image" content="../../assets/screenshot.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1080" />
@@ -100,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#app-configuration" class="md-skip">
+        <a href="#cli-usage" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              App Configuration
+              CLI Usage
             
           </span>
         </div>
@@ -896,9 +896,29 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../cli-usage/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CLI Usage
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -907,6 +927,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-an-application-using-the-command-line-interface" class="md-nav__link">
+    Running an application using the command-line interface
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-war-file-and-deploying-to-external-tomcat" class="md-nav__link">
+    Building .war file and deploying to external Tomcat
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-application" class="md-nav__link">
+    Example Application
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -936,29 +997,9 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    App Configuration
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../app-configuration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -967,89 +1008,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#required-configuration" class="md-nav__link">
-    Required Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-configuration-mysql" class="md-nav__link">
-    Database Configuration MySQL
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-configuration-h2-database-engine-in-file" class="md-nav__link">
-    Database Configuration H2 Database Engine in file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-configuration-h2-database-engine-in-memory" class="md-nav__link">
-    Database Configuration H2 Database Engine in memory
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-configuration-through-jndi" class="md-nav__link">
-    Database Configuration through JNDI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#email-configuration" class="md-nav__link">
-    Email Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search-configuration" class="md-nav__link">
-    Search Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-configuration" class="md-nav__link">
-    Optional Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-with-tomcat-manager" class="md-nav__link">
-    Deploy with Tomcat Manager
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1851,64 +1809,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#required-configuration" class="md-nav__link">
-    Required Configuration
+  <a href="#running-an-application-using-the-command-line-interface" class="md-nav__link">
+    Running an application using the command-line interface
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-configuration-mysql" class="md-nav__link">
-    Database Configuration MySQL
+  <a href="#building-war-file-and-deploying-to-external-tomcat" class="md-nav__link">
+    Building .war file and deploying to external Tomcat
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#database-configuration-h2-database-engine-in-file" class="md-nav__link">
-    Database Configuration H2 Database Engine in file
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-configuration-h2-database-engine-in-memory" class="md-nav__link">
-    Database Configuration H2 Database Engine in memory
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#database-configuration-through-jndi" class="md-nav__link">
-    Database Configuration through JNDI
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#email-configuration" class="md-nav__link">
-    Email Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#search-configuration" class="md-nav__link">
-    Search Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#optional-configuration" class="md-nav__link">
-    Optional Configuration
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#deploy-with-tomcat-manager" class="md-nav__link">
-    Deploy with Tomcat Manager
+  <a href="#example-application" class="md-nav__link">
+    Example Application
   </a>
   
 </li>
@@ -1931,88 +1847,79 @@
   
 
 
-<h1 id="app-configuration">App Configuration<a class="headerlink" href="#app-configuration" title="Permanent link">&para;</a></h1>
-<p>In the <em>application.ini</em> file compile-, database- and deployment information is stored. Executing the <em>webdsl</em> command in a certain directory will look for a <em>application.ini</em> file to obtain compilation information. If no such file was found, it will start a simple wizard to create one. </p>
-<p>Example <em>application.ini</em>:</p>
+<h1 id="cli-usage">CLI Usage<a class="headerlink" href="#cli-usage" title="Permanent link">&para;</a></h1>
+<h2 id="running-an-application-using-the-command-line-interface">Running an application using the command-line interface<a class="headerlink" href="#running-an-application-using-the-command-line-interface" title="Permanent link">&para;</a></h2>
+<p>The quickest way to get an application running is to execute:</p>
+<div class="codehilite"><pre><span></span><code>webdsl run appname
+</code></pre></div>
+
+<p>This will generate an application.ini file with default settings, then compile the application, and start a Tomcat instance on port 8080 with the application deployed.</p>
+<p>If there is already an application.ini file with settings that have to be used, execute:</p>
+<div class="codehilite"><pre><span></span><code>webdsl run
+</code></pre></div>
+
+<p>This will also build and run, using the settings in the existing application.ini file.</p>
+<p>To create just the war file instead, use:</p>
+<div class="codehilite"><pre><span></span><code>webdsl war
+</code></pre></div>
+
+<h2 id="building-war-file-and-deploying-to-external-tomcat">Building .war file and deploying to external Tomcat<a class="headerlink" href="#building-war-file-and-deploying-to-external-tomcat" title="Permanent link">&para;</a></h2>
+<p>The installation of WebDSL will result in a <em>webdsl</em> script and a directory with templates being added to your install location. The script is used to invoke the compilation and deployment of WebDSL applications. </p>
+<p>In your console, go to the location of the main .app file and invoke the webdsl script with </p>
+<div class="codehilite"><pre><span></span><code>webdsl build
+</code></pre></div>
+
+<p>The script uses an application.ini file for configuration. If an application.ini file is not in the current directory, the script will offer an interactive way to generate it. If the application.ini is available it will be used to configure the application with e.g. database connection settings. The compilation begins by creating a .servletapp directory to which the WebDSL template, the application files, and the static resources are copied. Then the actual WebDSL compiler, webdslc, is invoked. This will either produce an error and halt, or it will produce the source code of a java web application. Upon a successful run of the webdsl compiler, the script will compile the java code, and build a war file. This war file can be copied manually to the tomcat /webapps dir, or it can be uploaded through the web deploy interface of tomcat. If the tomcat path is set in application.ini, then</p>
+<div class="codehilite"><pre><span></span><code>webdsl deploy
+</code></pre></div>
+
+<p>will copy the war file to the /webapps directory. </p>
+<p>If you have updated webdsl and need to copy the new WebDSL template in .servletapp use</p>
+<div class="codehilite"><pre><span></span><code>webdsl cleanall
+</code></pre></div>
+
+<p>to remove the .servletapp directory (or simply delete it with rm) and then do a build.</p>
+<p>The script commands can be combined, e.g. </p>
+<div class="codehilite"><pre><span></span><code>webdsl cleanall build deploy
+</code></pre></div>
+
+<p>to clean the generated directory and its contents, regenerate, and deploy.</p>
+<h2 id="example-application">Example Application<a class="headerlink" href="#example-application" title="Permanent link">&para;</a></h2>
+<p>1 create a hello.app file</p>
+<p>hello.app:</p>
+<div class="codehilite"><pre><span></span><code>application test
+
+page root(){
+  &quot;Hello world&quot;
+}
+</code></pre></div>
+
+<p>create or generate application.ini:</p>
 <div class="codehilite"><pre><span></span><code>backend=servlet
-tomcatpath=/opt/tomcat
+tomcatpath=**path to your tomcat directory e.g. /Apps/tomcat/**
 appname=hello
 dbserver=localhost
-dbuser=webdsluser
-dbpassword=webdslpassword
+dbuser=**mysql user account, e.g. root**
+dbpassword=**password**
 dbname=webdsldb
-dbmode=update
+dbmode=create-drop
 smtphost=localhost
 smtpport=25
 smtpuser=
 smtppass=
 </code></pre></div>
 
-<h2 id="required-configuration">Required Configuration<a class="headerlink" href="#required-configuration" title="Permanent link">&para;</a></h2>
-<p><strong>backend</strong> The back-end target platform of the application. Currently, the <strong>servlet</strong> back-end is only up-to-date.</p>
-<p><strong>appname</strong> The name of the application to compile. The compiler will look for a APPNAME.app file to compile. This name will also become the servlet name and show up as part of the URL. By renaming the generated APPNAME.war file to ROOT.war and then deploying it, the application name will not be in the URL.</p>
-<p><strong>tomcatpath</strong> This field should contain the root directory of the Tomcat installation. For example /opt/tomcat. It is used when executing 'webdsl deploy'.</p>
-<h2 id="database-configuration-mysql">Database Configuration MySQL<a class="headerlink" href="#database-configuration-mysql" title="Permanent link">&para;</a></h2>
-<p><strong>dbmode</strong> This field indicates if the application should try to create tables in a database, or try to sync it with the existing schema to avoid loss of data. Valid values are <strong>create-drop</strong>, <strong>update</strong>, and <strong>false</strong>. Update can lead to unpredictable results if data model is changed too much. For production deployment use 'export DBMODE=false'.</p>
-<p><strong>dbserver</strong> Location of the Mysql server, which will be used in the connection URL, e.g. 'localhost'.</p>
-<p><strong>dbuser</strong> User to be used for connecting to the MySQL database.</p>
-<p><strong>dbpassword</strong> Password for the specified user.</p>
-<p><strong>dbname</strong> Database name, note that the database needs to exist when the application is run. The 'webdsl' script will try to create the database in the wizard, but manually creating it via command-line or MySQL Administrator is also possible.</p>
-<h2 id="database-configuration-h2-database-engine-in-file">Database Configuration H2 Database Engine in file<a class="headerlink" href="#database-configuration-h2-database-engine-in-file" title="Permanent link">&para;</a></h2>
-<p><strong>db</strong> Set <code>db=h2</code> to enable H2 Database Engine instead of the default MySQL.</p>
-<p><strong>dbfile</strong> H2 database file, an empty file will be populated with tables automatically, when using 'create-drop' or 'update' db modes.</p>
-<p><strong>dbmode</strong> Same as for MySQL.</p>
-<h2 id="database-configuration-h2-database-engine-in-memory">Database Configuration H2 Database Engine in memory<a class="headerlink" href="#database-configuration-h2-database-engine-in-memory" title="Permanent link">&para;</a></h2>
-<p><strong>db</strong> Set <code>db=h2mem</code> to enable in-memory H2 Database Engine instead of the default MySQL.</p>
-<p><strong>dbmode</strong> Same as for MySQL, although effectively the tables are always dropped after a restart with in-memory database</p>
-<h2 id="database-configuration-through-jndi">Database Configuration through JNDI<a class="headerlink" href="#database-configuration-through-jndi" title="Permanent link">&para;</a></h2>
-<p><strong>db</strong> Set <code>db=jndi</code> to retrieve a JDBC resource from the application server, rather than providing the configuration in the web application.</p>
-<p><strong>dbjndipath</strong> JNDI path to the JDBC resource. On Apache Tomcat this is typically prefixed by 'java:comp/env'. An example may be: 'java:comp/env/jdbc/mydatabase'</p>
-<p><strong>dbmode</strong> Same as for MySQL.</p>
-<p>Apart from settings in the application.ini, also a Context XML file must be provided for Apache Tomcat. An example may be:</p>
-<div class="codehilite"><pre><span></span><code>&lt;Context&gt;
-    &lt;Resource name=&quot;jdbc/mydatabase&quot;
-        auth=&quot;Container&quot;
-        type=&quot;javax.sql.DataSource&quot;
-        driverClassName=&quot;com.mysql.jdbc.Driver&quot;
-        maxActivate=&quot;100&quot; maxIdle=&quot;30&quot; maxWait=&quot;10000&quot;
-        username=&quot;root&quot; password=&quot;dbpassword&quot;
-        url=&quot;jdbc:mysql://localhost:3306/mydatabase?useServerPrepStmts=false&amp;amp;characterEncoding=UTF-8&amp;amp;useUnicode=true&amp;amp;autoReconnect=true&quot; /&gt;
-&lt;/Context&gt;
-</code></pre></div>
-
-<p>This XML file must be stored in: $TOMCAT_BASE/conf/Catalina/localhost/&lt;appname&gt;.xml</p>
-<h2 id="email-configuration">Email Configuration<a class="headerlink" href="#email-configuration" title="Permanent link">&para;</a></h2>
-<p><strong>smtphost</strong> SMTP host for sending email, e.g. smtp.gmail.com</p>
-<p><strong>smtpport</strong> SMTP port for sending email, e.g. 465</p>
-<p><strong>smtpuser</strong> SMTP username</p>
-<p><strong>smtppass</strong> SMTP password</p>
-<p><strong>smtpprotocol</strong> <code>smtpprotocol=smtps</code> [smtp/smtps] Use smtp or smtps as protocol.</p>
-<p><strong>smtpauthenticate</strong> <code>smtpauthenticate=true</code> [true/false] Authenticate with a username and password.</p>
-<h2 id="search-configuration">Search Configuration<a class="headerlink" href="#search-configuration" title="Permanent link">&para;</a></h2>
-<p><strong>indexdir</strong> set the index directory, default is /var/indexes.</p>
-<p><strong>searchstats</strong> Enable/disable search statistics, which can be displayed using template showSearchStats(). Default is false.</p>
-<h2 id="optional-configuration">Optional Configuration<a class="headerlink" href="#optional-configuration" title="Permanent link">&para;</a></h2>
-<p><strong>rootapp</strong> <code>rootapp=true</code> will deploy the application as root application, it will not have the application name prefix in the URL.</p>
-<p><strong>wikitext-hardwraps</strong> <code>wikitext-hardwraps=true</code> will enable so-called <em>hard wraps</em> in markdown. This way, each newline which isn't followed by 2 white spaces is also rendered as new line. Default is <em>false</em>. See <a href="http://yellowgrass.org/issue/WebDSL/818">http://yellowgrass.org/issue/WebDSL/818</a></p>
-<p><strong>appurlforrenderwithoutrequest</strong> (as of WebDSL 1.3.0) Sets the URL to be used when links to pages are to be rendered outside a request. Normally, WebDSL will construct links using the request URL as a base. In case pages or templates with links are to be rendered outside a request (e.g. using a background task), WebDSL will use this property value as the base url.</p>
-<p><strong>sessiontimeout</strong> Sets the session timeout, specified in minutes.</p>
-<p><strong>javacmem</strong> <code>javacmem=3G</code> set javac max memory for compilation of generated Java classes</p>
-<p><strong>debug</strong> <code>debug=true</code> will show queries and Java exception stacktraces in the log.</p>
-<p><strong>verbose</strong> <code>verbose=2</code> will show more info during compilation, mainly for developers.</p>
-<p><strong>fastpp</strong> <code>fastpp=true</code> will make the compiler write Java code faster (writing files stage), however, it also becomes less readable. (only for C-based back-end of the WebDSL compiler)</p>
-<h2 id="deploy-with-tomcat-manager">Deploy with Tomcat Manager<a class="headerlink" href="#deploy-with-tomcat-manager" title="Permanent link">&para;</a></h2>
-<p>For the <code>webdsl tomcatdeploy</code> and <code>webdsl tomcatundeploy</code> commands to work, a user has to be configured in Tomcat (tomcat/conf/tomcat-users.xml). For example:</p>
-<div class="codehilite"><pre><span></span><code>&lt;tomcat-users&gt;
-  &lt;role rolename=&quot;manager&quot;/&gt;
-  &lt;user username=&quot;tomcat&quot; password=&quot;tomcat&quot; roles=&quot;manager&quot;/&gt;
-&lt;/tomcat-users&gt;
-</code></pre></div>
-
-<p>The tomcat manager URL and username and password can be set in the application.ini file (defaults are listed as examples):</p>
-<p><strong>tomcatmanager</strong> <code>tomcatmanager=http:\\localhost:8080\manager</code> URL to Tomcat manager</p>
-<p><strong>tomcatuser</strong> <code>tomcatuser=tomcat</code> manager user declared in tomcat/conf/tomcat-users.xml</p>
-<p><strong>tomcatpassword</strong> <code>tomcatpassword=tomcat</code> password for that user</p>
+<p>2 create the database</p>
+<p>mysql -u root -p</p>
+<p>create database webdsldb;</p>
+<p>exit</p>
+<p>3 start tomcat in another shell:</p>
+<p>catalina.sh run (stop with cmd/ctrl+c)</p>
+<p>or in the background</p>
+<p>catalina.sh start (stop with catalina.sh stop)</p>
+<p>4 compile and deploy WebDSL app</p>
+<p>webdsl cleanall deploy</p>
+<p>5 open browser and go to <a href="http://localhost:8080/hello">http://localhost:8080/hello</a></p>
 
 
 
