@@ -7,7 +7,7 @@ Download the latest release of the WebDSL Plugin for Eclipse bundle for your pla
 
 [Installation instructions](../howtos/install-eclipse-bundle.md).
 
-Find older releases [on the buildfarm](https://buildfarm.metaborg.org/view/WebDSL/job/webdsl-eclipsegen/).
+<!--Find older releases [on the buildfarm](https://buildfarm.metaborg.org/view/WebDSL/job/webdsl-eclipsegen/).-->
 
 ---
 
@@ -23,8 +23,8 @@ https://update.webdsl.org/update
 ## WebDSL Command-Line Interface
 Download the latest release of the WebDSL CLI:
 
-[:fontawesome-solid-download: WebDSL CLI](https://buildfarm.metaborg.org/job/webdsl-compiler/lastSuccessfulBuild/artifact/webdsl.zip){ .md-button .md-button--primary }
+[:fontawesome-solid-download: WebDSL CLI](https://update.webdsl.org/compiler/webdsl.zip){ .md-button .md-button--primary }
 
 [Installation instructions](../howtos/install-cli.md).
 
-Find older releases [on the buildfarm](https://buildfarm.metaborg.org/job/webdsl-compiler/lastSuccessfulBuild/artifact/webdsl.zip).
+<!--Find older releases [on the buildfarm](https://buildfarm.metaborg.org/job/webdsl-compiler/lastSuccessfulBuild/artifact/webdsl.zip).-->
