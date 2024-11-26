@@ -155,7 +155,7 @@ entity User {
 The `allowed` annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:
 
     entity Person{
-      friends : {Person} (allowed = from Person as p where p != this)
+      friends : {Person} (allowed = from Person as p where p != ~this)
     }
     var p1 := Person{}
     page root {
@@ -346,10 +346,10 @@ Example:
     var u_1 := User{username:= "test"}
  
     page root {
-      navigate(createUser()){ "create" } " "
-      navigate(user(u_1)){ "view" } " "
-      navigate(editUser(u_1)){ "edit" } " "
-      navigate(manageUser()){ "manage" }
+      navigate createUser() { "create" } " "
+      navigate user(u_1) { "view" } " "
+      navigate editUser(u_1) { "edit" } " "
+      navigate manageUser() { "manage" }
     }
 
 As the navigates indicate, the pages that are created are:
