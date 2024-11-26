@@ -2222,7 +2222,7 @@ page root {
 <h3 id="allowed-property-annotation">Allowed Property Annotation<a class="headerlink" href="#allowed-property-annotation" title="Permanent link">&para;</a></h3>
 <p>The <code>allowed</code> annotation for entity properties provides a way to restrict the choices the user has when the property is used in an input:</p>
 <div class="codehilite"><pre><span></span><code>entity Person{
-  friends : {Person} (allowed = from Person as p where p != this)
+  friends : {Person} (allowed = from Person as p where p != ~this)
 }
 var p1 := Person{}
 page root {
@@ -2395,10 +2395,10 @@ derive CRUD User
 var u_1 := User{username:= &quot;test&quot;}
 
 page root {
-  navigate(createUser()){ &quot;create&quot; } &quot; &quot;
-  navigate(user(u_1)){ &quot;view&quot; } &quot; &quot;
-  navigate(editUser(u_1)){ &quot;edit&quot; } &quot; &quot;
-  navigate(manageUser()){ &quot;manage&quot; }
+  navigate createUser() { &quot;create&quot; } &quot; &quot;
+  navigate user(u_1) { &quot;view&quot; } &quot; &quot;
+  navigate editUser(u_1) { &quot;edit&quot; } &quot; &quot;
+  navigate manageUser() { &quot;manage&quot; }
 }
 </code></pre></div>
 
