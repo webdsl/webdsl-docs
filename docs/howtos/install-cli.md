@@ -2,7 +2,7 @@
 
 Download the WebDSL CLI for your platform:
 
-[:fontawesome-solid-download: WebDSL CLI](https://buildfarm.metaborg.org/job/webdsl-compiler/lastSuccessfulBuild/artifact/webdsl.zip){ .md-button .md-button--primary }
+[:fontawesome-solid-download: WebDSL CLI](https://update.webdsl.org/compiler/webdsl.zip){ .md-button .md-button--primary }
 
 
 ## Installation
