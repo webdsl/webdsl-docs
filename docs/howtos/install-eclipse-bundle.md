@@ -1,8 +1,11 @@
 # Install the Eclipse with WebDSL Plugin Bundle
 Install an Eclipse instance with the WebDSL plugin pre-installed for your platform:
 
-[:fontawesome-solid-download: WebDSL in Eclipse bundle](https://buildfarm.metaborg.org/view/WebDSL/job/webdsl-eclipsegen/lastSuccessfulBuild/artifact/dist/eclipse/){ .md-button .md-button--primary }
+[:fontawesome-solid-download: WebDSL in Eclipse bundle (Linux)](https://update.webdsl.org/eclipse/eclipse-linux-x64.tar.gz){ .md-button .md-button--primary }
 
+[:fontawesome-solid-download: WebDSL in Eclipse bundle (MacOS)](https://update.webdsl.org/eclipse/eclipse-macosx-x64.tar.gz){ .md-button .md-button--primary }
+
+[:fontawesome-solid-download: WebDSL in Eclipse bundle (Windows)](https://update.webdsl.org/eclipse/eclipse-windows-x64.zip){ .md-button .md-button--primary }
 
 
 ## Troubleshooting
