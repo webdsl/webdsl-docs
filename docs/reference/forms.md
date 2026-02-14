@@ -242,6 +242,20 @@ Radio buttons can be used as an alternative to `select` for selecting an entity 
       radio(p.parent, getPersonList())
     } 
 
+## Downloading Files
+Forms can also be used to provide a way to download files from [File](../types#File) objects via a `downloadlink` element.
+
+Example:
+
+    template renderToPdf(data: Object) {
+      form {
+        downloadlink action {
+          var pdf := Renderer.createPdf(data);
+          pdf.download();
+        } { "Render to PDF" }
+      }
+    }
+
 ## Captcha
 
 The `captcha` element creates a fully automatic [CAPTCHA](http://en.wikipedia.org/wiki/CAPTCHA) form element.

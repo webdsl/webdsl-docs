@@ -10,6 +10,7 @@ RUN apk upgrade --update-cache -a \
       git-fast-import \
       openssh \
  && apk add --no-cache --virtual .build gcc musl-dev \
+ && pip install -U pip \
  && pip install --no-cache-dir -r requirements.txt \
  && apk del .build gcc musl-dev \
  && rm -rf /tmp/* /root/.cache \
