@@ -7,7 +7,7 @@ WebDSL includes a simple way to define string and JSON-based webservices.
 The JSON interface is defined as follows:
 
 ```
-  native class org.json.JSONObject as JSONObject {
+  native class com.google.json.JSONObject as JSONObject {
     constructor()
     constructor(String)
     get(String) : Object
@@ -17,17 +17,18 @@ The JSON interface is defined as follows:
     getJSONArray(String) : JSONArray
     getJSONObject(String) : JSONObject
     getString(String) : String
+    getNullValue(String) : JSONNull
     has(String) : Bool
-    names() : JSONArray
     put(String, Object)
     toString() : String
-    toString(Int) : String
+    static nullValue(): JSONNull
   }
+
+  native class com.google.gson.JsonNull as JSONNull {}
   
-  native class org.json.JSONArray as JSONArray {
+  native class com.google.json.JSONArray as JSONArray {
     constructor()
     constructor(String)
-    get(Int) : Object
     getBoolean(Int) : Bool
     getDouble(Int) : Double
     getInt(Int) : Int
@@ -35,11 +36,8 @@ The JSON interface is defined as follows:
     getJSONObject(Int) : JSONObject
     getString(Int) : String
     length() : Int
-    join(String) : String
     put(Object)
-    remove(Int)
     toString() : String
-    toString(Int) : String
   } 
 ```
 

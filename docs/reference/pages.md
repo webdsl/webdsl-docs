@@ -349,7 +349,7 @@ By default, any template content will be escaped, if you want to include a strin
 
 Example:
 
-    rawoutput{"&nbsp;"}
+    rawoutput("&nbsp;")
 
 ## HTML Element Attributes on Template Call
 
