@@ -1837,7 +1837,7 @@
 <p>WebDSL includes a simple way to define string and JSON-based webservices.</p>
 <h2 id="json-api">JSON API<a class="headerlink" href="#json-api" title="Permanent link">&para;</a></h2>
 <p>The JSON interface is defined as follows:</p>
-<div class="highlight"><pre><span></span><code>  native class org.json.JSONObject as JSONObject {
+<div class="highlight"><pre><span></span><code>  native class com.google.json.JSONObject as JSONObject {
     constructor()
     constructor(String)
     get(String) : Object
@@ -1847,17 +1847,18 @@
     getJSONArray(String) : JSONArray
     getJSONObject(String) : JSONObject
     getString(String) : String
+    getNullValue(String) : JSONNull
     has(String) : Bool
-    names() : JSONArray
     put(String, Object)
     toString() : String
-    toString(Int) : String
+    static nullValue(): JSONNull
   }
 
-  native class org.json.JSONArray as JSONArray {
+  native class com.google.gson.JsonNull as JSONNull {}
+
+  native class com.google.json.JSONArray as JSONArray {
     constructor()
     constructor(String)
-    get(Int) : Object
     getBoolean(Int) : Bool
     getDouble(Int) : Double
     getInt(Int) : Int
@@ -1865,11 +1866,8 @@
     getJSONObject(Int) : JSONObject
     getString(Int) : String
     length() : Int
-    join(String) : String
     put(Object)
-    remove(Int)
     toString() : String
-    toString(Int) : String
   } 
 </code></pre></div>
 <p>Example use in WebDSL:</p>

@@ -1192,6 +1192,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#downloading-files" class="md-nav__link">
+    Downloading Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#captcha" class="md-nav__link">
     Captcha
   </a>
@@ -1891,6 +1898,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#downloading-files" class="md-nav__link">
+    Downloading Files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#captcha" class="md-nav__link">
     Captcha
   </a>
@@ -2140,6 +2154,19 @@ input(u.teammate, teammates)[not null]
 
 page editPerson(p:Person){
   radio(p.parent, getPersonList())
+}
+</code></pre></div>
+
+<h2 id="downloading-files">Downloading Files<a class="headerlink" href="#downloading-files" title="Permanent link">&para;</a></h2>
+<p>Forms can also be used to provide a way to download files from <a href="../types#File">File</a> objects via a <code>downloadlink</code> element.</p>
+<p>Example:</p>
+<div class="codehilite"><pre><span></span><code>template renderToPdf(data: Object) {
+  form {
+    downloadlink action {
+      var pdf := Renderer.createPdf(data);
+      pdf.download();
+    } { &quot;Render to PDF&quot; }
+  }
 }
 </code></pre></div>
 
